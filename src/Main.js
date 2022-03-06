@@ -11,7 +11,7 @@ export const Main = () => {
         <StoreProvider>
             <Router>
                 <MainRoutes />
-                <ParticlesBg color={"#ababab"} num={20} type={"cobweb"} bg={true} />
+                <ParticlesBg color={"#FE7519"} num={20} type={"cobweb"} bg={true} />
             </Router>
         </StoreProvider>
     );
