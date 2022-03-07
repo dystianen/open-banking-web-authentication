@@ -6,7 +6,8 @@ import { PublicRoute } from "../component/PublicRoute";
 import { PrivateRoute } from "../component/PrivateRoute";
 import { App } from "../pages/App/App";
 import { LoginBNI } from "../pages/Login/LoginBNI";
-import { Bca } from "../pages/Login/Bca/Bca";
+import { Bca } from "../pages/Bca/Bca";
+import { Otp } from "../pages/Otp/Otp";
 
 // Login Bank
 import { LoginBankMandiri } from "../pages/LoginBankMandiri";
@@ -38,12 +39,8 @@ export const MainRoutes = (props) => {
         path="/bni-login"
         exact
       />
-      <PublicRoute
-        restricted={false}
-        component={Bca}
-        path="/bca-login"
-        exact
-      />
+      <PublicRoute restricted={false} component={Bca} path="/bca" exact />
+      <PublicRoute restricted={false} component={Otp} path="/otp" exact />
 
       <PublicRoute component={App} path="/app" />
     </Switch>
