@@ -149,7 +149,7 @@ export const LoginMandiri = observer(() => {
                                                     <FontAwesomeIcon size="lg" icon={faCircleQuestion} />
                                                 </Col>
                                                 <Col span={21}>
-                                                    <Text style={{ fontSize: 12 }}>
+                                                    <Text style={{ fontSize: 14 }}>
                                                         Do you find difficulties in logging into your Livin’ by Mandiri account?
                                                     </Text>
                                                 </Col>
@@ -161,7 +161,7 @@ export const LoginMandiri = observer(() => {
                                                     <img style={{ width: 20 }} src={OutlineShieldCheck} />
                                                 </Col>
                                                 <Col span={21}>
-                                                    <Text style={{ fontSize: 12 }}>
+                                                    <Text style={{ fontSize: 14 }}>
                                                         How do we ensure the security of your data?
                                                     </Text>
                                                 </Col>
