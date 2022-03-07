@@ -24,3 +24,43 @@ code {
   background: #145FD9 !important;
 }
 
+.border-color-bank {
+  border-top: 1px solid #D8D8D8;
+  height: 50px;
+  align-items: center;
+  display: flex;
+}
+
+.none-border {
+  height: 50px;
+  align-items: center;
+  display: flex;
+}
+
+.ant-collapse {
+  border:none !important;
+  background: none !important;
+}
+.ant-collapse > .ant-collapse-item{
+  border:none !important;
+  background: white !important;
+  border-bottom-radius: 100px !important;
+}
+
+.ant-collapse > .ant-collapse-item.ant-collapse-no-arrow > .ant-collapse-header {
+  padding: 0 !important;
+  border: none !important
+}
+
+.ant-collapse-content > .ant-collapse-content-box{
+  padding: 0 !important;
+}
+
+.ant-collapse-content-active{
+  border-bottom-radius: 100px !important;
+}
+
+.collapse-custom {
+  margin-top: 20px;
+}
+

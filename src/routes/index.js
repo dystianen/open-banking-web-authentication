@@ -1,4 +1,3 @@
-import { AnimatedSwitch } from "react-router-transition";
 import { Redirect, Route, Switch } from "react-router-dom";
 import { Login } from "../pages/Login/Login";
 import { TermCondition } from "../pages/TermCondition";
@@ -9,6 +8,7 @@ import { LoginBNI } from "../pages/Login/LoginBNI";
 import { Bca } from "../pages/Bca/Bca";
 import { Otp } from "../pages/Otp/Otp";
 import { LoginMandiri } from "../pages/Login/LoginMandiri";
+import {BankList} from "../pages/BankList";
 
 export const MainRoutes = (props) => {
   return (
@@ -42,7 +42,7 @@ export const MainRoutes = (props) => {
       />
       <PublicRoute restricted={false} component={Bca} path="/bca" exact />
       <PublicRoute restricted={false} component={Otp} path="/otp" exact />
-
+      <PublicRoute restricted={true} component={BankList} path="/bank-list" exact />
       <PublicRoute component={App} path="/app" />
     </Switch>
   );
