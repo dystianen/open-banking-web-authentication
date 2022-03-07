@@ -1,9 +1,5 @@
 import React, { useState } from "react";
-import {
-  ArrowLeftOutlined,
-  CloseOutlined,
-  LockOutlined,
-} from "@ant-design/icons";
+import { ArrowLeftOutlined, CloseOutlined } from "@ant-design/icons";
 import OTPInput from "otp-input-react";
 import { gopay } from "./Assets";
 import Footer from "./Components/Footer";
@@ -15,15 +11,7 @@ export const Otp = () => {
   return (
     <div style={{ backgroundColor: "#CBDFFF" }}>
       <FixedTopBar />
-      <div
-        style={{
-          padding: 20,
-          backgroundColor: "#F6F6F6",
-          minHeight: "100vh",
-          borderTopLeftRadius: 10,
-          borderTopRightRadius: 10,
-        }}
-      >
+      <div style={styles.body}>
         <div style={{ display: "flex", justifyContent: "space-between" }}>
           <div>
             <ArrowLeftOutlined style={{ fontSize: 16, color: "#71757C" }} />
@@ -36,14 +24,7 @@ export const Otp = () => {
           <div style={{ display: "flex", justifyContent: "center" }}>
             <div>
               <div style={{ display: "flex", justifyItems: "center" }}>
-                <img
-                  src={gopay}
-                  style={{
-                    marginLeft: "auto",
-                    marginRight: "auto",
-                    width: 150,
-                  }}
-                />
+                <img src={gopay} style={styles.logoGopay} />
               </div>
               <p style={{ fontSize: 18 }}>Code is sent to +62 878 9009</p>
             </div>
@@ -64,22 +45,7 @@ export const Otp = () => {
             otpType="number"
             disabled={false}
             secure
-            inputStyles={{
-              width: 60,
-              height: 60,
-              borderRadius: "10px",
-              border: "1px solid #CBDFFF",
-              backgroundColor: "#FFFFFF",
-              color: "#145FD9",
-              fontSize: "20px",
-              fontWeight: "bold",
-              textAlign: "center",
-              padding: "10px",
-              marginTop: "10px",
-              marginBottom: "10px",
-              marginLeft: "10px",
-              marginRight: "10px",
-            }}
+            inputStyles={styles.otpInput}
           />
         </div>
         <div style={{ marginTop: 40 }}>
@@ -88,21 +54,7 @@ export const Otp = () => {
             <span style={{ color: "#0581FF" }}> Request again</span>
           </p>
           <div style={{ display: "flex", justifyContent: "center" }}>
-            <button
-              style={{
-                backgroundColor: "#B4BCC9",
-                color: "#FFFFFF",
-                border: "none",
-                borderRadius: "10px",
-                padding: "10px",
-                fontSize: "16px",
-                marginTop: "10px",
-                marginBottom: "10px",
-                width: "100%",
-              }}
-            >
-              Submit
-            </button>
+            <button style={styles.button}>Submit</button>
           </div>
         </div>
         <Slides />
@@ -110,4 +62,46 @@ export const Otp = () => {
       </div>
     </div>
   );
+};
+
+const styles = {
+  body: {
+    padding: 20,
+    backgroundColor: "#F6F6F6",
+    minHeight: "100vh",
+    borderTopLeftRadius: 10,
+    borderTopRightRadius: 10,
+  },
+  logoGopay: {
+    marginLeft: "auto",
+    marginRight: "auto",
+    width: 150,
+  },
+  otpInput: {
+    width: 60,
+    height: 60,
+    borderRadius: "10px",
+    border: "1px solid #CBDFFF",
+    backgroundColor: "#FFFFFF",
+    color: "#145FD9",
+    fontSize: "20px",
+    fontWeight: "bold",
+    textAlign: "center",
+    padding: "10px",
+    marginTop: "10px",
+    marginBottom: "10px",
+    marginLeft: "10px",
+    marginRight: "10px",
+  },
+  button: {
+    backgroundColor: "#B4BCC9",
+    color: "#FFFFFF",
+    border: "none",
+    borderRadius: "10px",
+    padding: "10px",
+    fontSize: "16px",
+    marginTop: "10px",
+    marginBottom: "10px",
+    width: "100%",
+  },
 };
