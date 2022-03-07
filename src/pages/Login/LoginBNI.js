@@ -69,15 +69,16 @@ export const LoginBNI = () => {
 
     return (
         <>
-            <FixedTopBar style={styles.fixedTopBar} />
+            <FixedTopBar/>
             <Card style={styles.card}>
                 <div style={styles.container}>
                     <div style={styles.nav}>
                         <Button type="link" icon={<FontAwesomeIcon icon={faArrowLeft} style={styles.navButton}/>}
                                 onClick={() => {
                                 }}/>
-                        <Button type="link" icon={<FontAwesomeIcon icon={faXmark} style={styles.navButton}/>} onClick={() => {
-                        }}/>
+                        <Button type="link" icon={<FontAwesomeIcon icon={faXmark} style={styles.navButton}/>}
+                                onClick={() => {
+                                }}/>
                     </div>
 
                     <div style={styles.logo}>
@@ -109,7 +110,8 @@ export const LoginBNI = () => {
                                         <QuestionCircleOutlined style={{fontSize: '16px'}}/>
                                     </Col>
                                     <Col span={22}>
-                                        <Title level={5} style={styles.guide}>Do you find difficulties in logging into your Livin' by Mandiri
+                                        <Title level={5} style={styles.guide}>Do you find difficulties in logging into
+                                            your Livin' by Mandiri
                                             account?</Title>
                                     </Col>
                                 </Row>
@@ -120,7 +122,8 @@ export const LoginBNI = () => {
                                         <FontAwesomeIcon icon={faShield}/>
                                     </Col>
                                     <Col span={22}>
-                                        <Title level={5} style={styles.guide}>How do we ensure the security of your data?</Title>
+                                        <Title level={5} style={styles.guide}>How do we ensure the security of your
+                                            data?</Title>
                                     </Col>
                                 </Row>
                             </div>
