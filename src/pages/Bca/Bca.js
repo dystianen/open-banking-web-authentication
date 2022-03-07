@@ -7,28 +7,14 @@ import {
 import { bca, eyeslash, lock } from "./Assets";
 import Footer from "./Components/Footer";
 import Slides from "./Components/Slides";
+import { FixedTopBar } from "../../component/Header/FixedTopBar";
 
 export const Bca = () => {
   const [passwordShown, setPasswordShown] = useState(false);
 
   return (
     <div style={{ backgroundColor: "#CBDFFF" }}>
-      <div>
-        <div
-          style={{
-            color: "#145FD9",
-            justifyContent: "center",
-            alignItems: "center",
-            display: "flex",
-          }}
-        >
-          <LockOutlined />
-          <p style={{ marginLeft: 10, fontWeight: "bold", marginTop: 10 }}>
-            You’re In Secure Connection
-          </p>
-        </div>
-      </div>
-
+      <FixedTopBar />
       <div
         style={{
           padding: 20,

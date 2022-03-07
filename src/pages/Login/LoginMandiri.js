@@ -32,7 +32,7 @@ export const LoginMandiri = observer(() => {
         card: {
             backgroundColor: '#F6F6F6',
             borderRadius: '15px 15px 0 0',
-            marginTop: '-10px',
+            marginTop: "-10px",
         },
         carousel: {
             background: '#FFFFFF',
@@ -46,6 +46,10 @@ export const LoginMandiri = observer(() => {
             flexDirection: 'column',
             gap: '30px',
         },
+        btnLogin: {
+            backgroundColor: '#93969B',
+            color: '#FFFFFF'
+        }
     }
 
     const CarouselStyle = {
@@ -61,133 +65,134 @@ export const LoginMandiri = observer(() => {
     };
 
     return (
-        // <div style={{ width: '100vw', display: 'flex', justifyContent: 'center' }}>
-        <Card style={styles.card}>
-            <div style={styles.container}>
-                <Row justify={'center'}>
-                    <FixedTopBar />
-                    <Col>
-                        <div style={{ display: 'flex', flexDirection: 'row', justifyContent: "space-between", marginBottom: 0 }}>
-                            <Button size="large" type="link" icon={<ArrowLeftOutlined />} />
-                            <Button size="large" type="link" icon={<CloseOutlined />} />
-                        </div>
-                        <div style={{
-                            display: 'flex',
-                            justifyContent: 'flex-start',
-                            margin: 20,
-                            flexDirection: 'column',
-                            alignItems: 'center',
-                        }}>
-                            <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'stretch' }}>
+        <>
+            <FixedTopBar />
+            <Card style={styles.card}>
+                <div style={styles.container}>
+                    <Row justify={'center'}>
+                        <Col>
+                            <div style={{ display: 'flex', flexDirection: 'row', justifyContent: "space-between", marginBottom: 0 }}>
+                                <Button size="large" type="link" icon={<ArrowLeftOutlined />} />
+                                <Button size="large" type="link" icon={<CloseOutlined />} />
+                            </div>
+                            <div style={{
+                                display: 'flex',
+                                justifyContent: 'flex-start',
+                                margin: 20,
+                                flexDirection: 'column',
+                                alignItems: 'center',
+                            }}>
+                                <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'stretch' }}>
 
-                                <Row justify="center">
-                                    <img style={{ width: 150 }} src={LivinMandiri} />
-                                </Row>
-
-                                <Title
-                                    level={4}
-                                    style={{
-                                        fontWeight: 600,
-                                        textAlign: "center",
-                                        marginTop: 20,
-                                        marginBottom: 20
-                                    }}
-                                >
-                                    Insert your credentials to start.
-                                </Title>
-
-                                <Form
-                                    name="basic"
-                                    layout="vertical"
-                                    onFinish={onFinish}
-                                    onFinishFailed={onFinishFailed}
-                                    autoComplete="off"
-                                    size="large"
-                                >
-                                    <Form.Item
-                                        label="Email"
-                                        name="email"
-                                        rules={[{ required: true, message: 'Please input your email!' }]}
-                                    >
-                                        <Input placeholder="email@example.com" />
-                                    </Form.Item>
-
-                                    <Form.Item
-                                        label="Password"
-                                        name="password"
-                                        rules={[{ required: true, message: 'Please input your password!' }]}
-                                        style={{ marginBottom: 0 }}
-                                    >
-                                        <Input.Password placeholder="******" />
-                                    </Form.Item>
-
-                                    <Row justify="end" style={{ margin: 10 }}>
-                                        <Button type="link">
-                                            Forgot password ?
-                                        </Button>
+                                    <Row justify="center">
+                                        <img style={{ width: 150 }} src={LivinMandiri} />
                                     </Row>
 
-                                    <Form.Item>
-                                        <Button block size="large" type="primary" htmlType="submit">
-                                            Connect Account
-                                        </Button>
-                                    </Form.Item>
-                                </Form>
+                                    <Title
+                                        level={4}
+                                        style={{
+                                            fontWeight: 600,
+                                            textAlign: "center",
+                                            marginTop: 20,
+                                            marginBottom: 20
+                                        }}
+                                    >
+                                        Insert your credentials to start.
+                                    </Title>
 
-                                <Title level={5} style={{ fontWeight: 400, marginTop: 20 }}>
-                                    Need a guide?
-                                </Title>
+                                    <Form
+                                        name="basic"
+                                        layout="vertical"
+                                        onFinish={onFinish}
+                                        onFinishFailed={onFinishFailed}
+                                        autoComplete="off"
+                                        size="large"
+                                    >
+                                        <Form.Item
+                                            label="Email"
+                                            name="email"
+                                            rules={[{ required: false, message: 'Please input your email!' }]}
+                                        >
+                                            <Input placeholder="email@example.com" />
+                                        </Form.Item>
 
-                                <Carousel infinite={false} style={CarouselStyle}>
-                                    <div>
-                                        <Row gutter={24} align="middle">
-                                            <Col span={3}>
-                                                <FontAwesomeIcon size="lg" icon={faCircleQuestion} />
-                                            </Col>
-                                            <Col span={21}>
-                                                <Text style={{ fontSize: 12 }}>
-                                                    Do you find difficulties in logging into your Livin’ by Mandiri account?
-                                                </Text>
-                                            </Col>
+                                        <Form.Item
+                                            label="Password"
+                                            name="password"
+                                            rules={[{ required: false, message: 'Please input your password!' }]}
+                                            style={{ marginBottom: 0 }}
+                                        >
+                                            <Input.Password placeholder="******" />
+                                        </Form.Item>
+
+                                        <Row justify="end" style={{ margin: 10 }}>
+                                            <Button type="link">
+                                                Forgot password ?
+                                            </Button>
                                         </Row>
-                                    </div>
-                                    <div>
-                                        <Row gutter={24} align="middle">
-                                            <Col span={3}>
-                                                <img style={{ width: 20 }} src={OutlineShieldCheck} />
-                                            </Col>
-                                            <Col span={21}>
-                                                <Text style={{ fontSize: 12 }}>
-                                                    How do we ensure the security of your data?
-                                                </Text>
-                                            </Col>
-                                        </Row>
-                                    </div>
-                                </Carousel>
 
-                                <Title
-                                    level={5}
-                                    style={{
-                                        letterSpacing: 4,
-                                        fontWeight: 400,
-                                        textAlign: "center",
-                                        marginTop: 50,
-                                        marginBottom: 0,
-                                        textTransform: "uppercase"
-                                    }}
-                                >
-                                    Powered By
-                                </Title>
+                                        <Form.Item>
+                                            <Button style={styles.btnLogin} block size="large" htmlType="submit">
+                                                Connect Account
+                                            </Button>
+                                        </Form.Item>
+                                    </Form>
 
-                                <Row justify="center">
-                                    <img style={{ width: 200 }} src={TrustLink} />
-                                </Row>
+                                    <Title level={5} style={{ fontWeight: 400, marginTop: 50 }}>
+                                        Need a guide?
+                                    </Title>
 
+                                    <Carousel infinite={false} style={CarouselStyle}>
+                                        <div>
+                                            <Row gutter={24} align="middle">
+                                                <Col span={3}>
+                                                    <FontAwesomeIcon size="lg" icon={faCircleQuestion} />
+                                                </Col>
+                                                <Col span={21}>
+                                                    <Text style={{ fontSize: 12 }}>
+                                                        Do you find difficulties in logging into your Livin’ by Mandiri account?
+                                                    </Text>
+                                                </Col>
+                                            </Row>
+                                        </div>
+                                        <div>
+                                            <Row gutter={24} align="middle">
+                                                <Col span={3}>
+                                                    <img style={{ width: 20 }} src={OutlineShieldCheck} />
+                                                </Col>
+                                                <Col span={21}>
+                                                    <Text style={{ fontSize: 12 }}>
+                                                        How do we ensure the security of your data?
+                                                    </Text>
+                                                </Col>
+                                            </Row>
+                                        </div>
+                                    </Carousel>
+
+                                    <Title
+                                        level={5}
+                                        style={{
+                                            letterSpacing: 4,
+                                            fontWeight: 400,
+                                            textAlign: "center",
+                                            marginTop: 50,
+                                            marginBottom: 0,
+                                            textTransform: "uppercase"
+                                        }}
+                                    >
+                                        Powered By
+                                    </Title>
+
+                                    <Row justify="center">
+                                        <img style={{ width: 200 }} src={TrustLink} />
+                                    </Row>
+
+                                </div>
                             </div>
-                        </div>
-                    </Col>
-                </Row>
-            </div>
-        </Card>
+                        </Col>
+                    </Row>
+                </div>
+            </Card>
+        </>
     );
 });
