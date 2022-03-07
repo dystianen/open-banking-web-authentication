@@ -10,6 +10,7 @@ import lock from "../../assets/images/lock.svg";
 import eyeSlash from "../../assets/images/eye-slash.svg";
 import logo from "../../assets/images/trustlink-logo.png";
 import pdf from "../../assets/Test.pdf";
+import {FixedTopBar} from "../../component/Header/FixedTopBar";
 
 const {Step} = Steps
 
@@ -32,17 +33,17 @@ export const TermCondition = observer(() => {
     )
 
     return (
-        <>
-            <div style={{display: 'flex', justifyContent: 'flex-end', paddingTop: 20, paddingRight: 15}}>
-                <CloseOutlined style={{fontSize: 18}}/>
-            </div>
-            <div style={{width: '100vw', display: 'flex', justifyContent: 'center'}}>
+        <div style={{width: '100vw', display: 'flex', flexDirection: 'column', justifyContent: 'center'}}>
+            <FixedTopBar />
+                <div style={{display: 'flex', justifyContent: 'flex-end', paddingTop: 20, paddingRight: 15}}>
+                    <CloseOutlined style={{fontSize: 18}}/>
+                </div>
                 <Row justify={'center'}>
                     <Col span={24}>
                         <div style={{
                             display: 'flex',
                             justifyContent: 'flex-start',
-                            marginTop: '30px',
+                            marginTop: '10px',
                             flexDirection: 'column',
                             alignItems: 'center',
                         }}>
@@ -81,12 +82,11 @@ export const TermCondition = observer(() => {
                         <div style={{
                             display: 'flex',
                             justifyContent: 'flex-start',
-                            marginTop: '60px',
                             flexDirection: 'column',
                             width: '100%',
                             margin: "auto",
                             paddingLeft: 30,
-                            paddingTop: 65
+                            paddingTop: 55
                         }}>
                             <div style={{display: 'flex', flexDirection: 'column', alignItems: 'stretch'}}>
                                 <Steps direction="vertical" current={2}>
@@ -105,7 +105,7 @@ export const TermCondition = observer(() => {
                             flexDirection: 'column',
                             width: '100%',
                             margin: "auto",
-                            paddingTop: 88
+                            paddingTop: 78
                         }}>
                             <div style={{display: 'flex', flexDirection: 'column', alignItems: 'stretch'}}>
                                 <Typography.Paragraph style={{
@@ -165,7 +165,6 @@ export const TermCondition = observer(() => {
                         </div>
                     </Col>
                 </Row>
-            </div>
-        </>
+        </div>
     );
 });
