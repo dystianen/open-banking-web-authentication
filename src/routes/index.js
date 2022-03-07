@@ -8,7 +8,12 @@ import { LoginBNI } from "../pages/Login/LoginBNI";
 import { Bca } from "../pages/Bca/Bca";
 import { Otp } from "../pages/Otp/Otp";
 import { LoginMandiri } from "../pages/Login/LoginMandiri";
-import {BankList} from "../pages/BankList";
+import { BankList } from "../pages/BankList";
+
+// Test
+import { TestLogin } from "../pages/TestMobx/Login";
+import { TestMember } from "../pages/TestMobx/Member";
+import { TestMemberDetail } from "../pages/TestMobx/MemberDetail";
 
 export const MainRoutes = (props) => {
   return (
@@ -40,10 +45,17 @@ export const MainRoutes = (props) => {
         path="/bni-login"
         exact
       />
+
       <PublicRoute restricted={false} component={Bca} path="/bca" exact />
       <PublicRoute restricted={false} component={Otp} path="/otp" exact />
       <PublicRoute restricted={true} component={BankList} path="/bank-list" exact />
       <PublicRoute component={App} path="/app" />
+
+      {/* Test */}
+      <PublicRoute restricted={false} component={TestLogin} path="/test/login" exact />
+      <PublicRoute restricted={false} component={TestMember} path="/test/member" exact />
+      <PublicRoute restricted={false} component={TestMemberDetail} path="/test/member/:id" exact />
+
     </Switch>
   );
 };

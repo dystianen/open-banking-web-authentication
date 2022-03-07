@@ -27,23 +27,13 @@ export class Authentication {
   }
 
   @action
-  async login({ email, password }) {
+  async login({ username, password }) {
     await http.post('/authorization/login').send({
-      email,
+      username,
       password,
 
     }).then(res => {
-      if (res.body.user.role !== 'SUPERUSER' || res.body.user.role !== 'SUPERADMIN') {
-        localStorage.setItem('sppbeId', res.body.user['sppbeId']);
-      }
-
-      if (res.body.user.role === 'SUPERADMIN') {
-        localStorage.setItem('morId', res.body.user['morId']);
-        this.morID = res.body.user.morId
-      }
-
       this.context.setToken(res.body.token, '')
-
       this.dataUser = res.body.user.role;
       localStorage.setItem('role', res.body.user.role);
       return res
