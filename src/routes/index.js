@@ -8,9 +8,7 @@ import { App } from "../pages/App/App";
 import { LoginBNI } from "../pages/Login/LoginBNI";
 import { Bca } from "../pages/Bca/Bca";
 import { Otp } from "../pages/Otp/Otp";
-
-// Login Bank
-import { LoginBankMandiri } from "../pages/LoginBankMandiri";
+import { LoginMandiri } from "../pages/Login/LoginMandiri";
 
 export const MainRoutes = (props) => {
   return (
@@ -18,7 +16,9 @@ export const MainRoutes = (props) => {
       <Route path="/" exact>
         <Redirect to={"/app/home"} />
       </Route>
+
       <PublicRoute restricted={true} component={Login} path="/login" exact />
+
       <PublicRoute
         restricted={true}
         component={TermCondition}
@@ -29,10 +29,11 @@ export const MainRoutes = (props) => {
       {/* Login Bank */}
       <PublicRoute
         restricted={false}
-        component={LoginBankMandiri}
-        path="/login/mandiri"
+        component={LoginMandiri}
+        path="/mandiri-login"
         exact
       />
+
       <PublicRoute
         restricted={false}
         component={LoginBNI}

@@ -14,7 +14,7 @@ export const FixedTopBar = observer(() => {
           color: "#145FD9",
           paddingTop: 4,
           marginBottom: 0,
-          height: "30px",
+          height: "40px",
         }}
       >
         <FontAwesomeIcon
