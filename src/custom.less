@@ -1,6 +1,6 @@
 @import '~antd/dist/antd.less';
 
-@font-size-base: 12px; // major text font size
+@font-size-base: 14px; // major text font size
 //@primary-color: #ffd037; // primary color for all components
 @primary-color1: #2e9dfe; // primary color for all components
 @primary-color: #ed1f24; // primary color for all components
@@ -96,4 +96,15 @@ body {
 
 @table-header-bg: #f7fafc;
 
+.ant-steps-vertical > .ant-steps-item > .ant-steps-item-container > .ant-steps-item-tail {
+  padding: 30px 0 0;
+}
+
+.ant-steps-item-finish > .ant-steps-item-container > .ant-steps-item-tail::after {
+  background-color: #FE660133;
+}
+
+.ant-steps-item-container {
+  height: 90px;
+}
 

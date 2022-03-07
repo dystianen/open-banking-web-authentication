@@ -5,8 +5,11 @@ import { TermCondition } from "../pages/TermCondition";
 import { PublicRoute } from "../component/PublicRoute";
 import { PrivateRoute } from "../component/PrivateRoute";
 import { App } from "../pages/App/App";
-import { Otp } from "../pages/Otp/Otp";
-import { Bca } from "../pages/Bca/Bca";
+import { LoginBNI } from "../pages/Login/LoginBNI";
+import { Bca } from "../pages/Login/Bca/Bca";
+
+// Login Bank
+import { LoginBankMandiri } from "../pages/LoginBankMandiri";
 
 export const MainRoutes = (props) => {
   return (
@@ -21,9 +24,28 @@ export const MainRoutes = (props) => {
         path="/term-condition"
         exact
       />
+
+      {/* Login Bank */}
+      <PublicRoute
+        restricted={false}
+        component={LoginBankMandiri}
+        path="/login/mandiri"
+        exact
+      />
+      <PublicRoute
+        restricted={false}
+        component={LoginBNI}
+        path="/bni-login"
+        exact
+      />
+      <PublicRoute
+        restricted={false}
+        component={Bca}
+        path="/bca-login"
+        exact
+      />
+
       <PublicRoute component={App} path="/app" />
-      <PublicRoute component={Otp} path="/otp" />
-      <PublicRoute component={Bca} path="/bca" />
     </Switch>
   );
 };
