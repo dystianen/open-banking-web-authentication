@@ -6,22 +6,48 @@ import { PublicRoute } from "../component/PublicRoute";
 import { PrivateRoute } from "../component/PrivateRoute";
 import { App } from "../pages/App/App";
 import { LoginBNI } from "../pages/Login/LoginBNI";
-import { LoginMandiri } from "../pages/Login/LoginMandiri";
+import { Bca } from "../pages/Login/Bca/Bca";
+import { LoginMandiri } from "../pages/LoginBankMandiri";
 
 export const MainRoutes = (props) => {
-    return (
-        <Switch>
-            <Route path="/" exact>
-                <Redirect to={"/app/home"} />
-            </Route>
-            <PublicRoute restricted={true} component={Login} path="/login" exact />
-            <PublicRoute restricted={true} component={TermCondition} path="/term-condition" exact />
+  return (
+    <Switch>
+      <Route path="/" exact>
+        <Redirect to={"/app/home"} />
+      </Route>
 
-            {/* Login Bank */}
-            <PublicRoute restricted={false} component={LoginMandiri} path="/mandiri-login" exact />
-            <PublicRoute restricted={false} component={LoginBNI} path="/bni-login" exact />
+      <PublicRoute restricted={true} component={Login} path="/login" exact />
 
-            <PublicRoute component={App} path="/app" />
-        </Switch>
-    );
+      <PublicRoute
+        restricted={true}
+        component={TermCondition}
+        path="/term-condition"
+        exact
+      />
+
+      {/* Login Bank */}
+      <PublicRoute
+        restricted={false}
+        component={LoginMandiri}
+        path="/mandiri-login"
+        exact
+      />
+
+      <PublicRoute
+        restricted={false}
+        component={LoginBNI}
+        path="/bni-login"
+        exact
+      />
+
+      <PublicRoute
+        restricted={false}
+        component={Bca}
+        path="/bca-login"
+        exact
+      />
+
+      <PublicRoute component={App} path="/app" />
+    </Switch>
+  );
 };
