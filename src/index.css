@@ -11,3 +11,12 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+.ant-carousel .slick-dots-bottom {
+  top: 85px;
+}
+
+.ant-carousel .slick-dots li.slick-active button {
+  background: #145FD9 !important;
+}
+

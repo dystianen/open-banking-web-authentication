@@ -7,8 +7,13 @@ import { useHistory } from "react-router-dom";
 import { FixedTopBar } from "../../component/Header/FixedTopBar";
 import LivinMandiri from "../../assets/images/mandiri.png";
 import TrustLink from "../../assets/images/trustlink.png";
+import OutlineShieldCheck from "../../assets/images/outline-shield-check.svg";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import {
+    faCircleQuestion
+} from "@fortawesome/free-regular-svg-icons"
 
-const { Title } = Typography;
+const { Title, Text } = Typography;
 
 export const LoginBankMandiri = observer(() => {
     const store = useStore();
@@ -25,10 +30,10 @@ export const LoginBankMandiri = observer(() => {
     };
 
     const contentStyle = {
-        width: "90vw",
+        width: "80vw",
         background: '#F5F5F5',
         borderRadius: "10px",
-        padding: 20
+        padding: 15
     };
 
     return (
@@ -41,7 +46,6 @@ export const LoginBankMandiri = observer(() => {
                         <Button size="large" type="link" icon={<CloseOutlined />} />
                     </div>
                     <div style={{
-                        // marginTop: '0',
                         display: 'flex',
                         justifyContent: 'flex-start',
                         margin: 20,
@@ -51,16 +55,12 @@ export const LoginBankMandiri = observer(() => {
                         <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'stretch' }}>
 
                             <Row justify="center">
-                                <img style={{ width: 170 }} src={LivinMandiri} />
+                                <img style={{ width: 150 }} src={LivinMandiri} />
                             </Row>
 
                             <Title
                                 level={4}
                                 style={{
-                                    // margin: 0,
-                                    // padding: 0,
-                                    // marginLeft: 5,
-                                    // color: "#413d3e",
                                     fontWeight: 600,
                                     textAlign: "center",
                                     marginTop: 20,
@@ -82,7 +82,7 @@ export const LoginBankMandiri = observer(() => {
                                     name="email"
                                     rules={[{ required: true, message: 'Please input your email!' }]}
                                 >
-                                    <Input />
+                                    <Input placeholder="email@example.com" />
                                 </Form.Item>
 
                                 <Form.Item
@@ -91,12 +91,12 @@ export const LoginBankMandiri = observer(() => {
                                     rules={[{ required: true, message: 'Please input your password!' }]}
                                     style={{ marginBottom: 0 }}
                                 >
-                                    <Input.Password />
+                                    <Input.Password placeholder="******" />
                                 </Form.Item>
 
-                                <Row justify="end" style={{ marginTop: 0 }}>
+                                <Row justify="end" style={{ margin: 10 }}>
                                     <Button type="link">
-                                        Forgot Password?
+                                        Forgot password ?
                                     </Button>
                                 </Row>
 
@@ -107,39 +107,53 @@ export const LoginBankMandiri = observer(() => {
                                 </Form.Item>
                             </Form>
 
-                            <Title level={5} style={{ fontWeight: 400, }}>
-                                Need a Guide?
+                            <Title level={5} style={{ fontWeight: 400, marginTop: 20 }}>
+                                Need a guide?
                             </Title>
 
-                            <Carousel style={contentStyle}>
+                            <Carousel infinite={false} style={contentStyle}>
                                 <div>
-                                    <Row gutter={24}>
-                                        <Col span={2}>
-                                            <ArrowLeftOutlined />
+                                    <Row gutter={24} align="middle">
+                                        <Col span={3}>
+                                            <FontAwesomeIcon size="lg" icon={faCircleQuestion} />
                                         </Col>
-                                        <Col span={22}>
-                                            Do you find difficulties in logging into your Livin’ by Mandiri account?
+                                        <Col span={21}>
+                                            <Text style={{ fontSize: 12 }}>
+                                                Do you find difficulties in logging into your Livin’ by Mandiri account?
+                                            </Text>
                                         </Col>
                                     </Row>
                                 </div>
                                 <div>
-                                    <Row gutter={24}>
-                                        <Col span={2}>
-                                            <ArrowLeftOutlined />
+                                    <Row gutter={24} align="middle">
+                                        <Col span={3}>
+                                            <img style={{ width: 20 }} src={OutlineShieldCheck} />
                                         </Col>
-                                        <Col span={22}>
-                                            Do you find difficulties in logging into your Livin’ by Mandiri account?
+                                        <Col span={21}>
+                                            <Text style={{ fontSize: 12 }}>
+                                                How do we ensure the security of your data?
+                                            </Text>
                                         </Col>
                                     </Row>
                                 </div>
                             </Carousel>
 
-                            <Title level={5} style={{ letterSpacing: 5, fontWeight: 400, textAlign: "center", marginTop: 20 }}>
-                                POWERED BY
+                            <Title
+                                level={5}
+                                style={{
+                                    letterSpacing: 4,
+                                    fontWeight: 400,
+                                    textAlign: "center",
+                                    marginTop: 50,
+                                    marginBottom: 0,
+                                    textTransform: "uppercase"
+                                }}
+                            >
+                                Powered By
                             </Title>
 
                             <Row justify="center">
-                                <img style={{ width: 150 }} src={TrustLink} />
+                                <img style={{ width: 200 }} src={TrustLink} />
                             </Row>
 
                         </div>
