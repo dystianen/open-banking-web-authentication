@@ -11,6 +11,11 @@ export class BNILogin {
         return res;
     }
 
+    async institution(id) {
+        const res = await http.get(`/config/institution/${id}`);
+        return res;
+    }
+
     logout() {
         this.context.setToken('');
         localStorage.removeItem('access_token');
