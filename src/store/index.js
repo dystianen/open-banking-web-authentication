@@ -2,6 +2,7 @@ import { computed, observable } from "mobx";
 import { UI } from "./ui";
 import { Authentication } from "./authentication";
 import { InitialStore } from "./InitialStore"
+import {BNILogin} from "./bni_login";
 
 export class Store {
     @observable
@@ -13,6 +14,7 @@ export class Store {
     ui = new UI(this);
     authentication = new Authentication(this);
     initial_store = new InitialStore(this);
+    bni_login = new BNILogin(this);
 
     @computed
     get isLoggedIn() {
