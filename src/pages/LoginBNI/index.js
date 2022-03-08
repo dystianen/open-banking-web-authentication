@@ -22,7 +22,7 @@ import {
     faXmark,
 } from "@fortawesome/free-solid-svg-icons";
 import {FixedTopBar} from "../../component/Header/FixedTopBar";
-import {styles} from "./Style";
+import {styles} from "./style";
 
 const {Title} = Typography;
 
