@@ -46,7 +46,7 @@ export const LoginBCA = observer(() => {
 
   async function fetchData() {
     try {
-      const res = await store.bca_instruction.getDetail("b1fa4875-e4de-4496-8913-0226f0e7b728");
+      const res = await store.bca_login.institution("b1fa4875-e4de-4496-8913-0226f0e7b728");
       setData(res.body?.data?.instruction);
     } catch (error) {
       console.log("Err: ", error);
@@ -90,7 +90,7 @@ export const LoginBCA = observer(() => {
       };
 
       setIsLoading(true);
-      await store.auth_bca.login(body);
+      await store.bca_login.login(body);
       setIsLoading(false);
 
     } catch (e) {

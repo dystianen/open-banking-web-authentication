@@ -4,9 +4,10 @@ import { Authentication } from "./authentication";
 import { InitialStore } from "./InitialStore"
 import { BNILogin } from "./BNILogin";
 import { MandiriLogin } from "./MandiriLogin";
-import { AuthBCA } from "./AuthBCA";
 import { ListBank } from "./ListBank";
-import { BCAInstruction } from "./BCAInstruction";
+import { BCALogin } from "./BCALogin";
+// import { AuthBCA } from "./AuthBCA";
+// import { BCAInstruction } from "./BCAInstruction";
 
 export class Store {
     @observable
@@ -19,8 +20,7 @@ export class Store {
     authentication = new Authentication(this);
     initial_store = new InitialStore(this);
     mandiri = new MandiriLogin(this)
-    auth_bca = new AuthBCA(this);
-    bca_instruction = new BCAInstruction(this);
+    bca_login = new BCALogin(this);
     bni_login = new BNILogin(this);
     listBank = new ListBank(this);
 
