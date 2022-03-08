@@ -7,7 +7,7 @@ import { App } from "../pages/App/App";
 import { LoginBNI } from "../pages/Login/LoginBNI";
 import { Bca } from "../pages/Bca/Bca";
 import { Otp } from "../pages/Otp/Otp";
-import { LoginMandiri } from "../pages/Login/LoginMandiri";
+import { LoginMandiri } from "../pages/LoginMandiri";
 import { BankList } from "../pages/BankList";
 
 // Test
