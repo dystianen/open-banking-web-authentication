@@ -1,16 +1,4 @@
 export const styles = {
-  body: {
-    padding: 20,
-    backgroundColor: "#F6F6F6",
-    minHeight: "100vh",
-    borderTopLeftRadius: 10,
-    borderTopRightRadius: 10,
-  },
-  logoGopay: {
-    marginLeft: "auto",
-    marginRight: "auto",
-    width: 150,
-  },
   otpInput: {
     width: 60,
     height: 60,
