@@ -2,7 +2,7 @@ import { computed, observable } from "mobx";
 import { UI } from "./ui";
 import { Authentication } from "./authentication";
 import { InitialStore } from "./InitialStore"
-import { BNILogin } from "./bni_login";
+import { BNILogin } from "./BNILogin";
 import { MandiriStore } from "./mandiri";
 import { AuthBCA } from "./AuthBCA";
 import { ListBank } from "./ListBank";
