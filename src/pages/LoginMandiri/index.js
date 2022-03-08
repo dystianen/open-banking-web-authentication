@@ -11,14 +11,14 @@ import LivinMandiri from "../../assets/images/mandiri.png";
 import { styles } from "./style";
 import { BottomSheet } from "react-spring-bottom-sheet";
 import { SlidesLoginPage } from "../../component/Slides/SlidesLoginPage";
-import isoLogo from "../../assets/images/iso.png";
+import isoLogo from "../../assets/images/iso-2.png";
 import aftechLogo from "../../assets/images/aftech.png";
 import keminfo from "../../assets/images/keminfo.png";
 
 import "react-spring-bottom-sheet/dist/style.css";
-import { PageLogin } from "./../../component/Layouts/PageLogin";
-import { Metrics } from './../../styles/Metric';
-import { Color } from './../../styles/Color';
+import { PageLogin } from "../../component/Layouts/PageLogin";
+import { Metrics } from '../../styles/Metric';
+import { Color } from '../../styles/Color';
 import {DynamicSheet} from "./components/DynamicSheet";
 import {StaticSheet} from "./components/StaticSheet";
 
@@ -135,7 +135,7 @@ export const LoginMandiri = observer(() => {
       <BottomSheet
         open={open}
         onDismiss={onDismiss}
-        snapPoints={({ maxHeight }) => maxHeight / 2.2}
+        snapPoints={({ maxHeight }) => maxHeight / 2.1}
       >
         {indexSlide === 1 ? <StaticSheet data={dataHardcode} /> : <DynamicSheet data={indexSlide === 2 ? instructionForgot : instructionLogin} />}
       </BottomSheet>
