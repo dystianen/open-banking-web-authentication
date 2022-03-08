@@ -9,9 +9,8 @@ import LivinMandiri from "../../assets/images/mandiri.png";
 import TrustLink from "../../assets/images/trustlink.png";
 import OutlineShieldCheck from "../../assets/images/outline-shield-check.svg";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import {
-    faCircleQuestion
-} from "@fortawesome/free-regular-svg-icons"
+import { faCircleQuestion } from "@fortawesome/free-regular-svg-icons"
+import { styles, CarouselStyle } from "./style";
 
 const { Title, Text } = Typography;
 
@@ -24,44 +23,6 @@ export const LoginMandiri = observer(() => {
 
     const onFinishFailed = (errorInfo) => {
         console.log('Failed:', errorInfo);
-    };
-
-    // Styling
-
-    const styles = {
-        card: {
-            backgroundColor: '#F6F6F6',
-            borderRadius: '15px 15px 0 0',
-            marginTop: "-10px",
-        },
-        carousel: {
-            background: '#FFFFFF',
-            padding: '10px 15px',
-            boxShadow: '0px 6px 10px #0000000D',
-            borderRadius: '8px',
-            width: "80vw",
-        },
-        container: {
-            display: 'flex',
-            flexDirection: 'column',
-            gap: '30px',
-        },
-        btnLogin: {
-            backgroundColor: '#93969B',
-            color: '#FFFFFF'
-        }
-    }
-
-    const CarouselStyle = {
-        // width: "80vw",
-        // background: '#F5F5F5',
-        // borderRadius: "10px",
-        // padding: 15
-        background: '#FFFFFF',
-        padding: '10px 15px',
-        boxShadow: '0px 6px 10px #0000000D',
-        borderRadius: '8px',
-        width: "85vw",
     };
 
     return (

@@ -4,10 +4,10 @@ import { TermCondition } from "../pages/TermCondition";
 import { PublicRoute } from "../component/PublicRoute";
 // import { PrivateRoute } from "../component/PrivateRoute";
 import { App } from "../pages/App/App";
-import { LoginBNI } from "../pages/Login/LoginBNI";
+import { LoginBNI } from "../pages/LoginBNI";
 import { Bca } from "../pages/Bca";
 import { Otp } from "../pages/Otp";
-import { LoginMandiri } from "../pages/Login/LoginMandiri";
+import { LoginMandiri } from "../pages/LoginMandiri";
 import { BankList } from "../pages/BankList";
 
 // Test
