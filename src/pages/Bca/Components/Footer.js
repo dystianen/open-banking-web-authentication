@@ -1,5 +1,5 @@
 import React from "react";
-import { brand } from "../Assets";
+import trustlink from "../../../assets/logo/trustlink.png";
 
 export default function Footer() {
   return (
@@ -23,7 +23,7 @@ export default function Footer() {
           >
             POWERED BY
           </p>
-          <img src={brand} style={{ height: 50 }} />
+          <img src={trustlink} style={{ height: 50 }} />
         </div>
       </div>
     </>

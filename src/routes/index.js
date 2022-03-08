@@ -2,11 +2,11 @@ import { Redirect, Route, Switch } from "react-router-dom";
 import { Login } from "../pages/Login/Login";
 import { TermCondition } from "../pages/TermCondition";
 import { PublicRoute } from "../component/PublicRoute";
-import { PrivateRoute } from "../component/PrivateRoute";
+// import { PrivateRoute } from "../component/PrivateRoute";
 import { App } from "../pages/App/App";
 import { LoginBNI } from "../pages/Login/LoginBNI";
-import { Bca } from "../pages/Bca/Bca";
-import { Otp } from "../pages/Otp/Otp";
+import { Bca } from "../pages/Bca";
+import { Otp } from "../pages/Otp";
 import { LoginMandiri } from "../pages/Login/LoginMandiri";
 import { BankList } from "../pages/BankList";
 

@@ -1,10 +1,12 @@
+/* eslint-disable jsx-a11y/alt-text */
 import React, { useState } from "react";
-import { check, question } from "../Assets";
+import check from "../../assets/icons/check.svg";
+import question from "../../assets/icons/question.svg";
 import { Col, Row } from "antd";
 import { Slide } from "react-slideshow-image";
 import "react-slideshow-image/dist/styles.css";
 
-export default function Slides() {
+export const SlidesLoginPage = () => {
   const propertiesSlide = {
     defaultIndex: 0,
     transitionDuration: 100,
@@ -12,7 +14,6 @@ export default function Slides() {
     slidesToScroll: 1,
     arrows: false,
     autoplay: true,
-    defaultIndex: 0,
     onChange: (oldIndex, newIndex) => {
       setIndc(newIndex);
     },
@@ -80,7 +81,7 @@ export default function Slides() {
                 style={{
                   height: 4,
                   width: 15,
-                  backgroundColor: indc == index ? "#0581FF" : "#D4DADE",
+                  backgroundColor: indc === index ? "#0581FF" : "#D4DADE",
                   borderRadius: 10,
                   marginRight: 5,
                 }}
@@ -91,4 +92,4 @@ export default function Slides() {
       </div>
     </>
   );
-}
+};

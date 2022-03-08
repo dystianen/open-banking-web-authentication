@@ -1,12 +1,15 @@
+/* eslint-disable jsx-a11y/alt-text */
 import React, { useState } from "react";
 import { ArrowLeftOutlined, CloseOutlined } from "@ant-design/icons";
 import OTPInput from "otp-input-react";
-import { gopay } from "./Assets";
-import Footer from "./Components/Footer";
-import Slides from "./Components/Slides";
+import gopay from "../../assets/logo/gopay.png";
+import Footer from "./components/Footer";
 import { FixedTopBar } from "../../component/Header/FixedTopBar";
+import { SlidesLoginPage } from "./../../component/Slides/SlidesLoginPage";
+import { observer } from 'mobx-react-lite';
+import { styles } from './styles';
 
-export const Otp = () => {
+export const Otp = observer (() => {
   const [OTP, setOTP] = useState("");
   return (
     <div style={{ backgroundColor: "#CBDFFF" }}>
@@ -57,51 +60,9 @@ export const Otp = () => {
             <button style={styles.button}>Submit</button>
           </div>
         </div>
-        <Slides />
+        <SlidesLoginPage />
         <Footer />
       </div>
     </div>
   );
-};
-
-const styles = {
-  body: {
-    padding: 20,
-    backgroundColor: "#F6F6F6",
-    minHeight: "100vh",
-    borderTopLeftRadius: 10,
-    borderTopRightRadius: 10,
-  },
-  logoGopay: {
-    marginLeft: "auto",
-    marginRight: "auto",
-    width: 150,
-  },
-  otpInput: {
-    width: 60,
-    height: 60,
-    borderRadius: "10px",
-    border: "1px solid #CBDFFF",
-    backgroundColor: "#FFFFFF",
-    color: "#145FD9",
-    fontSize: "20px",
-    fontWeight: "bold",
-    textAlign: "center",
-    padding: "10px",
-    marginTop: "10px",
-    marginBottom: "10px",
-    marginLeft: "10px",
-    marginRight: "10px",
-  },
-  button: {
-    backgroundColor: "#B4BCC9",
-    color: "#FFFFFF",
-    border: "none",
-    borderRadius: "10px",
-    padding: "10px",
-    fontSize: "16px",
-    marginTop: "10px",
-    marginBottom: "10px",
-    width: "100%",
-  },
-};
+});

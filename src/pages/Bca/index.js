@@ -1,16 +1,15 @@
-import React, { useState } from "react";
-import {
-  ArrowLeftOutlined,
-  CloseOutlined,
-  LockOutlined,
-} from "@ant-design/icons";
-import { bca, eyeslash, lock } from "./Assets";
-import Footer from "./Components/Footer";
-import Slides from "./Components/Slides";
+/* eslint-disable jsx-a11y/alt-text */
+import React from "react";
+import { ArrowLeftOutlined, CloseOutlined } from "@ant-design/icons";
+import bca from "../../assets/logo/bca.svg";
+import Footer from "./components/Footer";
 import { FixedTopBar } from "../../component/Header/FixedTopBar";
 import { Button, Form, Input } from "antd";
+import { observer } from "mobx-react-lite";
+import { styles } from "./styles";
+import { SlidesLoginPage } from "./../../component/Slides/SlidesLoginPage";
 
-export const Bca = () => {
+export const Bca = observer(() => {
   return (
     <div style={{ backgroundColor: "#CBDFFF" }}>
       <FixedTopBar />
@@ -48,65 +47,16 @@ export const Bca = () => {
             </Button>
           </div>
           <Button
-            style={{ backgroundColor: "#93969B", color: "#FFFFFF" }}
+            style={{ backgroundColor: "#B4BCC9", color: "#FFFFFF" }}
             block
             size="large"
           >
             Connect Account
           </Button>
         </Form>
-        <Slides />
+        <SlidesLoginPage />
         <Footer />
       </div>
     </div>
   );
-};
-
-const styles = {
-  header: {
-    padding: 20,
-    backgroundColor: "#F6F6F6",
-    minHeight: "100vh",
-    borderTopLeftRadius: 10,
-    borderTopRightRadius: 10,
-  },
-  boxLogo: {
-    display: "flex",
-    justifyContent: "center",
-    marginTop: 20,
-    marginBottom: 25,
-  },
-  logoBca: {
-    marginLeft: "auto",
-    marginRight: "auto",
-    width: 120,
-  },
-  input: {
-    height: "45px",
-  },
-  forgotPassword: {
-    display: "flex",
-    flexDirection: "row",
-    justifyContent: "flex-end",
-    marginBottom: "10px",
-    marginTop: "-15px",
-  },
-  buttonPassword: {
-    position: "absolute",
-    right: 30,
-    marginTop: 12,
-    backgroundColor: "transparent",
-    border: "none",
-  },
-  buttonSubmit: {
-    backgroundColor: "#B4BCC9",
-    color: "#FFFFFF",
-    border: "none",
-    borderRadius: "10px",
-    padding: "10px",
-    fontSize: "16px",
-    marginTop: "10px",
-    marginBottom: "10px",
-    width: "100%",
-  },
-};
+});
