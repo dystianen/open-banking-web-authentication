@@ -3,11 +3,11 @@ import React, { useState } from "react";
 import { ArrowLeftOutlined, CloseOutlined } from "@ant-design/icons";
 import OTPInput from "otp-input-react";
 import gopay from "../../assets/logo/gopay.png";
-import Footer from "./Components/Footer";
 import { FixedTopBar } from "../../component/Header/FixedTopBar";
 import { SlidesLoginPage } from "./../../component/Slides/SlidesLoginPage";
 import { observer } from 'mobx-react-lite';
 import { styles } from './styles';
+import FooterPageLogin from './../../component/Footer/FooterPageLogin';
 
 export const Otp = observer(() => {
   const [OTP, setOTP] = useState("");
@@ -61,7 +61,7 @@ export const Otp = observer(() => {
           </div>
         </div>
         <SlidesLoginPage />
-        <Footer />
+        <FooterPageLogin />
       </div>
     </div>
   );

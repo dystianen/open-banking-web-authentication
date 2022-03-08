@@ -2,13 +2,12 @@
 import React, { useState } from "react";
 import { ArrowLeftOutlined, CloseOutlined } from "@ant-design/icons";
 import bca from "../../assets/logo/bca.svg";
-import Footer from "./components/Footer";
 import { FixedTopBar } from "../../component/Header/FixedTopBar";
 import { Button, Form, Input } from "antd";
 import { observer } from "mobx-react-lite";
 import { styles } from "./styles";
 import { SlidesLoginPage } from "../../component/Slides/SlidesLoginPage";
-import { store } from "../../utils/useStore";
+import FooterPageLogin from './../../component/Footer/FooterPageLogin';
 
 export const LoginBCA = observer(() => {
   const [isLoading, setIsLoading] = useState(false);
@@ -82,9 +81,7 @@ export const LoginBCA = observer(() => {
         </Form>
 
         <SlidesLoginPage />
-
-        <Footer />
-
+        <FooterPageLogin />
       </div>
     </div>
   );
