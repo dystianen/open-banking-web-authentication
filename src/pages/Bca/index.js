@@ -2,7 +2,7 @@
 import React from "react";
 import { ArrowLeftOutlined, CloseOutlined } from "@ant-design/icons";
 import bca from "../../assets/logo/bca.svg";
-import Footer from "./components/Footer";
+import Footer from "./Components/Footer";
 import { FixedTopBar } from "../../component/Header/FixedTopBar";
 import { Button, Form, Input } from "antd";
 import { observer } from "mobx-react-lite";
