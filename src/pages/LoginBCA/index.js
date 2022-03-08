@@ -1,5 +1,5 @@
 /* eslint-disable jsx-a11y/alt-text */
-import React from "react";
+import React, { useState } from "react";
 import BCA from "../../assets/logo/bca.png";
 import { Button, Form, Input, Typography, Spin } from "antd";
 import { observer } from "mobx-react-lite";
@@ -8,6 +8,7 @@ import { SlidesLoginPage } from "../../component/Slides/SlidesLoginPage";
 import { PageLogin } from "./../../component/Layouts/PageLogin";
 import { Metrics } from "../../styles/Metric";
 import { Color } from './../../styles/Color';
+import { BottomSheet } from "react-spring-bottom-sheet";
 
 const { Title } = Typography;
 
