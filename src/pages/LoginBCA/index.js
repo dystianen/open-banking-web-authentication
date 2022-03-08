@@ -41,7 +41,7 @@ export const LoginBCA = observer(() => {
   const instructionForgot = data?.find(it => it?.name === 'Forgot Password')
 
   useEffect(() => {
-    fetchData()
+    fetchData();
   }, []);
 
   async function fetchData() {
@@ -83,7 +83,6 @@ export const LoginBCA = observer(() => {
 
   async function onFinishLoginBCA(values) {
     try {
-
       const body = {
         email: values.email,
         password: values.password
