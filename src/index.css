@@ -44,7 +44,7 @@ code {
 .ant-collapse > .ant-collapse-item{
   border:none !important;
   background: white !important;
-  border-bottom-radius: 100px !important;
+  border-radius: 15px !important;
 }
 
 .ant-collapse > .ant-collapse-item.ant-collapse-no-arrow > .ant-collapse-header {
@@ -57,7 +57,8 @@ code {
 }
 
 .ant-collapse-content-active{
-  border-bottom-radius: 100px !important;
+  border-bottom-left-radius: 15px !important;
+  border-bottom-right-radius: 15px !important;
 }
 
 .collapse-custom {
