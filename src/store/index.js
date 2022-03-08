@@ -3,6 +3,8 @@ import { UI } from "./ui";
 import { Authentication } from "./authentication";
 import { InitialStore } from "./InitialStore"
 import {BNILogin} from "./bni_login";
+import {MandiriStore} from "./mandiri";
+import { AuthBCA } from "./AuthBCA";
 
 export class Store {
     @observable
@@ -14,6 +16,8 @@ export class Store {
     ui = new UI(this);
     authentication = new Authentication(this);
     initial_store = new InitialStore(this);
+    mandiri = new MandiriStore(this)
+    auth_bca = new AuthBCA(this);
     bni_login = new BNILogin(this);
 
     @computed

@@ -126,7 +126,7 @@ export const TermCondition = observer(() => {
                                         color: "#FE6601"}} onClick={onClickPdf}>privacy policy</span>
                                     </Typography.Paragraph>
 
-                                    <Button style={{marginTop: 18, width: '350px', height: '56px', alignSelf: 'center', borderRadius: 9, backgroundColor: '#FE6601', boxShadow: '0px 8px 12px #FE660133'}}>
+                                    <Button onClick={() => {history.push('bank-list')}} style={{marginTop: 18, width: '350px', height: '56px', alignSelf: 'center', borderRadius: 9, backgroundColor: '#FE6601', boxShadow: '0px 8px 12px #FE660133'}}>
                                         <Typography.Paragraph style={{
                                             fontSize: 20,
                                             fontWeight: 700,
