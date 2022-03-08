@@ -38,13 +38,17 @@ export const SlidesLoginPage = (props) => {
 
   return (
     <>
-      <div style={{ marginTop: 30 }}>
+      <div style={{ marginTop: 30, marginBottom: -18, color: "#71757C" }}>
         <p>Need a guide?</p>
       </div>
       <div>
         <Slide {...propertiesSlide}>
           {dataSlide.map((el, index) => (
-            <div key={index} style={{ padding: 5, paddingBottom: 10 }} onClick={() => onOpenSheet(true)}>
+            <div
+              key={index}
+              style={{ padding: 5, paddingBottom: 10 }}
+              onClick={() => onOpenSheet(true)}
+            >
               <Row
                 style={{
                   backgroundColor: "white",
@@ -66,7 +70,7 @@ export const SlidesLoginPage = (props) => {
                     style={{ width: 20 }}
                   />
                 </Col>
-                <Col span={19} style={{ color: "#71757C", fontSize: "10pt" }}>
+                <Col span={19} style={{ color: "#71757C", fontSize: "10pt", paddingLeft: 10 }}>
                   {el?.text}
                 </Col>
               </Row>

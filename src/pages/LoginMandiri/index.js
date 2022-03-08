@@ -12,6 +12,8 @@ import { BottomSheet } from "react-spring-bottom-sheet";
 import { SlidesLoginPage } from "../../component/Slides/SlidesLoginPage";
 import "react-spring-bottom-sheet/dist/style.css";
 import { PageLogin } from "./../../component/Layouts/PageLogin";
+import { Metrics } from './../../styles/Metric';
+import { Color } from './../../styles/Color';
 
 const { Title, Text } = Typography;
 
@@ -39,20 +41,32 @@ export const LoginMandiri = observer(() => {
 
   return (
     <PageLogin>
-      <div style={{ color: "#4B4C48" }}>
-        <div style={styles.boxLogo}>
-          <div>
-            <div style={{ display: "flex", justifyItems: "center" }}>
-              <img src={LivinMandiri} style={styles.logoMandiri} />
-            </div>
-            <p style={{ fontSize: 18, marginTop: 16 }}>
-              Insert your credentials to start.
-            </p>
+      <div style={{ marginBottom: 30 }}>
+        <div style={{ height: 70 }}>
+          <div style={{ display: "flex", justifyItems: "center" }}>
+            <img
+              src={LivinMandiri}
+              style={{
+                height: 60,
+                width: "auto",
+                marginLeft: "auto",
+                marginRight: "auto",
+              }}
+            />
           </div>
         </div>
+        <Title
+          style={{
+            fontSize: 18,
+            fontWeight: Metrics.fontWeight,
+            textAlign: "center",
+          }}
+        >
+          Insert your credentials to start.
+        </Title>
       </div>
       <Form layout={"vertical"}>
-        <Form.Item name={"email"} label={"Email"}>
+        <Form.Item name={"email"} label={"User ID"}>
           <Input style={styles.input} placeholder={"email@example.com"} />
         </Form.Item>
         <Form.Item name={"password"} label={"Password"}>
@@ -64,7 +78,7 @@ export const LoginMandiri = observer(() => {
           </Button>
         </div>
         <Button
-          style={{ backgroundColor: "#B4BCC9", color: "#FFFFFF" }}
+          style={{ backgroundColor: Color.secondary, color: "#FFFFFF" }}
           block
           size="large"
         >

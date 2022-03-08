@@ -1,14 +1,15 @@
 /* eslint-disable jsx-a11y/alt-text */
-import React, { useState } from "react";
-import bca from "../../assets/logo/bca.svg";
-import { Button, Form, Input, Spin } from "antd";
+import React from "react";
+import BCA from "../../assets/logo/bca.png";
+import { Button, Form, Input, Typography } from "antd";
 import { observer } from "mobx-react-lite";
 import { styles } from "./styles";
 import { SlidesLoginPage } from "../../component/Slides/SlidesLoginPage";
 import { PageLogin } from "./../../component/Layouts/PageLogin";
-import { useStore } from "../../utils/useStore";
-import { BottomSheet } from "react-spring-bottom-sheet";
+import { Metrics } from "../../styles/Metric";
+import { Color } from './../../styles/Color';
 
+const { Title } = Typography;
 export const LoginBCA = observer(() => {
   const store = useStore();
   const [form] = Form.useForm();
@@ -50,60 +51,46 @@ export const LoginBCA = observer(() => {
 
   return (
     <PageLogin>
-      <Spin spinning={isLoading}>
-        <div style={{ color: "#4B4C48" }}>
-          <div style={styles.boxLogo}>
-            <div>
-              <div style={{ display: "flex", justifyItems: "center" }}>
-                <img src={bca} style={styles.logoBca} />
-              </div>
-              <p style={{ fontSize: 18, marginTop: 16 }}>
-                Insert your credentials to start.
-              </p>
-            </div>
+      <div style={{ marginBottom: 30 }}>
+        <div style={{ height: 70 }}>
+          <div style={{ display: "flex", justifyItems: "center" }}>
+            <img
+              src={BCA}
+              style={{
+                height: 80,
+                width: "auto",
+                marginLeft: "auto",
+                marginRight: "auto",
+              }}
+            />
           </div>
-        </div >
-
-        <Form
-          form={form}
-          onFinish={onFinishLoginBCA}
-          layout={"vertical"}
+        </div>
+        <Title
+          style={{
+            fontSize: 18,
+            fontWeight: Metrics.fontWeight,
+            textAlign: "center",
+          }}
         >
-          <Form.Item name="email" label={"Email"}>
-            <Input style={styles.input} placeholder={"email@example.com"} />
-          </Form.Item>
-          <Form.Item name="password" label={"Password"}>
-            <Input.Password style={styles.input} />
-          </Form.Item>
-          <div style={styles.forgotPassword}>
-            <Button type="link" style={{ color: "#93969B" }} onClick={() => { }}>
-              Forgot password ?
-            </Button>
-          </div>
-          <Button
-            block
-            size="large"
-            htmlType="submit"
-            style={{ backgroundColor: "#B4BCC9", color: "#FFFFFF" }}
-          >
-            Connect Account
+          Insert your credentials to start.
+        </Title>
+      </div>
+      <Form layout={"vertical"}>
+        <Form.Item name={"email"} label={"User ID"}>
+          <Input style={styles.input} placeholder={"email@example.com"} />
+        </Form.Item>
+        <Form.Item name={"password"} label={"Password"}>
+          <Input.Password style={styles.input} />
+        </Form.Item>
+        <div style={styles.forgotPassword}>
+          <Button type="link" style={{ color: "#93969B" }} onClick={() => { }}>
+            Forgot password ?
           </Button>
-        </Form>
-
-        <SlidesLoginPage title={"Livin' by Mandiri"} onOpenSheet={onOpenSheet} />
-
-        <BottomSheet
-          open={open}
-          onDismiss={onDismiss}
-          snapPoints={({ maxHeight }) => maxHeight / 2}
-        >
-          My awesome content here
-        </BottomSheet>
-
-        <BottomSheet
-          open={openForgotPassword}
-          onDismiss={onDismiss}
-          snapPoints={({ maxHeight }) => maxHeight / 2}
+        </div>
+        <Button
+          style={{ backgroundColor: Color.secondary, color: "#FFFFFF" }}
+          block
+          size="large"
         >
           Forgot Password
         </BottomSheet>
