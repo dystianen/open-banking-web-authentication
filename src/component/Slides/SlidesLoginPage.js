@@ -7,7 +7,7 @@ import { Slide } from "react-slideshow-image";
 import "react-slideshow-image/dist/styles.css";
 
 export const SlidesLoginPage = (props) => {
-  const {title, onOpenSheet} = props;
+  const { title, onOpenSheet } = props;
 
   const propertiesSlide = {
     defaultIndex: 0,
