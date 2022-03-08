@@ -48,7 +48,7 @@ export const LoginBNI = observer(() => {
         </Title>
       </div>
       <Form layout={"vertical"}>
-        <Form.Item name={"email"} label={"Email"}>
+        <Form.Item name={"email"} label={"User ID"}>
           <Input style={styles.input} placeholder={"email@example.com"} />
         </Form.Item>
         <Form.Item name={"password"} label={"Password"}>
