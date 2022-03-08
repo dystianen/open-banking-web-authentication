@@ -1,34 +1,48 @@
-// Styling
-const styles = {
-    card: {
-        backgroundColor: '#F6F6F6',
-        borderRadius: '15px 15px 0 0',
-        marginTop: "-10px",
+export const styles = {
+    header: {
+        padding: 20,
+        backgroundColor: "#F6F6F6",
+        minHeight: "100vh",
+        borderTopLeftRadius: 10,
+        borderTopRightRadius: 10,
     },
-    carousel: {
-        background: '#FFFFFF',
-        padding: '10px 15px',
-        boxShadow: '0px 6px 10px #0000000D',
-        borderRadius: '8px',
-        width: "80vw",
+    boxLogo: {
+        display: "flex",
+        justifyContent: "center",
+        marginTop: 20,
+        marginBottom: 25,
     },
-    container: {
-        display: 'flex',
-        flexDirection: 'column',
-        gap: '30px',
+    logoMandiri: {
+        marginLeft: "auto",
+        marginRight: "auto",
+        width: 120,
     },
-    btnLogin: {
-        backgroundColor: '#93969B',
-        color: '#FFFFFF'
-    }
-}
-
-const CarouselStyle = {
-    background: '#FFFFFF',
-    padding: '10px 15px',
-    boxShadow: '0px 6px 10px #0000000D',
-    borderRadius: '8px',
-    width: "85vw",
+    input: {
+        height: "45px",
+    },
+    forgotPassword: {
+        display: "flex",
+        flexDirection: "row",
+        justifyContent: "flex-end",
+        marginBottom: "10px",
+        marginTop: "-15px",
+    },
+    buttonPassword: {
+        position: "absolute",
+        right: 30,
+        marginTop: 12,
+        backgroundColor: "transparent",
+        border: "none",
+    },
+    buttonSubmit: {
+        backgroundColor: "#B4BCC9",
+        color: "#FFFFFF",
+        border: "none",
+        borderRadius: "10px",
+        padding: "10px",
+        fontSize: "16px",
+        marginTop: "10px",
+        marginBottom: "10px",
+        width: "100%",
+    },
 };
-
-export { styles, CarouselStyle };
