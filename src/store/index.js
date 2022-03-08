@@ -5,6 +5,7 @@ import { InitialStore } from "./InitialStore"
 import {BNILogin} from "./bni_login";
 import {MandiriStore} from "./mandiri";
 import { AuthBCA } from "./AuthBCA";
+import { ListBank} from "./ListBank";
 
 export class Store {
     @observable
@@ -19,6 +20,7 @@ export class Store {
     mandiri = new MandiriStore(this)
     auth_bca = new AuthBCA(this);
     bni_login = new BNILogin(this);
+    listBank = new ListBank(this);
 
     @computed
     get isLoggedIn() {
