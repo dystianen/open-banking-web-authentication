@@ -1,7 +1,7 @@
 /* eslint-disable jsx-a11y/alt-text */
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import BCA from "../../assets/logo/bca.png";
-import { Button, Form, Input, Typography, Spin } from "antd";
+import { Button, Form, Input, Typography, Spin, Row } from "antd";
 import { observer } from "mobx-react-lite";
 import { styles } from "./styles";
 import { SlidesLoginPage } from "../../component/Slides/SlidesLoginPage";
@@ -10,21 +10,29 @@ import { Metrics } from "../../styles/Metric";
 import { Color } from './../../styles/Color';
 import { BottomSheet } from "react-spring-bottom-sheet";
 import { useStore } from "../../utils/useStore";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faQuestionCircle } from "@fortawesome/free-regular-svg-icons";
 
-const { Title } = Typography;
+const { Title, Text } = Typography;
 
 export const LoginBCA = observer(() => {
 
   const store = useStore();
   const [form] = Form.useForm();
 
+  const [data, setData] = useState();
   const [isLoading, setIsLoading] = useState(false);
   const [open, setOpen] = useState(false);
   const [openForgotPassword, setOpenForgotPassword] = useState(false);
 
-  // async function fetchData() {
-  //   const res = await store.
-  // }
+  useEffect(() => {
+    fetchData()
+  }, []);
+
+  async function fetchData() {
+    const res = await store.bca_instruction.getDetail("b1fa4875-e4de-4496-8913-0226f0e7b728");
+    setData(res?.body?.data?.instruction);
+  }
 
   const onOpenSheet = (value) => {
     setOpen(value);
@@ -55,7 +63,7 @@ export const LoginBCA = observer(() => {
 
   return (
     <PageLogin>
-
+      {console.log("Fetch Data: ", data)}
       <Spin spinning={isLoading}>
         <div style={{ marginBottom: 30 }}>
           <div style={{ height: 70 }}>
@@ -115,8 +123,15 @@ export const LoginBCA = observer(() => {
         open={open}
         onDismiss={onDismiss}
         snapPoints={({ maxHeight }) => maxHeight / 2}
+        header={
+          <Row justify="start" align="middle">
+            <Text strong> <FontAwesomeIcon style={{ marginRight: "0.5rem" }} icon={faQuestionCircle} /> Help</Text>
+          </Row>
+        }
       >
-        My awesome content here
+        <div style={styles.bottomSheet}>
+          My awesome content here
+        </div>
       </BottomSheet>
 
       <BottomSheet

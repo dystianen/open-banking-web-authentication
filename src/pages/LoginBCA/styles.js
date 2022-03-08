@@ -9,4 +9,7 @@ export const styles = {
     marginBottom: "10px",
     marginTop: "-15px",
   },
+  bottomSheet: {
+    padding: "20px"
+  }
 };

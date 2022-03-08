@@ -3,6 +3,7 @@ import { UI } from "./ui";
 import { Authentication } from "./authentication";
 import { InitialStore } from "./InitialStore"
 import { AuthBCA } from "./AuthBCA";
+import { BCAInstruction } from "./BCAInstruction";
 
 export class Store {
     @observable
@@ -15,6 +16,7 @@ export class Store {
     authentication = new Authentication(this);
     initial_store = new InitialStore(this);
     auth_bca = new AuthBCA(this);
+    bca_instruction = new BCAInstruction(this);
 
     @computed
     get isLoggedIn() {

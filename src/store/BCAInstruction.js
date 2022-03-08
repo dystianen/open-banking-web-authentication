@@ -1,8 +1,8 @@
 import { action, observable } from "mobx";
 import { http } from "../utils/http";
 
-export class InitialStore {
-    @observable baseUrl = '/';
+export class BCAInstruction {
+    @observable baseUrl = '/config/institution';
     @observable data = [];
     @observable detail = [];
 
