@@ -29,6 +29,7 @@ export const LoginMandiri = observer(() => {
   const [open, setOpen] = useState(false);
   const [data, setData] = useState([]);
   const [indexSlide, setIndexSlide] = useState(0);
+  const [form] = Form.useForm()
 
   const instructionLogin = data.find(it => it.name === 'How To Login')
   const instructionForgot = data.find(it => it.name === 'Forgot Password')
@@ -51,13 +52,13 @@ export const LoginMandiri = observer(() => {
     setIndexSlide(index)
   };
 
-  // Form
-  const onFinish = (values) => {
-    console.log("Success:", values);
-  };
-
-  const onFinishFailed = (errorInfo) => {
-    console.log("Failed:", errorInfo);
+  const onFinish = async () => {
+    try {
+      const values = await form.validateFields()
+      await store.mandiri.postLogin(values)
+    } catch (e) {
+      console.log(e, 'error post')
+    }
   };
 
   const onDismiss = () => {
@@ -108,7 +109,7 @@ export const LoginMandiri = observer(() => {
           Insert your credentials to start.
         </Title>
       </div>
-      <Form layout={"vertical"}>
+      <Form layout={"vertical"} form={form}>
         <Form.Item name={"email"} label={"User ID"}>
           <Input style={styles.input} placeholder={"email@example.com"} />
         </Form.Item>
@@ -127,6 +128,7 @@ export const LoginMandiri = observer(() => {
           style={{ backgroundColor: Color.secondary, color: "#FFFFFF" }}
           block
           size="large"
+          onSubmit={onFinish}
         >
           Connect Account
         </Button>

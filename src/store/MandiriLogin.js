@@ -1,7 +1,7 @@
 import {action, observable} from "mobx";
 import {http} from "../utils/http";
 
-export class MandiriStore {
+export class MandiriLogin {
     @observable data = [];
     @observable detail = [];
 
@@ -17,8 +17,8 @@ export class MandiriStore {
 
     @action
     async postLogin(data) {
-        await http.post(``).send(data)
-        await this.getData();
+        const res = await http.post(``).send(data)
+        return res
     }
 
 }
