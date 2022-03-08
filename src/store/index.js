@@ -2,8 +2,10 @@ import { computed, observable } from "mobx";
 import { UI } from "./ui";
 import { Authentication } from "./authentication";
 import { InitialStore } from "./InitialStore"
-import {MandiriStore} from "./mandiri";
+import { BNILogin } from "./bni_login";
+import { MandiriStore } from "./mandiri";
 import { AuthBCA } from "./AuthBCA";
+import { ListBank } from "./ListBank";
 import { BCAInstruction } from "./BCAInstruction";
 
 export class Store {
@@ -19,6 +21,8 @@ export class Store {
     mandiri = new MandiriStore(this)
     auth_bca = new AuthBCA(this);
     bca_instruction = new BCAInstruction(this);
+    bni_login = new BNILogin(this);
+    listBank = new ListBank(this);
 
     @computed
     get isLoggedIn() {

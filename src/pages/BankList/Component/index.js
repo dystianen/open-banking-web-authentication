@@ -40,14 +40,34 @@ export const ListBank = observer((props) => {
                         {it.name}
                     </Typography.Paragraph>
                 </Col>
-
             </Row>
         )
+
+        const appName = data => {
+            switch (data) {
+                case 'Livin\' by Mandiri':
+                    return 'mandiri-login';
+                case "BNI":
+                    return 'bni-login';
+                case "Gopay":
+                    return null;
+                case 'Klik BCA':
+                    return 'bca-login';
+            }
+        };
+
+        const data = it.institution.map(it => {
+            return {
+                ...it,
+                link: appName(it.name)
+            }
+        })
+
         return (
             <Panel header={(<Header />)} key={it.id} showArrow={false} className={'collapse-custom'}>
                 <div>
-                    {it.bank.map((data, index) => (
-                        <div className={index ? 'border-color-bank' : 'none-border'}>
+                    {data.map((data, index) => (
+                        <div className={index ? 'border-color-bank' : 'none-border'} onClick={() => {history.push(data.link)}}>
                             <Typography.Paragraph
                                 style={{
                                     margin: 0,
