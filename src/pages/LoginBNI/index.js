@@ -2,31 +2,26 @@ import React from "react";
 import {
     Button,
     Card,
-    Carousel,
-    Col,
     Form,
     Image,
     Input,
-    Row,
     Typography,
 } from "antd";
-import {
-    QuestionCircleOutlined,
-} from "@ant-design/icons";
 import LogoBNI from "../../assets/logo/BNI.png";
 import Trustlink from "../../assets/logo/trustlink.png";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {
     faArrowLeft,
-    faShield,
     faXmark,
 } from "@fortawesome/free-solid-svg-icons";
 import {FixedTopBar} from "../../component/Header/FixedTopBar";
 import {styles} from "./style";
+import {SlidesLoginPage} from "../../component/Slides/SlidesLoginPage";
+import {observer} from "mobx-react";
 
 const {Title} = Typography;
 
-export const LoginBNI = () => {
+export const LoginBNI = observer(() => {
 
     return (
         <>
@@ -51,7 +46,7 @@ export const LoginBNI = () => {
                     </div>
 
                     <div style={styles.logo}>
-                        <Image src={LogoBNI} style={{width: "15em"}}/>
+                        <Image src={LogoBNI} style={{width: "10em"}}/>
                         <Title level={5} style={{marginTop: "20px"}} strong>
                             Insert your credentials to start.
                         </Title>
@@ -82,46 +77,17 @@ export const LoginBNI = () => {
                             Connect Account
                         </Button>
                     </Form>
+                </div>
 
-                    <div style={{marginTop: "50px"}}>
-                        <Title level={5}>Need a guide?</Title>
-                        <Carousel style={styles.carousel}>
-                            <div>
-                                <Row>
-                                    <Col span={2}>
-                                        <QuestionCircleOutlined style={{fontSize: "16px"}}/>
-                                    </Col>
-                                    <Col span={22}>
-                                        <Title level={5} style={styles.guide}>
-                                            Do you find difficulties in logging into your Livin' by
-                                            Mandiri account?
-                                        </Title>
-                                    </Col>
-                                </Row>
-                            </div>
-                            <div>
-                                <Row>
-                                    <Col span={2}>
-                                        <FontAwesomeIcon icon={faShield}/>
-                                    </Col>
-                                    <Col span={22}>
-                                        <Title level={5} style={styles.guide}>
-                                            How do we ensure the security of your data?
-                                        </Title>
-                                    </Col>
-                                </Row>
-                            </div>
-                        </Carousel>
-                    </div>
+                <SlidesLoginPage />
 
-                    <div style={styles.footer}>
-                        <Title level={5} style={{letterSpacing: "3px"}}>
-                            POWERED BY
-                        </Title>
-                        <Image src={Trustlink}/>
-                    </div>
+                <div style={styles.footer}>
+                    <Title level={5} style={{letterSpacing: "3px"}}>
+                        POWERED BY
+                    </Title>
+                    <Image src={Trustlink}/>
                 </div>
             </Card>
         </>
     );
-};
+});
