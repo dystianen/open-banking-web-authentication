@@ -1,72 +1,56 @@
-import React, {useState} from "react";
+import React, {useEffect, useState} from "react";
 import {observer} from 'mobx-react-lite';
 import {useStore} from "../../utils/useStore";
-import {Button, Card, Checkbox, Col, Form, Image, Input, Row, Typography} from 'antd';
-import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
-import {useHistory} from "react-router-dom";
+import {Col, Row, Typography} from 'antd';
 import {ListBank} from "./Component";
 import spark from '../../assets/images/icon-sparkles.svg'
 import eBank from '../../assets/images/icon-banking.svg'
-import {FixedTopBar} from "../../component/Header/FixedTopBar";
-import {faArrowLeft, faXmark} from "@fortawesome/free-solid-svg-icons";
-import Trustlink from "../../assets/logo/trustlink.png";
-import {styles} from "./style"
+import {PageLogin} from "../../component/Layouts/PageLogin";
 
 export const BankList = observer(() => {
-    const {Title} = Typography;
 
     const store = useStore();
     const [loading, setLoading] = useState(false);
+    const [dataBank, setDataBank] = useState([]);
 
-    let history = useHistory();
-    const data = [
-        {
-            id: 1,
-            name: 'User’s Choices',
-            image: spark,
-            bank: [
-                {
-                    name: 'Gopay',
-                },
-                {
-                    name: 'OVO'
-                },
-                {
-                    name: 'Livin b Mandiri'
-                }
-            ]
-        },
-        {
-            id: 2,
-            name: 'Internet Banking',
-            image: eBank,
-            bank: [
-                {
-                    name: 'BRImo'
-                },
-                {
-                    name: 'Livin b Mandiri'
-                },
-                {
-                    name: 'PermataMobile X'
-                }
-            ]
+    useEffect(() => {
+        setLoading(true)
+        loadInitial()
+        setLoading(false)
+    }, [])
+
+    const loadInitial = async () => {
+        try {
+            setLoading(true)
+            const res = await store.listBank.getAllBanks();
+            setDataBank(res.body.data)
+            setLoading(false)
+        } catch (e) {
+            setLoading(false)
+            console.log(e)
         }
-    ]
+    }
 
+    const appImage = data => {
+        switch (data) {
+            case 'User\'s Choices':
+                return spark;
+            case 'Internet Banking':
+                return eBank;
+        }
+    };
+
+    const data = dataBank.map(it => {
+        return {
+            ...it,
+            image: appImage(it.name)
+        }
+    })
 
     return (
-        <>
-            <FixedTopBar />
-            <Card style={styles.card}>
-                <div style={{display: 'flex', justifyContent: 'space-between'}}>
-                    <Button type="link" icon={<FontAwesomeIcon icon={faArrowLeft} style={styles.navButton}/>}
-                            onClick={() => {}}/>
-                    <Button type="link" icon={<FontAwesomeIcon icon={faXmark} style={styles.navButton}/>} onClick={() => {
-                    }}/>
-                </div>
-
-                <div style={{width: '100vw', display: 'flex'}}>
+        <PageLogin>
+            <div>
+                <div style={{width: '100%', display: 'flex'}}>
                     <Row>
                         <Col>
                             <div style={{
@@ -109,11 +93,7 @@ export const BankList = observer(() => {
                     </Row>
                 </div>
                 <ListBank data={data}/>
-                <div style={styles.footer}>
-                    <Title level={5} style={{letterSpacing: '3px'}}>POWERED BY</Title>
-                    <Image src={Trustlink} preview={false}/>
-                </div>
-            </Card>
-        </>
+            </div>
+        </PageLogin>
     );
 });

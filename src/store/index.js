@@ -4,6 +4,7 @@ import { Authentication } from "./authentication";
 import { InitialStore } from "./InitialStore"
 import {MandiriStore} from "./mandiri";
 import { AuthBCA } from "./AuthBCA";
+import { ListBank} from "./ListBank";
 
 export class Store {
     @observable
@@ -17,6 +18,7 @@ export class Store {
     initial_store = new InitialStore(this);
     mandiri = new MandiriStore(this)
     auth_bca = new AuthBCA(this);
+    listBank = new ListBank(this);
 
     @computed
     get isLoggedIn() {
