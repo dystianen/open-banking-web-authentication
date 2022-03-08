@@ -6,7 +6,9 @@ import { Col, Row } from "antd";
 import { Slide } from "react-slideshow-image";
 import "react-slideshow-image/dist/styles.css";
 
-export const SlidesLoginPage = () => {
+export const SlidesLoginPage = (props) => {
+  const {title, onOpenSheet} = props;
+
   const propertiesSlide = {
     defaultIndex: 0,
     transitionDuration: 100,
@@ -23,7 +25,7 @@ export const SlidesLoginPage = () => {
 
   const dataSlide = [
     {
-      text: "Do you find difficulties in logging into your Gopay account?",
+      text: `Do you find difficulties in logging into your ${title} account?`,
       link: "/example",
       status: false,
     },
@@ -42,7 +44,7 @@ export const SlidesLoginPage = () => {
       <div>
         <Slide {...propertiesSlide}>
           {dataSlide.map((el, index) => (
-            <div key={index} style={{ padding: 5, paddingBottom: 10 }}>
+            <div key={index} style={{ padding: 5, paddingBottom: 10 }} onClick={() => onOpenSheet(true)}>
               <Row
                 style={{
                   backgroundColor: "white",

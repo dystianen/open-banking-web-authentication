@@ -7,9 +7,9 @@ import { FixedTopBar } from "../../component/Header/FixedTopBar";
 import { Button, Form, Input } from "antd";
 import { observer } from "mobx-react-lite";
 import { styles } from "./styles";
-import { SlidesLoginPage } from "./../../component/Slides/SlidesLoginPage";
+import { SlidesLoginPage } from "../../component/Slides/SlidesLoginPage";
 
-export const Bca = observer(() => {
+export const LoginBCA = observer(() => {
   return (
     <div style={{ backgroundColor: "#CBDFFF" }}>
       <FixedTopBar />
