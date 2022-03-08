@@ -8,9 +8,23 @@ import { observer } from "mobx-react-lite";
 import { styles } from "./styles";
 import { SlidesLoginPage } from "../../component/Slides/SlidesLoginPage";
 import FooterPageLogin from './../../component/Footer/FooterPageLogin';
+import { useStore } from "../../utils/useStore";
+import { BottomSheet } from "react-spring-bottom-sheet";
 
 export const LoginBCA = observer(() => {
+  const store = useStore();
   const [isLoading, setIsLoading] = useState(false);
+  const [openForgotPassword, setOpenForgotPassword] = useState(false);
+  const [open, setOpen] = useState(false);
+
+  const onOpenSheet = (value) => {
+    setOpen(value);
+  }
+
+  const onDismiss = () => {
+    setOpen(false);
+    setOpenForgotPassword(false);
+  }
 
   async function onFinishLoginBCA(values) {
     try {
@@ -66,7 +80,10 @@ export const LoginBCA = observer(() => {
             <Input.Password style={styles.input} />
           </Form.Item>
           <div style={styles.forgotPassword}>
-            <Button type="link" style={{ color: "#93969B" }} onClick={() => { }}>
+            <Button
+              type="link"
+              style={{ color: "#93969B" }}
+              onClick={() => setOpenForgotPassword(true)}>
               Forgot password ?
             </Button>
           </div>
@@ -80,8 +97,26 @@ export const LoginBCA = observer(() => {
           </Button>
         </Form>
 
-        <SlidesLoginPage />
+        <SlidesLoginPage title={"BCA"} onOpenSheet={onOpenSheet} />
+
         <FooterPageLogin />
+
+        <BottomSheet
+          open={open}
+          onDismiss={onDismiss}
+          snapPoints={({ maxHeight }) => maxHeight / 2}
+        >
+          My awesome content here
+        </BottomSheet>
+
+        {/* Forgot Password */}
+        <BottomSheet
+          open={openForgotPassword}
+          onDismiss={onDismiss}
+          snapPoints={({ maxHeight }) => maxHeight / 2}
+        >
+          Forgot Password
+        </BottomSheet>
       </div>
     </div>
   );
