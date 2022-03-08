@@ -3,13 +3,13 @@ import React, { useState } from "react";
 import { ArrowLeftOutlined, CloseOutlined } from "@ant-design/icons";
 import OTPInput from "otp-input-react";
 import gopay from "../../assets/logo/gopay.png";
-import Footer from "./components/Footer";
+import Footer from "./Components/Footer";
 import { FixedTopBar } from "../../component/Header/FixedTopBar";
 import { SlidesLoginPage } from "./../../component/Slides/SlidesLoginPage";
 import { observer } from 'mobx-react-lite';
 import { styles } from './styles';
 
-export const Otp = observer (() => {
+export const Otp = observer(() => {
   const [OTP, setOTP] = useState("");
   return (
     <div style={{ backgroundColor: "#CBDFFF" }}>

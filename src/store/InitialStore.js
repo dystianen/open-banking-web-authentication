@@ -12,7 +12,7 @@ export class InitialStore {
 
     @action
     async getAll() {
-        const res = await http.get(`${url}`);
+        const res = await http.get(this.baseUrl);
         return res;
     }
 
