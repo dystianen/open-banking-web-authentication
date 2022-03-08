@@ -7,7 +7,7 @@ import { Slide } from "react-slideshow-image";
 import "react-slideshow-image/dist/styles.css";
 
 export const SlidesLoginPage = (props) => {
-  const { title, onOpenSheet } = props;
+  const {title, onOpenSheet} = props;
 
   const propertiesSlide = {
     defaultIndex: 0,
@@ -44,11 +44,7 @@ export const SlidesLoginPage = (props) => {
       <div>
         <Slide {...propertiesSlide}>
           {dataSlide.map((el, index) => (
-            <div
-              key={index}
-              style={{ padding: 5, paddingBottom: 10 }}
-              onClick={() => onOpenSheet(true)}
-            >
+            <div key={index} style={{ padding: 5, paddingBottom: 10 }} onClick={() => onOpenSheet(true, index)}>
               <Row
                 style={{
                   backgroundColor: "white",

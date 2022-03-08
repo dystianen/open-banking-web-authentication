@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { observer } from "mobx-react-lite";
+import { useStore } from "../../utils/useStore";
 import {
   Button,
   Form,
@@ -10,20 +11,44 @@ import LivinMandiri from "../../assets/images/mandiri.png";
 import { styles } from "./style";
 import { BottomSheet } from "react-spring-bottom-sheet";
 import { SlidesLoginPage } from "../../component/Slides/SlidesLoginPage";
+import isoLogo from "../../assets/images/iso.png";
+import aftechLogo from "../../assets/images/aftech.png";
+import keminfo from "../../assets/images/keminfo.png";
+
 import "react-spring-bottom-sheet/dist/style.css";
 import { PageLogin } from "./../../component/Layouts/PageLogin";
 import { Metrics } from './../../styles/Metric';
 import { Color } from './../../styles/Color';
+import {DynamicSheet} from "./components/DynamicSheet";
+import {StaticSheet} from "./components/StaticSheet";
 
 const { Title, Text } = Typography;
 
 export const LoginMandiri = observer(() => {
+  const store = useStore()
   const [open, setOpen] = useState(false);
+  const [data, setData] = useState([]);
+  const [indexSlide, setIndexSlide] = useState(0);
 
-  useEffect(() => {}, []);
+  const instructionLogin = data.find(it => it.name === 'How To Login')
+  const instructionForgot = data.find(it => it.name === 'Forgot Password')
 
-  const onOpenSheet = (value) => {
+  useEffect(() => {
+    loadInitialData()
+  }, []);
+
+  const loadInitialData = async () => {
+    try {
+      const res = await store.mandiri.getData(`b1fa4875-e4de-4496-8913-0226f0e7b728`)
+      setData(res.data?.instruction)
+    } catch (e) {
+      console.log(e, 'error')
+    }
+  }
+
+  const onOpenSheet = (value, index) => {
     setOpen(value);
+    setIndexSlide(index)
   };
 
   // Form
@@ -38,6 +63,24 @@ export const LoginMandiri = observer(() => {
   const onDismiss = () => {
     setOpen(false);
   };
+
+  const dataHardcode = [
+    {
+      id: 1,
+      image: keminfo,
+      description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit Pellentesque finibus enim.'
+    },
+    {
+      id: 2,
+      image: isoLogo,
+      description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit Pellentesque finibus enim.'
+    },
+    {
+      id: 3,
+      image: aftechLogo,
+      description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit Pellentesque finibus enim.'
+    },
+  ]
 
   return (
     <PageLogin>
@@ -73,7 +116,10 @@ export const LoginMandiri = observer(() => {
           <Input.Password style={styles.input} />
         </Form.Item>
         <div style={styles.forgotPassword}>
-          <Button type="link" style={{ color: "#93969B" }} onClick={() => {}}>
+          <Button type="link" style={{ color: "#93969B" }} onClick={() => {
+            setIndexSlide(2)
+            setOpen(true)
+          }}>
             Forgot password ?
           </Button>
         </div>
@@ -89,9 +135,9 @@ export const LoginMandiri = observer(() => {
       <BottomSheet
         open={open}
         onDismiss={onDismiss}
-        snapPoints={({ maxHeight }) => maxHeight / 2}
+        snapPoints={({ maxHeight }) => maxHeight / 2.2}
       >
-        My awesome content here
+        {indexSlide === 1 ? <StaticSheet data={dataHardcode} /> : <DynamicSheet data={indexSlide === 2 ? instructionForgot : instructionLogin} />}
       </BottomSheet>
     </PageLogin>
   );
