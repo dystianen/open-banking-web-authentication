@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useState} from "react";
 import {
     Button,
     Card,
@@ -15,13 +15,23 @@ import {
     faXmark,
 } from "@fortawesome/free-solid-svg-icons";
 import {FixedTopBar} from "../../component/Header/FixedTopBar";
-import {styles} from "./style";
+import {styles} from "./Style";
 import {SlidesLoginPage} from "../../component/Slides/SlidesLoginPage";
 import {observer} from "mobx-react";
+import {BottomSheet} from "react-spring-bottom-sheet";
 
 const {Title} = Typography;
 
 export const LoginBNI = observer(() => {
+    const [open, setOpen] = useState(false);
+
+    const onOpenSheet = (value) => {
+        setOpen(value)
+    }
+
+    const onDismiss = () => {
+        setOpen(false)
+    }
 
     return (
         <>
@@ -79,7 +89,7 @@ export const LoginBNI = observer(() => {
                     </Form>
                 </div>
 
-                <SlidesLoginPage />
+                <SlidesLoginPage onOpenSheet={onOpenSheet} />
 
                 <div style={styles.footer}>
                     <Title level={5} style={{letterSpacing: "3px"}}>
@@ -87,6 +97,12 @@ export const LoginBNI = observer(() => {
                     </Title>
                     <Image src={Trustlink}/>
                 </div>
+
+                <BottomSheet
+                    open={open}
+                    onDismiss={onDismiss}
+                    snapPoints={({ maxHeight }) => maxHeight / 2}
+                >My awesome content here</BottomSheet>
             </Card>
         </>
     );

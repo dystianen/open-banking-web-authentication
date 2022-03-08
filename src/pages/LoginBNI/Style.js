@@ -1,8 +1,10 @@
+import {Metrics} from "../../styles/Metric";
+
 export const styles = {
     card: {
         height: "100%",
         backgroundColor: "#F6F6F6",
-        borderRadius: "15px 15px 0 0",
+        borderRadius: Metrics.borderRadius,
         marginTop: "-10px",
     },
     container: {
