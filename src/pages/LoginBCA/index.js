@@ -2,14 +2,14 @@
 import React from "react";
 import { ArrowLeftOutlined, CloseOutlined } from "@ant-design/icons";
 import bca from "../../assets/logo/bca.svg";
-import Footer from "./Components/Footer";
+import Footer from "./components/Footer";
 import { FixedTopBar } from "../../component/Header/FixedTopBar";
 import { Button, Form, Input } from "antd";
 import { observer } from "mobx-react-lite";
 import { styles } from "./styles";
 import { SlidesLoginPage } from "./../../component/Slides/SlidesLoginPage";
 
-export const Bca = observer(() => {
+export const LoginBCA = observer(() => {
   return (
     <div style={{ backgroundColor: "#CBDFFF" }}>
       <FixedTopBar />

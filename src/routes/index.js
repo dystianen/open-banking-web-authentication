@@ -5,7 +5,7 @@ import { PublicRoute } from "../component/PublicRoute";
 // import { PrivateRoute } from "../component/PrivateRoute";
 import { App } from "../pages/App/App";
 import { LoginBNI } from "../pages/LoginBNI";
-import { Bca } from "../pages/Bca";
+import { LoginBCA } from "../pages/LoginBCA";
 import { Otp } from "../pages/Otp";
 import { LoginMandiri } from "../pages/LoginMandiri";
 import { BankList } from "../pages/BankList";
@@ -46,16 +46,40 @@ export const MainRoutes = (props) => {
         exact
       />
 
-      <PublicRoute restricted={false} component={Bca} path="/bca" exact />
+      <PublicRoute
+        restricted={false}
+        component={LoginBCA}
+        path="/bca-login"
+        exact
+      />
       <PublicRoute restricted={false} component={Otp} path="/otp" exact />
-      <PublicRoute restricted={true} component={BankList} path="/bank-list" exact />
+      <PublicRoute
+        restricted={true}
+        component={BankList}
+        path="/bank-list"
+        exact
+      />
       <PublicRoute component={App} path="/app" />
 
       {/* Test */}
-      <PublicRoute restricted={false} component={TestLogin} path="/test/login" exact />
-      <PublicRoute restricted={false} component={TestMember} path="/test/member" exact />
-      <PublicRoute restricted={false} component={TestMemberDetail} path="/test/member/:id" exact />
-
+      <PublicRoute
+        restricted={false}
+        component={TestLogin}
+        path="/test/login"
+        exact
+      />
+      <PublicRoute
+        restricted={false}
+        component={TestMember}
+        path="/test/member"
+        exact
+      />
+      <PublicRoute
+        restricted={false}
+        component={TestMemberDetail}
+        path="/test/member/:id"
+        exact
+      />
     </Switch>
   );
 };
