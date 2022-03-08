@@ -11,7 +11,7 @@ export class InitialStore {
     }
 
     @action
-    async getAll() {
+    async getAll(url) {
         const res = await http.get(`${url}`);
         return res;
     }
