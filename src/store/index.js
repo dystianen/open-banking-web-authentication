@@ -1,8 +1,7 @@
 import { computed, observable } from "mobx";
 import { UI } from "./ui";
 import { Authentication } from "./authentication";
-import { TestMemberNonBaseStore } from "./TestMemberNonBaseStore";
-import { TestMemberBaseStore } from "./TestMemberBaseStore";
+import { InitialStore } from "./InitialStore"
 
 export class Store {
     @observable
@@ -13,8 +12,7 @@ export class Store {
 
     ui = new UI(this);
     authentication = new Authentication(this);
-    test_member_basestore = new TestMemberBaseStore(this);
-    test_member_nonbasestore = new TestMemberNonBaseStore(this);
+    initial_store = new InitialStore(this);
 
     @computed
     get isLoggedIn() {
