@@ -55,7 +55,7 @@ export const LoginBNI = observer(() => {
           <Input.Password style={styles.input} />
         </Form.Item>
         <div style={styles.forgotPassword}>
-          <Button type="link" style={{ color: "#93969B" }} onClick={() => {}}>
+          <Button type="link" style={{ color: "#93969B" }} onClick={() => { }}>
             Forgot password ?
           </Button>
         </div>
