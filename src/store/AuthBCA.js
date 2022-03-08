@@ -32,16 +32,14 @@ export class AuthBCA {
             email,
             password,
 
+        }).then((res) => {
+            this.context.setToken(res.body.token, '')
+            this.dataUser = res.body.user.role;
+            localStorage.setItem('role', res.body.user.role);
+            return res
+        }).catch((e) => {
+            throw e
         })
-            .then((res) => {
-                this.context.setToken(res.body.token, '')
-                this.dataUser = res.body.user.role;
-                localStorage.setItem('role', res.body.user.role);
-                return res
-            })
-            .catch((e) => {
-                throw e
-            })
     }
 
     @action
