@@ -73,6 +73,7 @@
     "react-router-dom": "^5.2.0",
     "react-router-transition": "^2.1.0",
     "react-slideshow-image": "^3.7.0",
+    "react-spring-bottom-sheet": "^3.4.0",
     "resolve": "1.20.0",
     "resolve-url-loader": "^3.1.2",
     "sass-loader": "^10.0.5",

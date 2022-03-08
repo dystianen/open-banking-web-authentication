@@ -7,7 +7,7 @@ import { FixedTopBar } from "../../component/Header/FixedTopBar";
 import { Button, Form, Input } from "antd";
 import { observer } from "mobx-react-lite";
 import { styles } from "./styles";
-import { SlidesLoginPage } from "./../../component/Slides/SlidesLoginPage";
+import { SlidesLoginPage } from "../../component/Slides/SlidesLoginPage";
 
 export const LoginBCA = observer(() => {
   return (
