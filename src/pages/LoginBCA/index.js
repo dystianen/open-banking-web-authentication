@@ -1,7 +1,7 @@
 /* eslint-disable jsx-a11y/alt-text */
 import React from "react";
 import BCA from "../../assets/logo/bca.png";
-import { Button, Form, Input, Typography } from "antd";
+import { Button, Form, Input, Typography, Spin } from "antd";
 import { observer } from "mobx-react-lite";
 import { styles } from "./styles";
 import { SlidesLoginPage } from "../../component/Slides/SlidesLoginPage";
@@ -10,7 +10,9 @@ import { Metrics } from "../../styles/Metric";
 import { Color } from './../../styles/Color';
 
 const { Title } = Typography;
+
 export const LoginBCA = observer(() => {
+
   const store = useStore();
   const [form] = Form.useForm();
 
@@ -51,50 +53,78 @@ export const LoginBCA = observer(() => {
 
   return (
     <PageLogin>
-      <div style={{ marginBottom: 30 }}>
-        <div style={{ height: 70 }}>
-          <div style={{ display: "flex", justifyItems: "center" }}>
-            <img
-              src={BCA}
-              style={{
-                height: 80,
-                width: "auto",
-                marginLeft: "auto",
-                marginRight: "auto",
-              }}
-            />
+
+      <Spin spinning={isLoading}>
+        <div style={{ marginBottom: 30 }}>
+          <div style={{ height: 70 }}>
+            <div style={{ display: "flex", justifyItems: "center" }}>
+              <img
+                src={BCA}
+                style={{
+                  height: 80,
+                  width: "auto",
+                  marginLeft: "auto",
+                  marginRight: "auto",
+                }}
+              />
+            </div>
           </div>
+          <Title
+            style={{
+              fontSize: 18,
+              fontWeight: Metrics.fontWeight,
+              textAlign: "center",
+            }}
+          >
+            Insert your credentials to start.
+          </Title>
         </div>
-        <Title
-          style={{
-            fontSize: 18,
-            fontWeight: Metrics.fontWeight,
-            textAlign: "center",
-          }}
+
+        <Form
+          form={form}
+          onFinish={onFinishLoginBCA}
+          layout={"vertical"}
         >
-          Insert your credentials to start.
-        </Title>
-      </div>
-      <Form layout={"vertical"}>
-        <Form.Item name={"email"} label={"User ID"}>
-          <Input style={styles.input} placeholder={"email@example.com"} />
-        </Form.Item>
-        <Form.Item name={"password"} label={"Password"}>
-          <Input.Password style={styles.input} />
-        </Form.Item>
-        <div style={styles.forgotPassword}>
-          <Button type="link" style={{ color: "#93969B" }} onClick={() => { }}>
-            Forgot password ?
+          <Form.Item name={"email"} label={"User ID"}>
+            <Input style={styles.input} placeholder={"email@example.com"} />
+          </Form.Item>
+          <Form.Item name={"password"} label={"Password"}>
+            <Input.Password style={styles.input} />
+          </Form.Item>
+          <div style={styles.forgotPassword}>
+            <Button type="link" style={{ color: "#93969B" }} onClick={() => setOpenForgotPassword(true)}>
+              Forgot password ?
+            </Button>
+          </div>
+          <Button
+            block
+            size="large"
+            htmlType="submit"
+            style={{ backgroundColor: Color.secondary, color: "#FFFFFF" }}
+          >
+            Connect Account
           </Button>
-        </div>
-        <Button
-          style={{ backgroundColor: Color.secondary, color: "#FFFFFF" }}
-          block
-          size="large"
-        >
-          Forgot Password
-        </BottomSheet>
+        </Form>
+
+        <SlidesLoginPage title={"Livin' by Mandiri"} onOpenSheet={onOpenSheet} />
       </Spin>
-    </PageLogin >
+
+      <BottomSheet
+        open={open}
+        onDismiss={onDismiss}
+        snapPoints={({ maxHeight }) => maxHeight / 2}
+      >
+        My awesome content here
+      </BottomSheet>
+
+      <BottomSheet
+        open={openForgotPassword}
+        onDismiss={onDismiss}
+        snapPoints={({ maxHeight }) => maxHeight / 2}
+      >
+        Forgot Password
+      </BottomSheet>
+
+    </PageLogin>
   );
 });
