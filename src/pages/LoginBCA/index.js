@@ -1,15 +1,36 @@
 /* eslint-disable jsx-a11y/alt-text */
-import React from "react";
+import React, { useState } from "react";
 import { ArrowLeftOutlined, CloseOutlined } from "@ant-design/icons";
 import bca from "../../assets/logo/bca.svg";
-import Footer from "./Components/Footer";
+import Footer from "./components/Footer";
 import { FixedTopBar } from "../../component/Header/FixedTopBar";
 import { Button, Form, Input } from "antd";
 import { observer } from "mobx-react-lite";
 import { styles } from "./styles";
 import { SlidesLoginPage } from "../../component/Slides/SlidesLoginPage";
+import { store } from "../../utils/useStore";
 
 export const LoginBCA = observer(() => {
+  const [isLoading, setIsLoading] = useState(false);
+
+  async function onFinishLoginBCA(values) {
+    try {
+
+      const body = {
+        email: values.email,
+        password: values.password
+      };
+
+      setIsLoading(true);
+      await store.login_BCA.login(body);
+      setIsLoading(false);
+
+    } catch (e) {
+      setIsLoading(false);
+      throw e
+    }
+  }
+
   return (
     <div style={{ backgroundColor: "#CBDFFF" }}>
       <FixedTopBar />
@@ -34,7 +55,11 @@ export const LoginBCA = observer(() => {
             </div>
           </div>
         </div>
-        <Form layout={"vertical"}>
+
+        <Form
+          onFinish={onFinishLoginBCA}
+          layout={"vertical"}
+        >
           <Form.Item name={"email"} label={"Email"}>
             <Input style={styles.input} placeholder={"email@example.com"} />
           </Form.Item>
@@ -47,15 +72,19 @@ export const LoginBCA = observer(() => {
             </Button>
           </div>
           <Button
-            style={{ backgroundColor: "#B4BCC9", color: "#FFFFFF" }}
             block
             size="large"
+            htmlType="submit"
+            style={{ backgroundColor: "#B4BCC9", color: "#FFFFFF" }}
           >
             Connect Account
           </Button>
         </Form>
+
         <SlidesLoginPage />
+
         <Footer />
+
       </div>
     </div>
   );
