@@ -127,11 +127,7 @@ export const LoginBCA = observer(() => {
           </Title>
         </div>
 
-        <Form
-          form={form}
-          onFinish={onFinishLoginBCA}
-          layout={"vertical"}
-        >
+        <Form form={form} onFinish={onFinishLoginBCA} layout={"vertical"}>
           <Form.Item name={"email"} label={"User ID"}>
             <Input style={styles.input} placeholder={"email@example.com"} />
           </Form.Item>
@@ -173,37 +169,42 @@ export const LoginBCA = observer(() => {
         snapPoints={({ maxHeight }) => maxHeight / 2.1}
         header={
           <Row justify="start" align="middle">
-            {
-              indexSlide === 0
-                ? <Text strong>
-                  <FontAwesomeIcon
-                    style={{ marginRight: "0.5rem" }}
-                    icon={faQuestionCircle} />
-                  Help
-                </Text>
-                : indexSlide === 1
-                  ? <Text strong>
-                    <FontAwesomeIcon
-                      style={{ marginRight: "0.5rem" }}
-                      icon={faQuestionCircle} />
-                    Secure & Safe
-                  </Text>
-                  : <Text strong>
-                    <FontAwesomeIcon
-                      style={{ marginRight: "0.5rem" }}
-                      icon={faQuestionCircle} />
-                    Forgot Password
-                  </Text>
-            }
+            {indexSlide === 0 ? (
+              <Text strong>
+                <FontAwesomeIcon
+                  style={{ marginRight: "0.5rem" }}
+                  icon={faQuestionCircle}
+                />
+                Help
+              </Text>
+            ) : indexSlide === 1 ? (
+              <Text strong>
+                <FontAwesomeIcon
+                  style={{ marginRight: "0.5rem" }}
+                  icon={faQuestionCircle}
+                />
+                Secure & Safe
+              </Text>
+            ) : (
+              <Text strong>
+                <FontAwesomeIcon
+                  style={{ marginRight: "0.5rem" }}
+                  icon={faQuestionCircle}
+                />
+                Forgot Password
+              </Text>
+            )}
           </Row>
         }
       >
-        {
-          indexSlide === 1 ? <StaticSheet data={dataHardcode} />
-            : <DynamicSheet data={indexSlide === 2 ? instructionForgot : instructionLogin} />
-        }
+        {indexSlide === 1 ? (
+          <StaticSheet data={dataHardcode} />
+        ) : (
+          <DynamicSheet
+            data={indexSlide === 2 ? instructionForgot : instructionLogin}
+          />
+        )}
       </BottomSheet>
-
     </PageLogin>
   );
 });
