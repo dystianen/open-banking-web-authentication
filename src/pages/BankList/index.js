@@ -14,9 +14,7 @@ export const BankList = observer(() => {
     const [dataBank, setDataBank] = useState([]);
 
     useEffect(() => {
-        setLoading(true)
         loadInitial()
-        setLoading(false)
     }, [])
 
     const loadInitial = async () => {
@@ -33,9 +31,9 @@ export const BankList = observer(() => {
 
     const appImage = data => {
         switch (data) {
-            case 'User\'s Choices':
+            case "User\'s Choices":
                 return spark;
-            case 'Internet Banking':
+            case "Internet Banking":
                 return eBank;
         }
     };
