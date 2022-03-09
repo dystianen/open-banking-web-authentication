@@ -45,14 +45,16 @@ export const ListBank = observer((props) => {
 
         const appName = data => {
             switch (data) {
-                case 'Livin\' by Mandiri':
-                    return 'mandiri-login';
+                case "Livin\' by Mandiri":
+                    return "mandiri-login";
                 case "BNI":
-                    return 'bni-login';
+                    return "bni-login";
                 case "Gopay":
                     return null;
-                case 'Klik BCA':
-                    return 'bca-login';
+                case "Klik BCA":
+                    return "bca-login";
+                default:
+                    return null
             }
         };
 

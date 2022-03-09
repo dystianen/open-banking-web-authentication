@@ -6,6 +6,7 @@ import { BNILogin } from "./BNILogin";
 import { MandiriLogin } from "./MandiriLogin";
 import { ListBank } from "./ListBank";
 import { BCALogin } from "./BCALogin";
+import {BRILogin} from "./BRILogin";
 // import { AuthBCA } from "./AuthBCA";
 // import { BCAInstruction } from "./BCAInstruction";
 
@@ -22,6 +23,7 @@ export class Store {
     mandiri = new MandiriLogin(this)
     bca_login = new BCALogin(this);
     bni_login = new BNILogin(this);
+    bri_login = new BRILogin(this);
     listBank = new ListBank(this);
 
     @computed
