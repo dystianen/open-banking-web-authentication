@@ -5,12 +5,12 @@ import { faArrowLeft, faXmark } from "@fortawesome/free-solid-svg-icons";
 import { FixedTopBar } from "../../component/Header/FixedTopBar";
 import { styles } from "./Style";
 import FooterPageLogin from './../Footer/FooterPageLogin';
-import {useHistory} from "react-router-dom";
+import { useHistory } from "react-router-dom";
 
 export const PageLogin = ({ children }) => {
-    let history = useHistory();
+  let history = useHistory();
 
-    return (
+  return (
     <>
       <FixedTopBar />
       <Card style={styles.card}>
@@ -21,16 +21,16 @@ export const PageLogin = ({ children }) => {
               icon={
                 <FontAwesomeIcon icon={faArrowLeft} style={styles.navButton} />
               }
-              onClick={() => {history.goBack()}}
+              onClick={() => { history.goBack() }}
             />
             <Button
               type="link"
               icon={<FontAwesomeIcon icon={faXmark} style={styles.navButton} />}
-              onClick={() => {history.push('term-condition')}}
+              onClick={() => { history.push('term-condition') }}
             />
           </div>
           {children}
-          <FooterPageLogin/>
+          <FooterPageLogin />
         </div>
       </Card>
     </>

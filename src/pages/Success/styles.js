@@ -2,14 +2,28 @@ import { Color } from "../../styles/Color";
 
 export const styles = {
     heading: {
-        color: "",
+        textAlign: "center",
+        color: Color.blueNavy,
+    },
+    paragraph: {
+        textAlign: "center",
+        color: Color.darkerGrey,
     },
     buttonConnect: {
         backgroundColor: Color.blueNavy,
-        margin: "20px",
+        marginTop: 25,
+        marginBottom: 10,
+        color: "white"
     },
     buttonDone: {
         backgroundColor: "#04204D40",
-        margin: "20px",
+    },
+    blueChecklist: {
+        top: 150,
+        position: "relative",
+        margin: 0,
+    },
+    blueDots: {
+        margin: 0,
     }
 }
