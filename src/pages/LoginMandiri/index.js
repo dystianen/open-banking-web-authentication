@@ -29,6 +29,7 @@ export const LoginMandiri = observer(() => {
   const [open, setOpen] = useState(false);
   const [data, setData] = useState([]);
   const [indexSlide, setIndexSlide] = useState(0);
+  const [loading, setLoading] = useState(false);
   const [form] = Form.useForm()
 
   const instructionLogin = data.find(it => it.name === 'How To Login')
@@ -40,9 +41,12 @@ export const LoginMandiri = observer(() => {
 
   const loadInitialData = async () => {
     try {
+      setLoading(true)
       const res = await store.mandiri.getData(`b1fa4875-e4de-4496-8913-0226f0e7b728`)
       setData(res.data?.instruction)
+      setLoading(false)
     } catch (e) {
+      setLoading(false)
       console.log(e, 'error')
     }
   }
@@ -54,9 +58,12 @@ export const LoginMandiri = observer(() => {
 
   const onFinish = async () => {
     try {
+      setLoading(true)
       const values = await form.validateFields()
       await store.mandiri.postLogin(values)
+      setLoading(false)
     } catch (e) {
+      setLoading(false)
       console.log(e, 'error post')
     }
   };
@@ -110,10 +117,30 @@ export const LoginMandiri = observer(() => {
         </Title>
       </div>
       <Form layout={"vertical"} form={form}>
-        <Form.Item name={"email"} label={"User ID"}>
-          <Input style={styles.input} placeholder={"email@example.com"} />
+        <Form.Item
+            name={"email"}
+            label={"User ID"}
+            rules={[
+                {
+                  required: true,
+                  message: "Please input your email!"
+                },
+                {
+                  type: 'email',
+                  message: "Please input correct email"
+                }
+            ]}
+        >
+          <Input type={"email"} style={styles.input} placeholder={"email@example.com"} />
         </Form.Item>
-        <Form.Item name={"password"} label={"Password"}>
+        <Form.Item
+            name={"password"}
+            label={"Password"}
+            rules={[{
+              required: true,
+              message: "Please input your password!"
+            }]}
+        >
           <Input.Password style={styles.input} />
         </Form.Item>
         <div style={styles.forgotPassword}>
