@@ -11,7 +11,7 @@ import { styles } from "./styles";
 
 export const Success = observer(() => {
     return (
-        <PageLogin isNavEnabled={false}>
+        <PageLogin linking={false}>
             <img src={blueDotsCombined} alt="Background Dots" />
 
             <Heading strong title={"KlikBCA"} />

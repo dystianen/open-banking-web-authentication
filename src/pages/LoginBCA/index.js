@@ -15,7 +15,7 @@ import { useStore } from "../../utils/useStore";
 import { DynamicSheet } from "../../component/DynamicSheet";
 import { StaticSheet } from "../../component/StaticSheet";
 
-// Font
+// FontAwesome
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faQuestionCircle } from "@fortawesome/free-regular-svg-icons";
 
@@ -27,14 +27,12 @@ import keminfo from "../../assets/images/keminfo.png";
 const { Title, Text } = Typography;
 
 export const LoginBCA = observer(() => {
-
   const store = useStore();
   const [form] = Form.useForm();
 
   const [data, setData] = useState();
   const [isLoading, setIsLoading] = useState(false);
   const [open, setOpen] = useState(false);
-  const [openForgotPassword, setOpenForgotPassword] = useState(false);
   const [indexSlide, setIndexSlide] = useState(0);
 
   const instructionLogin = data?.find(it => it?.name === 'How To Login')
@@ -60,7 +58,6 @@ export const LoginBCA = observer(() => {
 
   const onDismiss = () => {
     setOpen(false);
-    setOpenForgotPassword(false);
   }
 
   const dataHardcode = [
@@ -100,7 +97,6 @@ export const LoginBCA = observer(() => {
 
   return (
     <PageLogin>
-      {console.log("Fetch Data: ", data)}
       <Spin spinning={isLoading}>
         <div style={{ marginBottom: 30 }}>
           <div style={{ height: 70 }}>
@@ -127,17 +123,37 @@ export const LoginBCA = observer(() => {
           </Title>
         </div>
 
-        <Form
-          form={form}
-          onFinish={onFinishLoginBCA}
-          layout={"vertical"}
-        >
-          <Form.Item name={"email"} label={"User ID"}>
-            <Input style={styles.input} placeholder={"email@example.com"} />
+        <Form form={form} onFinish={onFinishLoginBCA} layout={"vertical"}>
+          <Form.Item
+            name={"email"}
+            label={"User ID"}
+            rules={[
+              {
+                required: true,
+                message: "Please input your email!"
+              },
+              {
+                type: 'email',
+                message: 'The input is not valid email!',
+              },
+            ]}
+          >
+            <Input
+              style={styles.input}
+              placeholder={"email@example.com"}
+            />
           </Form.Item>
-          <Form.Item name={"password"} label={"Password"}>
+          <Form.Item
+            name={"password"}
+            label={"Password"}
+            rules={[{
+              required: true,
+              message: "Please input your password!"
+            }]}
+          >
             <Input.Password style={styles.input} />
           </Form.Item>
+
           <div style={styles.forgotPassword}>
             <Button
               type="link"
@@ -150,6 +166,7 @@ export const LoginBCA = observer(() => {
               Forgot password ?
             </Button>
           </div>
+
           <Button
             block
             size="large"
@@ -163,47 +180,48 @@ export const LoginBCA = observer(() => {
         <SlidesLoginPage title={"BCA"} onOpenSheet={onOpenSheet} />
       </Spin>
 
-      {/* <div style={styles.bottomSheet}>
-          My awesome content here
-        </div> */}
-
       <BottomSheet
         open={open}
         onDismiss={onDismiss}
         snapPoints={({ maxHeight }) => maxHeight / 2.1}
         header={
           <Row justify="start" align="middle">
-            {
-              indexSlide === 0
-                ? <Text strong>
-                  <FontAwesomeIcon
-                    style={{ marginRight: "0.5rem" }}
-                    icon={faQuestionCircle} />
-                  Help
-                </Text>
-                : indexSlide === 1
-                  ? <Text strong>
-                    <FontAwesomeIcon
-                      style={{ marginRight: "0.5rem" }}
-                      icon={faQuestionCircle} />
-                    Secure & Safe
-                  </Text>
-                  : <Text strong>
-                    <FontAwesomeIcon
-                      style={{ marginRight: "0.5rem" }}
-                      icon={faQuestionCircle} />
-                    Forgot Password
-                  </Text>
-            }
+            {indexSlide === 0 ? (
+              <Text strong>
+                <FontAwesomeIcon
+                  style={{ marginRight: "0.5rem" }}
+                  icon={faQuestionCircle}
+                />
+                Help
+              </Text>
+            ) : indexSlide === 1 ? (
+              <Text strong>
+                <FontAwesomeIcon
+                  style={{ marginRight: "0.5rem" }}
+                  icon={faQuestionCircle}
+                />
+                Secure & Safe
+              </Text>
+            ) : (
+              <Text strong>
+                <FontAwesomeIcon
+                  style={{ marginRight: "0.5rem" }}
+                  icon={faQuestionCircle}
+                />
+                Forgot Password
+              </Text>
+            )}
           </Row>
         }
       >
-        {
-          indexSlide === 1 ? <StaticSheet data={dataHardcode} />
-            : <DynamicSheet data={indexSlide === 2 ? instructionForgot : instructionLogin} />
-        }
+        {indexSlide === 1 ? (
+          <StaticSheet data={dataHardcode} />
+        ) : (
+          <DynamicSheet
+            data={indexSlide === 2 ? instructionForgot : instructionLogin}
+          />
+        )}
       </BottomSheet>
-
     </PageLogin>
   );
 });
