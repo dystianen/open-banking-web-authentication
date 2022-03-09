@@ -10,6 +10,7 @@ import { Metrics } from "../../styles/Metric";
 import { Color } from './../../styles/Color';
 import { BottomSheet } from "react-spring-bottom-sheet";
 import { useStore } from "../../utils/useStore";
+import { useHistory } from "react-router-dom";
 
 // Components
 import { DynamicSheet } from "../../component/DynamicSheet";
@@ -28,6 +29,7 @@ const { Title, Text } = Typography;
 
 export const LoginBCA = observer(() => {
   const store = useStore();
+  const history = useHistory();
   const [form] = Form.useForm();
 
   const [data, setData] = useState();
@@ -88,6 +90,8 @@ export const LoginBCA = observer(() => {
       setIsLoading(true);
       await store.bca_login.login(body);
       setIsLoading(false);
+
+      history.push("/bca-success")
 
     } catch (e) {
       setIsLoading(false);

@@ -9,12 +9,13 @@ import { Heading } from "./components/Heading";
 import blueDotsCombined from "../../assets/images/blue-dots-combined.svg";
 import { styles } from "./styles";
 
-export const Success = observer(() => {
+export const Success = observer((props) => {
+    const { message } = props
     return (
         <PageLogin linking={false}>
             <img src={blueDotsCombined} alt="Background Dots" />
 
-            <Heading strong title={"KlikBCA"} />
+            <Heading strong title={message} />
 
             <Button size="large" block style={styles.buttonConnect}>
                 Connect another account

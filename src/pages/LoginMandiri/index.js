@@ -14,6 +14,7 @@ import { SlidesLoginPage } from "../../component/Slides/SlidesLoginPage";
 import isoLogo from "../../assets/images/iso-2.png";
 import aftechLogo from "../../assets/images/aftech.png";
 import keminfo from "../../assets/images/keminfo.png";
+import { useHistory } from "react-router-dom";
 
 import "react-spring-bottom-sheet/dist/style.css";
 import { PageLogin } from "../../component/Layouts/PageLogin";
@@ -25,6 +26,7 @@ import { StaticSheet } from "../../component/StaticSheet";
 const { Title, Text } = Typography;
 
 export const LoginMandiri = observer(() => {
+  const history = useHistory();
   const store = useStore()
   const [open, setOpen] = useState(false);
   const [data, setData] = useState([]);
@@ -62,6 +64,8 @@ export const LoginMandiri = observer(() => {
       const values = await form.validateFields()
       await store.mandiri.postLogin(values)
       setLoading(false)
+
+      history.push("/mandiri-success")
     } catch (e) {
       setLoading(false)
       console.log(e, 'error post')
@@ -118,28 +122,28 @@ export const LoginMandiri = observer(() => {
       </div>
       <Form layout={"vertical"} form={form}>
         <Form.Item
-            name={"email"}
-            label={"User ID"}
-            rules={[
-                {
-                  required: true,
-                  message: "Please input your email!"
-                },
-                {
-                  type: 'email',
-                  message: "Please input correct email"
-                }
-            ]}
+          name={"email"}
+          label={"User ID"}
+          rules={[
+            {
+              required: true,
+              message: "Please input your email!"
+            },
+            {
+              type: 'email',
+              message: "Please input correct email"
+            }
+          ]}
         >
           <Input type={"email"} style={styles.input} placeholder={"email@example.com"} />
         </Form.Item>
         <Form.Item
-            name={"password"}
-            label={"Password"}
-            rules={[{
-              required: true,
-              message: "Please input your password!"
-            }]}
+          name={"password"}
+          label={"Password"}
+          rules={[{
+            required: true,
+            message: "Please input your password!"
+          }]}
         >
           <Input.Password style={styles.input} />
         </Form.Item>

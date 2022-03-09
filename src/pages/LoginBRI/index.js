@@ -1,23 +1,25 @@
-import React, {useEffect, useState} from "react";
-import {Button, Card, Form, Image, Input, Typography, message} from "antd";
+import React, { useEffect, useState } from "react";
+import { Button, Card, Form, Image, Input, Typography, message } from "antd";
 import BRI from "../../assets/logo/BRI.png";
-import {styles} from "./Style";
-import {SlidesLoginPage} from "../../component/Slides/SlidesLoginPage";
-import {observer} from "mobx-react";
-import {BottomSheet} from "react-spring-bottom-sheet";
-import {PageLogin} from "./../../component/Layouts/PageLogin";
-import {Metrics} from "./../../styles/Metric";
-import {Color} from './../../styles/Color';
-import {useStore} from "../../utils/useStore";
-import {StaticSheet} from "../../component/StaticSheet";
-import {DynamicSheet} from "../../component/DynamicSheet";
+import { styles } from "./Style";
+import { SlidesLoginPage } from "../../component/Slides/SlidesLoginPage";
+import { observer } from "mobx-react";
+import { BottomSheet } from "react-spring-bottom-sheet";
+import { PageLogin } from "./../../component/Layouts/PageLogin";
+import { Metrics } from "./../../styles/Metric";
+import { Color } from './../../styles/Color';
+import { useStore } from "../../utils/useStore";
+import { StaticSheet } from "../../component/StaticSheet";
+import { DynamicSheet } from "../../component/DynamicSheet";
 import keminfo from "../../assets/images/keminfo.png";
 import isoLogo from "../../assets/images/iso-2.png";
 import aftechLogo from "../../assets/images/aftech.png";
+import { useHistory } from "react-router-dom";
 
-const {Title} = Typography;
+const { Title } = Typography;
 
 export const LoginBRI = observer(() => {
+    const history = useHistory();
     const store = useStore();
     const [form] = Form.useForm();
     const [open, setOpen] = useState(false);
@@ -72,8 +74,10 @@ export const LoginBRI = observer(() => {
                 password: values.password,
             }
 
-            console.log({body})
+            console.log({ body })
             // const res = await store.bri_login.login(body);
+
+            history.push("/bri-success")
         } catch (e) {
             message.error(e)
         }
@@ -81,9 +85,9 @@ export const LoginBRI = observer(() => {
 
     return (
         <PageLogin>
-            <div style={{marginBottom: 30}}>
-                <div style={{height: 70}}>
-                    <div style={{display: "flex", justifyItems: "center"}}>
+            <div style={{ marginBottom: 30 }}>
+                <div style={{ height: 70 }}>
+                    <div style={{ display: "flex", justifyItems: "center" }}>
                         <img
                             src={BRI}
                             style={{
@@ -116,16 +120,16 @@ export const LoginBRI = observer(() => {
                         message: "Please input correct email!"
                     }
                 ]}>
-                    <Input type={'email'} style={styles.input} placeholder={"email@example.com"}/>
+                    <Input type={'email'} style={styles.input} placeholder={"email@example.com"} />
                 </Form.Item>
                 <Form.Item name={"password"} label={"Password"} rules={[{
                     required: true,
                     message: "Please input your password!"
                 }]}>
-                    <Input.Password style={styles.input}/>
+                    <Input.Password style={styles.input} />
                 </Form.Item>
                 <div style={styles.forgotPassword}>
-                    <Button type="link" style={{color: "#93969B"}} onClick={() => {
+                    <Button type="link" style={{ color: "#93969B" }} onClick={() => {
                         setIndexSlide(2)
                         setOpen(true)
                     }}>
@@ -133,7 +137,7 @@ export const LoginBRI = observer(() => {
                     </Button>
                 </div>
                 <Button
-                    style={{backgroundColor: Color.secondary, color: "#FFFFFF"}}
+                    style={{ backgroundColor: Color.secondary, color: "#FFFFFF" }}
                     block
                     size="large"
                     htmlType="submit"
@@ -142,15 +146,15 @@ export const LoginBRI = observer(() => {
                 </Button>
             </Form>
 
-            <SlidesLoginPage onOpenSheet={onOpenSheet}/>
+            <SlidesLoginPage onOpenSheet={onOpenSheet} />
 
             <BottomSheet
                 open={open}
                 onDismiss={onDismiss}
-                snapPoints={({maxHeight}) => maxHeight / 2}
+                snapPoints={({ maxHeight }) => maxHeight / 2}
             >
-                {indexSlide === 1 ? <StaticSheet data={dataHardcode}/> :
-                    <DynamicSheet data={indexSlide === 2 ? instructionForgot : instructionLogin}/>}
+                {indexSlide === 1 ? <StaticSheet data={dataHardcode} /> :
+                    <DynamicSheet data={indexSlide === 2 ? instructionForgot : instructionLogin} />}
             </BottomSheet>
         </PageLogin>
     );
