@@ -19,8 +19,8 @@ import "react-spring-bottom-sheet/dist/style.css";
 import { PageLogin } from "../../component/Layouts/PageLogin";
 import { Metrics } from '../../styles/Metric';
 import { Color } from '../../styles/Color';
-import {DynamicSheet} from "./components/DynamicSheet";
-import {StaticSheet} from "./components/StaticSheet";
+import { DynamicSheet } from "../../component/DynamicSheet";
+import { StaticSheet } from "../../component/StaticSheet";
 
 const { Title, Text } = Typography;
 

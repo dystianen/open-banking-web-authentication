@@ -12,8 +12,8 @@ import { BottomSheet } from "react-spring-bottom-sheet";
 import { useStore } from "../../utils/useStore";
 
 // Components
-import { DynamicSheet } from "./components/DynamicSheet";
-import { StaticSheet } from "./components/StaticSheet";
+import { DynamicSheet } from "../../component/DynamicSheet";
+import { StaticSheet } from "../../component/StaticSheet";
 
 // Font
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
