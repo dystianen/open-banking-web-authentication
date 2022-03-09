@@ -9,6 +9,7 @@ import { LoginBCA } from "../pages/LoginBCA";
 import { Otp } from "../pages/Otp";
 import { LoginMandiri } from "../pages/LoginMandiri";
 import { BankList } from "../pages/BankList";
+import { Success } from "../pages/Success";
 
 // Test
 import { TestLogin } from "../pages/TestMobx/Login";
@@ -55,6 +56,13 @@ export const MainRoutes = (props) => {
         restricted={false}
         component={LoginBCA}
         path="/bca-login"
+        exact
+      />
+
+      <PublicRoute
+        restricted={false}
+        component={Success}
+        path="/success"
         exact
       />
 
