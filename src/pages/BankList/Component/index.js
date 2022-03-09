@@ -2,23 +2,28 @@ import React, {useState} from "react";
 import {observer} from 'mobx-react-lite';
 import {Col, Image, Row, Typography, Collapse} from 'antd';
 import {useHistory} from "react-router-dom";
-import useCollapse from 'react-collapsed';
 const { Panel } = Collapse;
 export const ListBank = observer((props) => {
-    const { getCollapseProps, getToggleProps, isExpanded } = useCollapse();
+    const [activeKey, setActiveKey] = useState(null)
 
     let history = useHistory();
 
+    function callback(key) {
+        setActiveKey(key);
+    }
+
     const data = props.data.map((it) => {
+        const active = activeKey === it.id
+
         const Header = () => (
             <Row>
                 <Col span={3}>
                     <div style={{
                         width: 70,
                         height: 56,
-                        borderRadius: isExpanded ? '10px 29px 29px 29px' : '10px 25px 25px 10px',
+                        borderRadius: active ? '10px 35px 35px 35px' : '10px 25px 25px 10px',
                         backgroundColor: '#FE6601',
-                        boxShadow: isExpanded ? '4px 4px 0px 5px rgba(254, 148, 77, 0.3)' : '15px 0px 0px 0px rgba(254, 148, 77, 0.4)',
+                        boxShadow: active ? '4px 4px 0px 5px rgba(254, 148, 77, 0.3)' : '15px 0px 0px 0px rgba(254, 148, 77, 0.4)',
                         display: 'flex',
                         justifyContent: 'center',
                         alignItems: 'center'}}
@@ -91,7 +96,7 @@ export const ListBank = observer((props) => {
 
     return (
         <>
-            <Collapse accordion>
+            <Collapse accordion onChange={callback}>
                 {data}
             </Collapse>
         </>
