@@ -20,6 +20,7 @@ export default function FooterPageLogin() {
               color: "#4B4C48",
               textTransform: "uppercase",
               letterSpacing: "3px",
+              marginBottom: 0
             }}
           >
             POWERED BY

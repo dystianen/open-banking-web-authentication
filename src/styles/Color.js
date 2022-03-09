@@ -7,6 +7,7 @@ export const Color = {
   secondaryLighter: "#0581FF",
   blueSky: "#CBDFFF",
   blueDark: "#145FD9",
+  blueNavy: "#04204D",
   elegantWhite: "#FFFFFF",
   whiteGrey: "#F6F6F6",
   lightGrey: "#D4DADE",
