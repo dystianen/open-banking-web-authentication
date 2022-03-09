@@ -1,7 +1,5 @@
-import React, { useState } from "react";
-import { Button, Card, Form, Image, Input, Typography } from "antd";
-import LogoBNI from "../../assets/logo/BNI.png";
-import Trustlink from "../../assets/logo/trustlink.png";
+import React from "react";
+import { Button, Card } from "antd";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowLeft, faXmark } from "@fortawesome/free-solid-svg-icons";
 import { FixedTopBar } from "../../component/Header/FixedTopBar";
