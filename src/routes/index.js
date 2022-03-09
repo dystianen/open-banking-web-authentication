@@ -22,7 +22,12 @@ export const MainRoutes = (props) => {
         <Redirect to={"/app/home"} />
       </Route>
 
-      <PublicRoute restricted={true} component={Login} path="/login" exact />
+      <PublicRoute
+        restricted={true}
+        component={Login}
+        path="/login"
+        exact
+      />
 
       <PublicRoute
         restricted={true}
@@ -52,14 +57,24 @@ export const MainRoutes = (props) => {
         path="/bca-login"
         exact
       />
-      <PublicRoute restricted={false} component={Otp} path="/otp" exact />
+
+      <PublicRoute
+        restricted={false}
+        component={Otp}
+        path="/otp"
+        exact
+      />
+
       <PublicRoute
         restricted={true}
         component={BankList}
         path="/bank-list"
         exact
       />
-      <PublicRoute component={App} path="/app" />
+      <PublicRoute
+        component={App}
+        path="/app"
+      />
 
       {/* Test */}
       <PublicRoute
@@ -80,6 +95,7 @@ export const MainRoutes = (props) => {
         path="/test/member/:id"
         exact
       />
+
     </Switch>
   );
 };
