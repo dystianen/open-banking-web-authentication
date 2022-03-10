@@ -6,6 +6,7 @@ import {
   Form,
   Input,
   Typography,
+    message,
 } from "antd";
 import LivinMandiri from "../../assets/images/mandiri.png";
 import { styles } from "./style";
@@ -58,18 +59,29 @@ export const LoginMandiri = observer(() => {
     setIndexSlide(index)
   };
 
-  const onFinish = async () => {
-    try {
-      setLoading(true)
-      const values = await form.validateFields()
-      await store.mandiri.postLogin(values)
-      setLoading(false)
-
-      history.push("/mandiri-success")
-    } catch (e) {
-      setLoading(false)
-      console.log(e, 'error post')
-    }
+  const onFinish = () => {
+    form.validateFields()
+      .then(async values => {
+        const data = {
+          username: values.username,
+          password: values.password,
+          customer_identifier: values.username, // Just Dummy Value
+          customer_name: values.username // Just Dummy Value
+        }
+        try {
+          setLoading(true)
+          await store.mandiri.postLogin(data)
+          setLoading(false)
+          history.push("/mandiri-success")
+        } catch (e) {
+          setLoading(false)
+          console.log(e, 'error post')
+          message.error('Something Wrong')
+        }
+      }).catch(e => {
+        console.log(e, 'error form')
+        message.error("Please Fill Form")
+      })
   };
 
   const onDismiss = () => {
@@ -122,7 +134,7 @@ export const LoginMandiri = observer(() => {
       </div>
       <Form layout={"vertical"} form={form}>
         <Form.Item
-          name={"email"}
+          name={"username"}
           label={"User ID"}
           rules={[
             {
@@ -156,10 +168,11 @@ export const LoginMandiri = observer(() => {
           </Button>
         </div>
         <Button
+          loading={loading}
           style={{ backgroundColor: Color.secondary, color: "#FFFFFF" }}
           block
           size="large"
-          onSubmit={onFinish}
+          onClick={onFinish}
         >
           Connect Account
         </Button>
