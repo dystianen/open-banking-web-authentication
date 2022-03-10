@@ -59,29 +59,24 @@ export const LoginMandiri = observer(() => {
     setIndexSlide(index)
   };
 
-  const onFinish = () => {
-    form.validateFields()
-      .then(async values => {
-        const data = {
-          username: values.username,
-          password: values.password,
-          customer_identifier: values.username, // Just Dummy Value
-          customer_name: values.username // Just Dummy Value
-        }
-        try {
-          setLoading(true)
-          await store.mandiri.postLogin(data)
-          setLoading(false)
-          history.push("/mandiri-success")
-        } catch (e) {
-          setLoading(false)
-          console.log(e, 'error post')
-          message.error('Something Wrong')
-        }
-      }).catch(e => {
-        console.log(e, 'error form')
-        message.error("Please Fill Form")
-      })
+  const onFinish = async () => {
+    const values = await form.validateFields()
+    const data = {
+      username: values.username,
+      password: values.password,
+      customer_identifier: values.username, // Just Dummy Value
+      customer_name: values.username // Just Dummy Value
+    }
+    try {
+      setLoading(true)
+      await store.mandiri.postLogin(data)
+      setLoading(false)
+      history.push("/mandiri-success")
+    } catch (e) {
+      setLoading(false)
+      console.log(e, 'error post')
+      message.error('Something Wrong')
+    }
   };
 
   const onDismiss = () => {
