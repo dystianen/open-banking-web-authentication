@@ -106,7 +106,7 @@ export const TermCondition = observer(() => {
               flexDirection: "column",
               width: "100%",
               margin: "auto",
-              paddingLeft: 30,
+              paddingLeft: 5,
               paddingTop: 55,
             }}
           >
