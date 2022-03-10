@@ -10,7 +10,7 @@ import { PageLogin } from "./../../component/Layouts/PageLogin";
 export const Otp = observer(() => {
   const [OTP, setOTP] = useState("");
   return (
-    <PageLogin>
+    <PageLogin particles_color="#107ead" particles_line="#72b7d4">
       <div style={{ color: "#4B4C48" }}>
         <div style={{ display: "flex", justifyContent: "center" }}>
           <div>
