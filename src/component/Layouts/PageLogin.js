@@ -12,7 +12,7 @@ function getWindowDimensions() {
   return width;
 }
 
-export const PageLogin = ({ children, linking = true }) => {
+export const PageLogin = ({ children, linking = true, goback = true }) => {
   let history = useHistory();
 
   const [windowDimensions, setWindowDimensions] = useState(
@@ -45,19 +45,21 @@ export const PageLogin = ({ children, linking = true }) => {
         <Card style={styles.card}>
           <div style={styles.container}>
             {linking && (
-              <div style={styles.nav}>
-                <Button
-                  type="link"
-                  icon={
-                    <FontAwesomeIcon
-                      icon={faArrowLeft}
-                      style={styles.navButton}
-                    />
-                  }
-                  onClick={() => {
-                    history.goBack();
-                  }}
-                />
+              <div style={goback ? styles.nav : styles.nav2}>
+                {goback && (
+                  <Button
+                    type="link"
+                    icon={
+                      <FontAwesomeIcon
+                        icon={faArrowLeft}
+                        style={styles.navButton}
+                      />
+                    }
+                    onClick={() => {
+                      history.goBack();
+                    }}
+                  />
+                )}
                 <Button
                   type="link"
                   icon={
