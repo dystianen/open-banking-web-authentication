@@ -1,6 +1,5 @@
-import React, { useState } from "react";
+import React from "react";
 import { observer } from "mobx-react-lite";
-import { useStore } from "../../utils/useStore";
 import { Button, Col, Row, Typography, Steps } from "antd";
 import { useHistory } from "react-router-dom";
 

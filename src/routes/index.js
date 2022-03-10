@@ -21,7 +21,7 @@ export const MainRoutes = (props) => {
     return (
         <Switch>
             <Route path="/" exact>
-                <Redirect to={"/app/home"} />
+                <Redirect to={"/term-condition"} />
             </Route>
 
             <PublicRoute restricted={true} component={Login} path="/login" exact />
