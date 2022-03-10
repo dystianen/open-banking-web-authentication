@@ -7,7 +7,7 @@ export const StaticSheet = observer((props) => {
 
     return (
         <Row justify={'center'}>
-            <Col>
+            <Col span={24}>
                 <h1 style={{textAlign: 'center'}}>Resmi dan Aman</h1>
                 <p style={{textAlign: 'center'}}>Lorem ipsum dolor sit amet, consectetur adipiscing elit Pellentesque finibus enim. Lorem ipsum dolor sit amet, consectetur adipiscing elit Pellentesque finibus enim.</p>
             </Col>
