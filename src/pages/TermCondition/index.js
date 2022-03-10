@@ -88,7 +88,8 @@ export const TermCondition = observer(() => {
                                 width: '100%',
                                 margin: "auto",
                                 paddingLeft: 30,
-                                paddingTop: 55
+                                paddingTop: 55,
+                                alignItems: 'center'
                             }}>
                                 <div style={{display: 'flex', flexDirection: 'column', alignItems: 'stretch'}}>
                                     <Steps direction="vertical" current={2}>
