@@ -80,7 +80,7 @@ export const PageLogin = ({
             )}
             <div
               style={{
-                zIndex: 20,
+                zIndex: 3,
               }}
             >
               {children}
