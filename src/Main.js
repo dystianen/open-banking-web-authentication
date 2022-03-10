@@ -4,14 +4,14 @@ import { StoreProvider } from "./utils/useStore";
 import { MainRoutes } from "./routes";
 import "./custom.less";
 // import "./Style.css";
-import ParticlesBg from "particles-bg";
+// import ParticlesBg from "particles-bg";
 
 export const Main = () => {
     return (
         <StoreProvider>
             <Router>
                 <MainRoutes />
-                <ParticlesBg color={"#FE7519"} num={20} type={"cobweb"} bg={true} />
+                {/* <ParticlesBg color={"#FE7519"} num={20} type={"cobweb"} bg={true} /> */}
             </Router>
         </StoreProvider>
     );
