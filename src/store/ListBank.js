@@ -1,4 +1,4 @@
-import { action, observable } from "mobx";
+import { makeAutoObservable } from "mobx";
 import { http } from "../utils/http";
 
 export class ListBank {
@@ -8,6 +8,7 @@ export class ListBank {
 
     constructor(context) {
         this.context = context;
+        makeAutoObservable(this)
     }
 
     async getAllBanks() {
