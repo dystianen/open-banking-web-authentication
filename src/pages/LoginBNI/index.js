@@ -1,22 +1,22 @@
-import React, { useEffect, useState } from "react";
-import { Button, Card, Form, Image, Input, Typography, message } from "antd";
+import React, {useEffect, useState} from "react";
+import {Button, Form, Input, Typography, message} from "antd";
 import BNI from "../../assets/logo/BNI.png";
-import { styles } from "./Style";
-import { SlidesLoginPage } from "../../component/Slides/SlidesLoginPage";
-import { observer } from "mobx-react";
-import { BottomSheet } from "react-spring-bottom-sheet";
-import { PageLogin } from "./../../component/Layouts/PageLogin";
-import { Metrics } from "./../../styles/Metric";
-import { Color } from './../../styles/Color';
-import { useStore } from "../../utils/useStore";
-import { DynamicSheet } from "../../component/DynamicSheet";
-import { StaticSheet } from "../../component/StaticSheet";
+import {styles} from "./Style";
+import {SlidesLoginPage} from "../../component/Slides/SlidesLoginPage";
+import {observer} from "mobx-react";
+import {BottomSheet} from "react-spring-bottom-sheet";
+import {PageLogin} from "./../../component/Layouts/PageLogin";
+import {Metrics} from "./../../styles/Metric";
+import {Color} from './../../styles/Color';
+import {useStore} from "../../utils/useStore";
+import {DynamicSheet} from "../../component/DynamicSheet";
+import {StaticSheet} from "../../component/StaticSheet";
 import keminfo from "../../assets/images/keminfo.png";
 import isoLogo from "../../assets/images/iso-2.png";
 import aftechLogo from "../../assets/images/aftech.png";
-import { useHistory } from "react-router-dom";
+import {useHistory} from "react-router-dom";
 
-const { Title } = Typography;
+const {Title} = Typography;
 
 export const LoginBNI = observer(() => {
     const history = useHistory();
@@ -74,20 +74,20 @@ export const LoginBNI = observer(() => {
                 password: values.password,
             }
 
-            console.log({ body })
-            // const res = await store.bni_login.login(body);
-
-            history.push("/bni-success")
+            await store.bni_login.login(body);
+            setIsLoading(false);
+            history.push("/bni-success");
         } catch (e) {
-            message.error(e)
+            setIsLoading(false);
+            message.error(e);
         }
     };
 
     return (
         <PageLogin>
-            <div style={{ marginBottom: 30 }}>
-                <div style={{ height: 70 }}>
-                    <div style={{ display: "flex", justifyItems: "center" }}>
+            <div style={{marginBottom: 30}}>
+                <div style={{height: 70}}>
+                    <div style={{display: "flex", justifyItems: "center"}}>
                         <img
                             src={BNI}
                             style={{
@@ -114,16 +114,16 @@ export const LoginBNI = observer(() => {
                     required: true,
                     message: "Please input your email!"
                 }]}>
-                    <Input style={styles.input} placeholder={"email@example.com"} />
+                    <Input style={styles.input} placeholder={"email@example.com"}/>
                 </Form.Item>
                 <Form.Item name={"password"} label={"Password"} rules={[{
                     required: true,
                     message: "Please input your password!"
                 }]}>
-                    <Input.Password style={styles.input} />
+                    <Input.Password style={styles.input}/>
                 </Form.Item>
                 <div style={styles.forgotPassword}>
-                    <Button type="link" style={{ color: "#93969B" }} onClick={() => {
+                    <Button type="link" style={{color: "#93969B"}} onClick={() => {
                         setIndexSlide(2)
                         setOpen(true)
                     }}>
@@ -131,7 +131,7 @@ export const LoginBNI = observer(() => {
                     </Button>
                 </div>
                 <Button
-                    style={{ backgroundColor: Color.secondary, color: "#FFFFFF" }}
+                    style={{backgroundColor: Color.secondary, color: "#FFFFFF"}}
                     block
                     size="large"
                     htmlType="submit"
@@ -140,15 +140,15 @@ export const LoginBNI = observer(() => {
                 </Button>
             </Form>
 
-            <SlidesLoginPage onOpenSheet={onOpenSheet} />
+            <SlidesLoginPage onOpenSheet={onOpenSheet}/>
 
             <BottomSheet
                 open={open}
                 onDismiss={onDismiss}
-                snapPoints={({ maxHeight }) => maxHeight / 2}
+                snapPoints={({maxHeight}) => maxHeight / 2}
             >
-                {indexSlide === 1 ? <StaticSheet data={dataHardcode} /> :
-                    <DynamicSheet data={indexSlide === 2 ? instructionForgot : instructionLogin} />}
+                {indexSlide === 1 ? <StaticSheet data={dataHardcode}/> :
+                    <DynamicSheet data={indexSlide === 2 ? instructionForgot : instructionLogin}/>}
             </BottomSheet>
         </PageLogin>
     );

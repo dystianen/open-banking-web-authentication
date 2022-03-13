@@ -7,7 +7,7 @@ export class BNILogin {
     }
 
     async login(data) {
-        const res = await http.post('login/bni').send(data);
+        const res = await http.post('/middleware/authentication/bni').send(data);
         return res;
     }
 
