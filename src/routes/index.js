@@ -16,6 +16,7 @@ import { TestLogin } from "../pages/TestMobx/Login";
 import { TestMember } from "../pages/TestMobx/Member";
 import { TestMemberDetail } from "../pages/TestMobx/MemberDetail";
 import { LoginBRI } from "../pages/LoginBRI";
+import {ChooseWay} from "../pages/ChooseWay";
 
 export const MainRoutes = (props) => {
     return (
@@ -30,6 +31,13 @@ export const MainRoutes = (props) => {
                 restricted={true}
                 component={TermCondition}
                 path="/term-condition"
+                exact
+            />
+
+            <PublicRoute
+                restricted={true}
+                component={ChooseWay}
+                path="/choose-way"
                 exact
             />
 

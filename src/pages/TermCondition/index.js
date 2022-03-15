@@ -7,7 +7,7 @@ import verified from "../../assets/images/verified.svg";
 import lock from "../../assets/images/lock.svg";
 import eyeSlash from "../../assets/images/eye-slash.svg";
 import pdf from "../../assets/Test.pdf";
-import { PageLogin } from "./../../component/Layouts/PageLogin";
+import { PageLogin } from "../../component/Layouts/PageLogin";
 
 const { Step } = Steps;
 
