@@ -10,23 +10,6 @@ import { PageLogin } from "../../component/Layouts/PageLogin";
 export const ChooseWay = observer(() => {
     let history = useHistory();
 
-    const renderIconSteps = (icon) => (
-        <div style={{ display: "flex", justifyContent: "center" }}>
-            <div
-                style={{
-                    display: "flex",
-                    height: 30,
-                    width: 30,
-                    backgroundColor: "#FE6601",
-                    borderRadius: "50%",
-                    boxShadow: "0 0 0 5px #FE660133",
-                }}
-            >
-                <img src={icon} style={{ margin: "auto" }} alt="logo" />
-            </div>
-        </div>
-    );
-
     return (
         <PageLogin>
             <Row justify={"center"}>
