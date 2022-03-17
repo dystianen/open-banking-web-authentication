@@ -46,60 +46,70 @@ export const BankList = observer(() => {
 
   return (
     <PageLogin>
-      <div>
-        <div style={{ width: "100vw", display: "flex" }}>
-          <Row>
-            <Col>
-              <div
-                style={{
-                  display: "flex",
-                  justifyContent: "flex-start",
-                  marginTop: "5vh",
-                  flexDirection: "column",
-                  alignItems: "center",
-                }}
-              >
+      <div
+        style={{
+          justifyContent: "space-between",
+          display: "flex",
+          flexDirection: "column",
+          flex: 1,
+          minHeight: "75vh",
+        }}
+      >
+        <div>
+          <div style={{ width: "100vw", display: "flex" }}>
+            <Row>
+              <Col>
                 <div
                   style={{
                     display: "flex",
+                    justifyContent: "flex-start",
+                    marginTop: "5vh",
                     flexDirection: "column",
-                    alignItems: "stretch",
+                    alignItems: "center",
                   }}
                 >
-                  <Typography.Paragraph
+                  <div
                     style={{
-                      margin: 0,
-                      padding: 0,
-                      fontSize: 20,
-                      marginLeft: 5,
-                      fontWeight: 600,
-                      color: "#413d3e",
+                      display: "flex",
+                      flexDirection: "column",
+                      alignItems: "stretch",
                     }}
                   >
-                    <div style={{ display: "flex" }}>
-                      <p style={{ color: "#FE6601" }}>Connect&nbsp;</p>Your
-                      Institution.
-                    </div>
-                  </Typography.Paragraph>
-                  <Typography.Paragraph
-                    style={{
-                      margin: 0,
-                      padding: 0,
-                      fontSize: 12,
-                      marginLeft: 5,
-                      color: "#121014",
-                      width: 290,
-                    }}
-                  >
-                    Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed
-                    diam nonumy eirmod.
-                  </Typography.Paragraph>
+                    <Typography.Paragraph
+                      style={{
+                        margin: 0,
+                        padding: 0,
+                        fontSize: 20,
+                        marginLeft: 5,
+                        fontWeight: 600,
+                        color: "#413d3e",
+                      }}
+                    >
+                      <div style={{ display: "flex" }}>
+                        <p style={{ color: "#FE6601" }}>Connect&nbsp;</p>Your
+                        Institution.
+                      </div>
+                    </Typography.Paragraph>
+                    <Typography.Paragraph
+                      style={{
+                        margin: 0,
+                        padding: 0,
+                        fontSize: 12,
+                        marginLeft: 5,
+                        color: "#121014",
+                        width: 290,
+                      }}
+                    >
+                      Lorem ipsum dolor sit amet, consetetur sadipscing elitr,
+                      sed diam nonumy eirmod.
+                    </Typography.Paragraph>
+                  </div>
                 </div>
-              </div>
-            </Col>
-          </Row>
+              </Col>
+            </Row>
+          </div>
+          <ListBank data={data} />
         </div>
-        <ListBank data={data} />
       </div>
     </PageLogin>
   );

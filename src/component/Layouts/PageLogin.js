@@ -81,6 +81,11 @@ export const PageLogin = ({
             <div
               style={{
                 zIndex: 3,
+                justifyContent: "space-between",
+                display: "flex",
+                flexDirection: "column",
+                flex: 1,
+                minHeight: "75vh",
               }}
             >
               {children}

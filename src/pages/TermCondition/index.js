@@ -37,184 +37,194 @@ export const TermCondition = observer(() => {
 
   return (
     <PageLogin goback={false}>
-      <Row justify={"center"}>
-        <Col span={24}>
-          <div
-            style={{
-              display: "flex",
-              justifyContent: "flex-start",
-              marginTop: "10px",
-              flexDirection: "column",
-              alignItems: "center",
-            }}
-          >
+      <div
+        style={{
+          justifyContent: "space-between",
+          display: "flex",
+          flexDirection: "column",
+          flex: 1,
+          minHeight: "75vh",
+        }}
+      >
+        <Row justify={"center"}>
+          <Col span={24}>
             <div
               style={{
                 display: "flex",
+                justifyContent: "flex-start",
+                marginTop: "10px",
                 flexDirection: "column",
-                alignItems: "stretch",
-                height: 37,
+                alignItems: "center",
               }}
             >
-              <Typography.Paragraph
+              <div
                 style={{
-                  fontSize: 30,
-                  fontWeight: 700,
-                  color: "#04204D",
-                }}
-              >
-                Trust
-                <span
-                  style={{
-                    color: "#FE7519",
-                    fontSize: 30,
-                    fontWeight: 500,
-                  }}
-                >
-                  Connect
-                </span>
-              </Typography.Paragraph>
-            </div>
-
-            <div
-              style={{
-                display: "flex",
-                flexDirection: "column",
-                alignItems: "stretch",
-                marginTop: 33,
-              }}
-            >
-              <Typography.Paragraph
-                style={{
-                  fontSize: 16,
-                  fontWeight: 500,
-                  color: "#121014",
-                  textAlign: "center",
-                }}
-              >
-                Connect Your Financial Account <br />
-                to Your App Easy as 1-2-3
-              </Typography.Paragraph>
-            </div>
-          </div>
-        </Col>
-        <Col span={24}>
-          <div
-            style={{
-              display: "flex",
-              justifyContent: "flex-start",
-              flexDirection: "column",
-              width: "100%",
-              margin: "auto",
-              paddingLeft: 5,
-              paddingTop: 55,
-            }}
-          >
-            <div
-              style={{
-                display: "flex",
-                flexDirection: "column",
-                alignItems: "stretch",
-              }}
-            >
-              <Steps direction="vertical" current={2}>
-                <Step
-                  title="Lorem ipsum dolor sit amet, consectetur adipiscing elit Pellentesque finibus enim."
-                  icon={renderIconSteps(verified)}
-                />
-                <Step
-                  title="Lorem ipsum dolor sit amet, consectetur adipiscing elit Pellentesque finibus enim"
-                  icon={renderIconSteps(eyeSlash)}
-                />
-                <Step
-                  title="Lorem ipsum dolor sit amet, consectetur adipiscing elit Pellentesque finibus enim"
-                  icon={renderIconSteps(lock)}
-                />
-              </Steps>
-            </div>
-          </div>
-        </Col>
-
-        <Col span={24}>
-          <div
-            style={{
-              display: "flex",
-              justifyContent: "flex-start",
-              flexDirection: "column",
-              width: "100%",
-              margin: "auto",
-              paddingTop: 78,
-            }}
-          >
-            <div
-              style={{
-                display: "flex",
-                flexDirection: "column",
-                alignItems: "stretch",
-              }}
-            >
-              <Typography.Paragraph
-                style={{
-                  fontSize: 12,
-                  fontWeight: 400,
-                  color: "#161D24",
-                  textAlign: "center",
-                }}
-              >
-                By clicking "Next", you are agree to the <br />{" "}
-                <span
-                  style={{
-                    fontSize: 12,
-                    fontWeight: 500,
-                    color: "#FE6601",
-                  }}
-                  onClick={onClickPdf}
-                >
-                  terms and condition
-                </span>{" "}
-                &{" "}
-                <span
-                  style={{
-                    fontSize: 12,
-                    fontWeight: 500,
-                    color: "#FE6601",
-                  }}
-                  onClick={onClickPdf}
-                >
-                  privacy policy
-                </span>
-              </Typography.Paragraph>
-
-              <Button
-                onClick={() => {
-                  history.push("bank-list");
-                }}
-                style={{
-                  marginTop: 18,
-                  width: "350px",
-                  height: "56px",
-                  alignSelf: "center",
-                  borderRadius: 9,
-                  backgroundColor: "#FE6601",
-                  boxShadow: "0px 8px 12px #FE660133",
+                  display: "flex",
+                  flexDirection: "column",
+                  alignItems: "stretch",
+                  height: 37,
                 }}
               >
                 <Typography.Paragraph
                   style={{
-                    fontSize: 20,
+                    fontSize: 30,
                     fontWeight: 700,
-                    color: "#FAFAFA",
-                    textAlign: "center",
-                    margin: "auto",
+                    color: "#04204D",
                   }}
                 >
-                  Next
+                  Trust
+                  <span
+                    style={{
+                      color: "#FE7519",
+                      fontSize: 30,
+                      fontWeight: 500,
+                    }}
+                  >
+                    Connect
+                  </span>
                 </Typography.Paragraph>
-              </Button>
+              </div>
+
+              <div
+                style={{
+                  display: "flex",
+                  flexDirection: "column",
+                  alignItems: "stretch",
+                  marginTop: 33,
+                }}
+              >
+                <Typography.Paragraph
+                  style={{
+                    fontSize: 16,
+                    fontWeight: 500,
+                    color: "#121014",
+                    textAlign: "center",
+                  }}
+                >
+                  Connect Your Financial Account <br />
+                  to Your App Easy as 1-2-3
+                </Typography.Paragraph>
+              </div>
             </div>
-          </div>
-        </Col>
-      </Row>
+          </Col>
+          <Col span={24}>
+            <div
+              style={{
+                display: "flex",
+                justifyContent: "flex-start",
+                flexDirection: "column",
+                width: "100%",
+                margin: "auto",
+                paddingLeft: 5,
+                paddingTop: 55,
+              }}
+            >
+              <div
+                style={{
+                  display: "flex",
+                  flexDirection: "column",
+                  alignItems: "stretch",
+                }}
+              >
+                <Steps direction="vertical" current={2}>
+                  <Step
+                    title="Lorem ipsum dolor sit amet, consectetur adipiscing elit Pellentesque finibus enim."
+                    icon={renderIconSteps(verified)}
+                  />
+                  <Step
+                    title="Lorem ipsum dolor sit amet, consectetur adipiscing elit Pellentesque finibus enim"
+                    icon={renderIconSteps(eyeSlash)}
+                  />
+                  <Step
+                    title="Lorem ipsum dolor sit amet, consectetur adipiscing elit Pellentesque finibus enim"
+                    icon={renderIconSteps(lock)}
+                  />
+                </Steps>
+              </div>
+            </div>
+          </Col>
+
+          <Col span={24}>
+            <div
+              style={{
+                display: "flex",
+                justifyContent: "flex-start",
+                flexDirection: "column",
+                width: "100%",
+                margin: "auto",
+                paddingTop: 78,
+              }}
+            >
+              <div
+                style={{
+                  display: "flex",
+                  flexDirection: "column",
+                  alignItems: "stretch",
+                }}
+              >
+                <Typography.Paragraph
+                  style={{
+                    fontSize: 12,
+                    fontWeight: 400,
+                    color: "#161D24",
+                    textAlign: "center",
+                  }}
+                >
+                  By clicking "Next", you are agree to the <br />{" "}
+                  <span
+                    style={{
+                      fontSize: 12,
+                      fontWeight: 500,
+                      color: "#FE6601",
+                    }}
+                    onClick={onClickPdf}
+                  >
+                    terms and condition
+                  </span>{" "}
+                  &{" "}
+                  <span
+                    style={{
+                      fontSize: 12,
+                      fontWeight: 500,
+                      color: "#FE6601",
+                    }}
+                    onClick={onClickPdf}
+                  >
+                    privacy policy
+                  </span>
+                </Typography.Paragraph>
+
+                <Button
+                  onClick={() => {
+                    history.push("bank-list");
+                  }}
+                  style={{
+                    marginTop: 18,
+                    width: "350px",
+                    height: "56px",
+                    alignSelf: "center",
+                    borderRadius: 9,
+                    backgroundColor: "#FE6601",
+                    boxShadow: "0px 8px 12px #FE660133",
+                  }}
+                >
+                  <Typography.Paragraph
+                    style={{
+                      fontSize: 20,
+                      fontWeight: 700,
+                      color: "#FAFAFA",
+                      textAlign: "center",
+                      margin: "auto",
+                    }}
+                  >
+                    Next
+                  </Typography.Paragraph>
+                </Button>
+              </div>
+            </div>
+          </Col>
+        </Row>
+      </div>
     </PageLogin>
   );
 });

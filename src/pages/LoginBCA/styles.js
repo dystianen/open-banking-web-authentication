@@ -1,6 +1,7 @@
 export const styles = {
   input: {
-    height: "45px",
+    height: "50px",
+    backgroundColor: "#F6F6F6",
   },
   forgotPassword: {
     display: "flex",
@@ -9,7 +10,4 @@ export const styles = {
     marginBottom: "10px",
     marginTop: "-15px",
   },
-  bottomSheet: {
-    padding: "20px"
-  }
 };

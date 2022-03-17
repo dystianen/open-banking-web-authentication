@@ -7,7 +7,7 @@ import { styles } from "./styles";
 import { SlidesLoginPage } from "../../component/Slides/SlidesLoginPage";
 import { PageLogin } from "./../../component/Layouts/PageLogin";
 import { Metrics } from "../../styles/Metric";
-import { Color } from './../../styles/Color';
+import { Color } from "./../../styles/Color";
 import { BottomSheet } from "react-spring-bottom-sheet";
 import { useStore } from "../../utils/useStore";
 import { useHistory } from "react-router-dom";
@@ -37,8 +37,8 @@ export const LoginBCA = observer(() => {
   const [open, setOpen] = useState(false);
   const [indexSlide, setIndexSlide] = useState(0);
 
-  const instructionLogin = data?.find(it => it?.name === 'How To Login')
-  const instructionForgot = data?.find(it => it?.name === 'Forgot Password')
+  const instructionLogin = data?.find((it) => it?.name === "How To Login");
+  const instructionForgot = data?.find((it) => it?.name === "Forgot Password");
 
   useEffect(() => {
     fetchData();
@@ -46,7 +46,9 @@ export const LoginBCA = observer(() => {
 
   async function fetchData() {
     try {
-      const res = await store.bca_login.institution("b1fa4875-e4de-4496-8913-0226f0e7b728");
+      const res = await store.bca_login.institution(
+        "b1fa4875-e4de-4496-8913-0226f0e7b728"
+      );
       setData(res.body?.data?.instruction);
     } catch (error) {
       console.log("Err: ", error);
@@ -55,177 +57,198 @@ export const LoginBCA = observer(() => {
 
   const onOpenSheet = (value, index) => {
     setOpen(value);
-    setIndexSlide(index)
+    setIndexSlide(index);
   };
 
   const onDismiss = () => {
     setOpen(false);
-  }
+  };
 
   const dataHardcode = [
     {
       id: 1,
       image: keminfo,
-      description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit Pellentesque finibus enim.'
+      description:
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit Pellentesque finibus enim.",
     },
     {
       id: 2,
       image: isoLogo,
-      description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit Pellentesque finibus enim.'
+      description:
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit Pellentesque finibus enim.",
     },
     {
       id: 3,
       image: aftechLogo,
-      description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit Pellentesque finibus enim.'
+      description:
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit Pellentesque finibus enim.",
     },
-  ]
+  ];
 
   async function onFinishLoginBCA(values) {
     try {
       const body = {
         email: values.email,
-        password: values.password
+        password: values.password,
       };
 
       setIsLoading(true);
       await store.bca_login.login(body);
       setIsLoading(false);
 
-      history.push("/bca-success")
-
+      history.push("/bca-success");
     } catch (e) {
       setIsLoading(false);
-      throw e
+      throw e;
     }
   }
 
   return (
     <PageLogin>
-      <Spin spinning={isLoading}>
-        <div style={{ marginBottom: 30 }}>
-          <div style={{ height: 70 }}>
-            <div style={{ display: "flex", justifyItems: "center" }}>
-              <img
-                src={BCA}
+      <div>
+        <Spin spinning={isLoading}>
+          <div style={{ marginBottom: 30 }}>
+            <div style={{ height: 70 }}>
+              <div
                 style={{
-                  height: 80,
-                  width: "auto",
-                  marginLeft: "auto",
-                  marginRight: "auto",
+                  display: "flex",
+                  justifyItems: "center",
+                  height: 110,
                 }}
-              />
+              >
+                <img
+                  src={BCA}
+                  style={{
+                    height: 100,
+                    width: "auto",
+                    marginLeft: "auto",
+                    marginRight: "auto",
+                    display: "inline-block",
+                    alignSelf: "flex-end",
+                    marginBottom: 20,
+                  }}
+                  alt="BNI"
+                />
+              </div>
             </div>
-          </div>
-          <Title
-            style={{
-              fontSize: 18,
-              fontWeight: Metrics.fontWeight,
-              textAlign: "center",
-            }}
-          >
-            Insert your credentials to start.
-          </Title>
-        </div>
-
-        <Form form={form} onFinish={onFinishLoginBCA} layout={"vertical"}>
-          <Form.Item
-            name={"email"}
-            label={"User ID"}
-            rules={[
-              {
-                required: true,
-                message: "Please input your email!"
-              },
-              {
-                type: 'email',
-                message: 'The input is not valid email!',
-              },
-            ]}
-          >
-            <Input
-              style={styles.input}
-              placeholder={"email@example.com"}
-            />
-          </Form.Item>
-          <Form.Item
-            name={"password"}
-            label={"Password"}
-            rules={[{
-              required: true,
-              message: "Please input your password!"
-            }]}
-          >
-            <Input.Password style={styles.input} />
-          </Form.Item>
-
-          <div style={styles.forgotPassword}>
-            <Button
-              type="link"
-              style={{ color: "#93969B" }}
-              onClick={() => {
-                setOpen(true);
-                setIndexSlide(2);
+            <Title
+              style={{
+                fontSize: 18,
+                fontWeight: Metrics.fontWeight,
+                textAlign: "center",
+                color: "#4B4C48",
               }}
             >
-              Forgot password ?
-            </Button>
+              Insert your credentials to start.
+            </Title>
           </div>
 
-          <Button
-            block
-            size="large"
-            htmlType="submit"
-            style={{ backgroundColor: Color.secondary, color: "#FFFFFF" }}
-          >
-            Connect Account
-          </Button>
-        </Form>
+          <Form form={form} onFinish={onFinishLoginBCA} layout={"vertical"}>
+            <Form.Item
+              name={"email"}
+              label={"User ID"}
+              rules={[
+                {
+                  required: true,
+                  message: "Please input your email!",
+                },
+                {
+                  type: "email",
+                  message: "The input is not valid email!",
+                },
+              ]}
+            >
+              <Input style={styles.input} placeholder={"email@example.com"} />
+            </Form.Item>
+            <Form.Item
+              name={"password"}
+              label={"Password"}
+              rules={[
+                {
+                  required: true,
+                  message: "Please input your password!",
+                },
+              ]}
+            >
+              <Input.Password style={styles.input} />
+            </Form.Item>
 
+            <div style={styles.forgotPassword}>
+              <Button
+                type="link"
+                style={{ color: "#93969B" }}
+                onClick={() => {
+                  setOpen(true);
+                  setIndexSlide(2);
+                }}
+              >
+                Forgot password ?
+              </Button>
+            </div>
+
+            <Button
+              block
+              size="large"
+              htmlType="submit"
+              style={{
+                backgroundColor: Color.secondary,
+                color: "#FFFFFF",
+                padding: "1.5rem 1rem",
+                display: "flex",
+                justifyContent: "center",
+                alignItems: "center",
+              }}
+            >
+              Connect Account
+            </Button>
+          </Form>
+        </Spin>
+      </div>
+      <div>
         <SlidesLoginPage title={"BCA"} onOpenSheet={onOpenSheet} />
-      </Spin>
-
-      <BottomSheet
-        open={open}
-        onDismiss={onDismiss}
-        snapPoints={({ maxHeight }) => maxHeight / 2.1}
-        header={
-          <Row justify="start" align="middle">
-            {indexSlide === 0 ? (
-              <Text strong>
-                <FontAwesomeIcon
-                  style={{ marginRight: "0.5rem" }}
-                  icon={faQuestionCircle}
-                />
-                Help
-              </Text>
-            ) : indexSlide === 1 ? (
-              <Text strong>
-                <FontAwesomeIcon
-                  style={{ marginRight: "0.5rem" }}
-                  icon={faQuestionCircle}
-                />
-                Secure & Safe
-              </Text>
-            ) : (
-              <Text strong>
-                <FontAwesomeIcon
-                  style={{ marginRight: "0.5rem" }}
-                  icon={faQuestionCircle}
-                />
-                Forgot Password
-              </Text>
-            )}
-          </Row>
-        }
-      >
-        {indexSlide === 1 ? (
-          <StaticSheet data={dataHardcode} />
-        ) : (
-          <DynamicSheet
-            data={indexSlide === 2 ? instructionForgot : instructionLogin}
-          />
-        )}
-      </BottomSheet>
+        <BottomSheet
+          open={open}
+          onDismiss={onDismiss}
+          snapPoints={({ maxHeight }) => maxHeight / 2.1}
+          header={
+            <Row justify="start" align="middle">
+              {indexSlide === 0 ? (
+                <Text strong>
+                  <FontAwesomeIcon
+                    style={{ marginRight: "0.5rem" }}
+                    icon={faQuestionCircle}
+                  />
+                  Help
+                </Text>
+              ) : indexSlide === 1 ? (
+                <Text strong>
+                  <FontAwesomeIcon
+                    style={{ marginRight: "0.5rem" }}
+                    icon={faQuestionCircle}
+                  />
+                  Secure & Safe
+                </Text>
+              ) : (
+                <Text strong>
+                  <FontAwesomeIcon
+                    style={{ marginRight: "0.5rem" }}
+                    icon={faQuestionCircle}
+                  />
+                  Forgot Password
+                </Text>
+              )}
+            </Row>
+          }
+        >
+          {indexSlide === 1 ? (
+            <StaticSheet data={dataHardcode} />
+          ) : (
+            <DynamicSheet
+              data={indexSlide === 2 ? instructionForgot : instructionLogin}
+            />
+          )}
+        </BottomSheet>
+      </div>
     </PageLogin>
   );
 });
