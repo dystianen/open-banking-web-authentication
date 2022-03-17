@@ -39,7 +39,7 @@ export const SlidesLoginPage = (props) => {
   return (
     <>
       <div style={{ marginTop: 30, marginBottom: -18, color: "#71757C" }}>
-        <p style={{ marginLeft: 10 }}>Need a guide?</p>
+        <p style={{ marginLeft: 10, fontSize: "17px", fontWeight: 500 }}>Need a guide?</p>
       </div>
       <div>
         <Slide {...propertiesSlide}>

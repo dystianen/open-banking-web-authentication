@@ -24,8 +24,8 @@ import { faQuestionCircle } from "@fortawesome/free-regular-svg-icons";
 import isoLogo from "../../assets/images/iso-2.png";
 import aftechLogo from "../../assets/images/aftech.png";
 import keminfo from "../../assets/images/keminfo.png";
-import { EyeTwoTone } from '@ant-design/icons';
-import { EyeInvisibleOutlined } from '@ant-design/icons';
+import { EyeTwoTone } from "@ant-design/icons";
+import { EyeInvisibleOutlined } from "@ant-design/icons";
 
 const { Title, Text } = Typography;
 
@@ -109,7 +109,7 @@ export const LoginBCA = observer(() => {
     <PageLogin>
       <div>
         <Spin spinning={isLoading}>
-          <div style={{ marginBottom: 30 }}>
+          <div style={{ marginBottom: 30, marginTop: 40 }}>
             <div style={{ height: 70 }}>
               <div
                 style={{
@@ -121,7 +121,7 @@ export const LoginBCA = observer(() => {
                 <img
                   src={BCA}
                   style={{
-                    height: 100,
+                    height: 120,
                     width: "auto",
                     marginLeft: "auto",
                     marginRight: "auto",
@@ -135,7 +135,9 @@ export const LoginBCA = observer(() => {
             </div>
             <Title
               style={{
-                fontSize: 18,
+                marginTop: 12,
+                letterSpacing: "0.2px",
+                fontSize: 20,
                 fontWeight: Metrics.fontWeight,
                 textAlign: "center",
                 color: "#4B4C48",
@@ -148,7 +150,11 @@ export const LoginBCA = observer(() => {
           <Form form={form} onFinish={onFinishLoginBCA} layout={"vertical"}>
             <Form.Item
               name={"email"}
-              label={"User ID"}
+              label={
+                <label style={{ color: "#161D24", fontSize: "12pt" }}>
+                  User ID
+                </label>
+              }
               rules={[
                 {
                   required: true,
@@ -164,7 +170,11 @@ export const LoginBCA = observer(() => {
             </Form.Item>
             <Form.Item
               name={"password"}
-              label={"Password"}
+              label={
+                <label style={{ color: "#161D24", fontSize: "12pt" }}>
+                  Password
+                </label>
+              }
               rules={[
                 {
                   required: true,

@@ -97,7 +97,7 @@ export const LoginBNI = observer(() => {
   return (
     <PageLogin>
       <div>
-        <div style={{ marginBottom: 30 }}>
+        <div style={{ marginBottom: 30, marginTop: 40 }}>
           <div style={{ height: 70 }}>
             <div
               style={{
@@ -109,7 +109,7 @@ export const LoginBNI = observer(() => {
               <img
                 src={BNI}
                 style={{
-                  height: 40,
+                  height: 60,
                   width: "auto",
                   marginLeft: "auto",
                   marginRight: "auto",
@@ -123,7 +123,9 @@ export const LoginBNI = observer(() => {
           </div>
           <Title
             style={{
-              fontSize: 18,
+              marginTop: 12,
+              letterSpacing: "0.2px",
+              fontSize: 20,
               fontWeight: Metrics.fontWeight,
               textAlign: "center",
               color: "#4B4C48",
@@ -135,7 +137,11 @@ export const LoginBNI = observer(() => {
         <Form layout={"vertical"} form={form} onFinish={onFinish}>
           <Form.Item
             name={"email"}
-            label={"User ID"}
+            label={
+              <label style={{ color: "#161D24", fontSize: "12pt" }}>
+                User ID
+              </label>
+            }
             rules={[
               {
                 required: true,
@@ -147,7 +153,11 @@ export const LoginBNI = observer(() => {
           </Form.Item>
           <Form.Item
             name={"password"}
-            label={"Password"}
+            label={
+              <label style={{ color: "#161D24", fontSize: "12pt" }}>
+                Password
+              </label>
+            }
             rules={[
               {
                 required: true,

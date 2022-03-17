@@ -104,7 +104,7 @@ export const LoginMandiri = observer(() => {
   return (
     <PageLogin>
       <div>
-        <div style={{ marginBottom: 30 }}>
+        <div style={{ marginBottom: 30, marginTop: 40 }}>
           <div style={{ height: 70 }}>
             <div
               style={{
@@ -116,7 +116,7 @@ export const LoginMandiri = observer(() => {
               <img
                 src={LivinMandiri}
                 style={{
-                  height: 60,
+                  height: 80,
                   width: "auto",
                   marginLeft: "auto",
                   marginRight: "auto",
@@ -130,7 +130,9 @@ export const LoginMandiri = observer(() => {
           </div>
           <Title
             style={{
-              fontSize: 18,
+              marginTop: 12,
+              letterSpacing: "0.2px",
+              fontSize: 20,
               fontWeight: Metrics.fontWeight,
               textAlign: "center",
               color: "#4B4C48",
@@ -143,7 +145,11 @@ export const LoginMandiri = observer(() => {
           <Form.Item
             name={"username"}
             style={{ color: "#4B4C48" }}
-            label={"User ID"}
+            label={
+              <label style={{ color: "#161D24", fontSize: "12pt" }}>
+                User ID
+              </label>
+            }
             rules={[
               {
                 required: true,
@@ -163,7 +169,11 @@ export const LoginMandiri = observer(() => {
           </Form.Item>
           <Form.Item
             name={"password"}
-            label={"Password"}
+            label={
+              <label style={{ color: "#161D24", fontSize: "12pt" }}>
+                Password
+              </label>
+            }
             rules={[
               {
                 required: true,
@@ -177,13 +187,13 @@ export const LoginMandiri = observer(() => {
                 visible ? (
                   <EyeTwoTone
                     style={{
-                      color:  Color.secondary,
+                      color: Color.secondary,
                     }}
                   />
                 ) : (
                   <EyeInvisibleOutlined
                     style={{
-                      color:  Color.secondary,
+                      color: Color.secondary,
                     }}
                   />
                 )

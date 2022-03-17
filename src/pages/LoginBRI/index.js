@@ -15,8 +15,8 @@ import keminfo from "../../assets/images/keminfo.png";
 import isoLogo from "../../assets/images/iso-2.png";
 import aftechLogo from "../../assets/images/aftech.png";
 import { useHistory } from "react-router-dom";
-import { EyeTwoTone } from '@ant-design/icons';
-import { EyeInvisibleOutlined } from '@ant-design/icons';
+import { EyeTwoTone } from "@ant-design/icons";
+import { EyeInvisibleOutlined } from "@ant-design/icons";
 
 const { Title } = Typography;
 
@@ -97,13 +97,13 @@ export const LoginBRI = observer(() => {
   return (
     <PageLogin>
       <div>
-        <div style={{ marginBottom: 30 }}>
+        <div style={{ marginBottom: 30, marginTop: 40 }}>
           <div style={{ height: 70 }}>
             <div style={{ display: "flex", justifyItems: "center" }}>
               <img
                 src={BRI}
                 style={{
-                  height: 60,
+                  height: 80,
                   width: "auto",
                   marginLeft: "auto",
                   marginRight: "auto",
@@ -114,9 +114,12 @@ export const LoginBRI = observer(() => {
           </div>
           <Title
             style={{
-              fontSize: 18,
+              marginTop: 12,
+              letterSpacing: "0.2px",
+              fontSize: 20,
               fontWeight: Metrics.fontWeight,
               textAlign: "center",
+              color: "#4B4C48",
             }}
           >
             Insert your credentials to start.
@@ -125,7 +128,11 @@ export const LoginBRI = observer(() => {
         <Form layout={"vertical"} form={form} onFinish={onFinish}>
           <Form.Item
             name={"email"}
-            label={"User ID"}
+            label={
+              <label style={{ color: "#161D24", fontSize: "12pt" }}>
+                User ID
+              </label>
+            }
             rules={[
               {
                 required: true,
@@ -145,7 +152,11 @@ export const LoginBRI = observer(() => {
           </Form.Item>
           <Form.Item
             name={"password"}
-            label={"Password"}
+            label={
+              <label style={{ color: "#161D24", fontSize: "12pt" }}>
+                Password
+              </label>
+            }
             rules={[
               {
                 required: true,
