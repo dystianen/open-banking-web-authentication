@@ -44,7 +44,11 @@ export const SlidesLoginPage = (props) => {
       <div>
         <Slide {...propertiesSlide}>
           {dataSlide.map((el, index) => (
-            <div key={index} style={{ padding: 5, paddingBottom: 10 }} onClick={() => onOpenSheet(true, index)}>
+            <div
+              key={index}
+              style={{ padding: 5, paddingBottom: 10 }}
+              onClick={() => onOpenSheet(true, index)}
+            >
               <Row
                 style={{
                   backgroundColor: "white",
@@ -68,7 +72,14 @@ export const SlidesLoginPage = (props) => {
                     style={{ width: 20 }}
                   />
                 </Col>
-                <Col span={19} style={{ color: "#71757C", fontSize: "10pt", paddingLeft: 10 }}>
+                <Col
+                  span={19}
+                  style={{
+                    color: "#71757C",
+                    fontSize: "12pt",
+                    paddingLeft: 10,
+                  }}
+                >
                   {el?.text}
                 </Col>
               </Row>

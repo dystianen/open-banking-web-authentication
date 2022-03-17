@@ -1,7 +1,8 @@
 export const styles = {
   input: {
     height: "50px",
-    backgroundColor: "#F6F6F6",
+    backgroundColor: "#fff",
+    fontSize: "17px",
   },
   forgotPassword: {
     display: "flex",

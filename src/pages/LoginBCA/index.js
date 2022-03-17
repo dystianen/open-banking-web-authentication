@@ -24,6 +24,8 @@ import { faQuestionCircle } from "@fortawesome/free-regular-svg-icons";
 import isoLogo from "../../assets/images/iso-2.png";
 import aftechLogo from "../../assets/images/aftech.png";
 import keminfo from "../../assets/images/keminfo.png";
+import { EyeTwoTone } from '@ant-design/icons';
+import { EyeInvisibleOutlined } from '@ant-design/icons';
 
 const { Title, Text } = Typography;
 
@@ -170,7 +172,25 @@ export const LoginBCA = observer(() => {
                 },
               ]}
             >
-              <Input.Password style={styles.input} />
+              <Input.Password
+                style={styles.input}
+                iconRender={(visible) =>
+                  visible ? (
+                    <EyeTwoTone
+                      style={{
+                        color: Color.secondary,
+                      }}
+                    />
+                  ) : (
+                    <EyeInvisibleOutlined
+                      style={{
+                        color: Color.secondary,
+                      }}
+                    />
+                  )
+                }
+                placeholder={"********"}
+              />
             </Form.Item>
 
             <div style={styles.forgotPassword}>
@@ -197,6 +217,8 @@ export const LoginBCA = observer(() => {
                 display: "flex",
                 justifyContent: "center",
                 alignItems: "center",
+                fontSize: "19px",
+                letterSpacing: "1px",
               }}
             >
               Connect Account

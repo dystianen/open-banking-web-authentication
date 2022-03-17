@@ -17,6 +17,8 @@ import { Metrics } from "../../styles/Metric";
 import { Color } from "../../styles/Color";
 import { DynamicSheet } from "../../component/DynamicSheet";
 import { StaticSheet } from "../../component/StaticSheet";
+import { EyeInvisibleOutlined, EyeTwoTone } from "@ant-design/icons";
+
 const { Title } = Typography;
 
 export const LoginMandiri = observer(() => {
@@ -169,7 +171,25 @@ export const LoginMandiri = observer(() => {
               },
             ]}
           >
-            <Input.Password style={styles.input} />
+            <Input.Password
+              style={styles.input}
+              iconRender={(visible) =>
+                visible ? (
+                  <EyeTwoTone
+                    style={{
+                      color:  Color.secondary,
+                    }}
+                  />
+                ) : (
+                  <EyeInvisibleOutlined
+                    style={{
+                      color:  Color.secondary,
+                    }}
+                  />
+                )
+              }
+              placeholder={"********"}
+            />
           </Form.Item>
           <div style={styles.forgotPassword}>
             <Button
@@ -192,6 +212,8 @@ export const LoginMandiri = observer(() => {
               display: "flex",
               justifyContent: "center",
               alignItems: "center",
+              fontSize: "19px",
+              letterSpacing: "1px",
             }}
             block
             size="large"
