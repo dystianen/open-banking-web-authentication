@@ -1,0 +1,25 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: openbanking-frontendingress
+  namespace: openbanking-true
+  annotations:
+    kubernetes.io/ingress.class: "traefik"
+    cert-manager.io/cluster-issuer: letsencrypt-prod
+    traefik.ingress.kubernetes.io/router.middlewares: openbanking-true-redirect-https@kubernetescrd
+spec:
+  rules:
+    - host: "openbanking.k3s.bangun-kreatif.com"
+      http:
+        paths:
+          - pathType: Prefix
+            path: /
+            backend:
+              service:
+                name: ob-frontend
+                port:
+                  number: 3001       
+  tls:
+    - hosts:
+        - "openbanking.k3s.bangun-kreatif.com"
+      secretName: openbanking-k3s-bangun-kreatif-com-tls
