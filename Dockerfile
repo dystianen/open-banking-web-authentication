@@ -19,7 +19,8 @@ ENV NODE_ENV build
 USER node   
 WORKDIR /home/node
 
-COPY package*.json .
+COPY package.json .
+COPY package-lock.json .
 COPY yarn.lock .
 
 ARG NEXT_PUBLIC_API_URL=https://open-banking-api.k3s.bangun-kreatif.com
