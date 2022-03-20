@@ -49,7 +49,7 @@ build-production:
   services:
     - docker:dind
   script:
-    - docker login $REGISTRY_URL -u $NWP_REGISTRY_USER -p $NWP_REGISTRY_PASS
+    - docker login $REGISTRY_URL -u $BKA_REGISTRY_USER -p $BKA_REGISTRY_PASS
     - docker build -t $REGISTRY_IMAGE:$VERSION_PRODUCTION .
     - docker push $REGISTRY_IMAGE:$VERSION_PRODUCTION
     - docker rmi $REGISTRY_IMAGE:$VERSION_PRODUCTION
@@ -60,9 +60,9 @@ deploy-production:
   only:
     - devops-production
   script:
-    - kubectl config set-cluster k8s --server="${NWP_CLUSTER_HOST}"
-    - kubectl config set clusters.k8s.certificate-authority-data ${NWP_CLUSTER_CA}
-    - kubectl config set-credentials gitlab --token="${NWP_CLUSTER_TOKEN}"
+    - kubectl config set-cluster k8s --server="${BKA_CLUSTER_HOST}"
+    - kubectl config set clusters.k8s.certificate-authority-data ${BKA_CLUSTER_CA}
+    - kubectl config set-credentials gitlab --token="${BKA_CLUSTER_TOKEN}"
     - kubectl config set-context default --cluster=k8s --user=gitlab
     - kubectl config use-context default
     - sed -i "s/<VERSION>/${VERSION_PRODUCTION}/g" k8s/production/deployment.yaml
