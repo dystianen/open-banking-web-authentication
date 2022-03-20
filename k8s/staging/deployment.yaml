@@ -17,7 +17,7 @@ spec:
         - name: ob-frontend
           image: registry-harbor.app.bangun-kreatif.com/openbanking/ob-frontend:<VERSION>
           ports:
-            - containerPort: 3001
+            - containerPort: 80
       imagePullSecrets:
         - name: regcred
 
