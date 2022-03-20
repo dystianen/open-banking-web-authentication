@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ob-frontend
+  namespace: openbanking-true
+spec:
+  selector:
+    matchLabels:
+      app: ob-frontend
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: ob-frontend
+    spec:
+      containers:
+        - name: ob-frontend
+          image: registry-harbor.app.bangun-kreatif.com/openbanking/ob-frontend:<VERSION>
+          ports:
+            - containerPort: 3001
+      imagePullSecrets:
+        - name: regcred
+

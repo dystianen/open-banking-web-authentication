@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: ob-frontend
+  namespace: openbanking-true
+  labels:
+    run: ob-frontend
+spec:
+  ports:
+    - port: 3001
+      protocol: TCP
+  selector:
+    app:  ob-frontend
