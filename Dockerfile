@@ -1,50 +1,47 @@
-# PRODUCTION DOCKERFILE
-# ---------------------
-# This Dockerfile allows to build a Docker image of the NestJS application
-# and based on a NodeJS 16 image. The multi-stage mechanism allows to build
-# the application in a "builder" stage and then create a lightweight production
-# image containing the required dependencies and the JS build files.
-#
-# Dockerfile best practices
-# https://docs.docker.com/develop/develop-images/dockerfile_best-practices/
-# Dockerized NodeJS best practices
-# https://github.com/nodejs/docker-node/blob/master/docs/BestPractices.md
-# https://www.bretfisher.com/node-docker-good-defaults/
-# http://goldbergyoni.com/checklist-best-practice-of-node-js-in-production/
+# Install dependencies only when needed
+FROM node:16-alpine AS deps
+# Check https://github.com/nodejs/docker-node/tree/b4117f9333da4138b03a546ec926ef50a31506c3#nodealpine to understand why libc6-compat might be needed.
+RUN apk add --no-cache libc6-compat
+WORKDIR /app
+COPY package.json yarn.lock ./
 
-FROM node:16-alpine as builder
-
-ENV NODE_ENV build
-
-USER node   
-WORKDIR /home/node
-
-COPY package.json .
-COPY package-lock.json .
-COPY yarn.lock .
-
-ARG NEXT_PUBLIC_API_URL=https://open-banking-api.k3s.bangun-kreatif.com
-ENV NEXT_PUBLIC_API_URL=$NEXT_PUBLIC_API_URL
 
 RUN yarn install --frozen-lockfile
 
-COPY . /home/node
+# Rebuild the source code only when needed
+FROM node:16-alpine AS builder
+WORKDIR /app
+COPY . .
+COPY --from=deps /app/node_modules ./node_modules
+ARG NEXT_PUBLIC_API_URL=https://openbanking.k3s.bangun-kreatif.com
+ENV NEXT_PUBLIC_API_URL=$NEXT_PUBLIC_API_URL
+RUN yarn build && yarn install --production --ignore-scripts --prefer-offline
 
-RUN yarn run build \
-    && yarn install --production --ignore-scripts --prefer-offline
-
-# ---
-
-FROM node:16-alpine
+# Production image, copy all the files and run next
+FROM node:16-alpine AS runner
+WORKDIR /app
 
 ENV NODE_ENV production
 
-USER node
-WORKDIR /home/node
+RUN addgroup -g 1001 -S nodejs
+RUN adduser -S nextjs -u 1001
 
-COPY --from=builder /home/node/package*.json /home/node/
-COPY --from=builder /home/node/node_modules/ /home/node/node_modules/
-COPY --from=builder /home/node/dist/ /home/node/dist/
+# You only need to copy next.config.js if you are NOT using the default configuration
+# COPY --from=builder /app/next.config.js ./
+COPY --from=builder /app/public ./public
+COPY --from=builder --chown=nextjs:nodejs /app/.next ./.next
+COPY --from=builder /app/node_modules ./node_modules
+COPY --from=builder /app/package.json ./package.json
 
-EXPOSE 3001
-CMD ["node", "dist/main.js"]
+USER nextjs
+
+EXPOSE 3000
+
+ENV PORT 3000
+
+# Next.js collects completely anonymous telemetry data about general usage.
+# Learn more here: https://nextjs.org/telemetry
+# Uncomment the following line in case you want to disable telemetry.
+# ENV NEXT_TELEMETRY_DISABLED 1
+
+CMD ["node_modules/.bin/next", "start"]
