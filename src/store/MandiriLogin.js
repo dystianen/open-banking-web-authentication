@@ -1,5 +1,5 @@
 import {makeAutoObservable} from "mobx";
-import {http} from "../utils/http";
+import {http, httpBilling} from "../utils/http";
 
 export class MandiriLogin {
     constructor(context) {
@@ -11,7 +11,7 @@ export class MandiriLogin {
     detail = [];
 
     async getData(id) {
-        const res = await http.get(`/config/institution/${id}`);
+        const res = await httpBilling.get(`/setting/institution/${id}`);
         return res.body
     }
 

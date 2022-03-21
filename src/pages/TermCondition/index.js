@@ -1,7 +1,7 @@
-import React from "react";
+import React, {useEffect} from "react";
 import { observer } from "mobx-react-lite";
 import { Button, Col, Row, Typography, Steps } from "antd";
-import { useHistory } from "react-router-dom";
+import {useHistory, useParams} from "react-router-dom";
 
 import verified from "../../assets/images/verified.svg";
 import lock from "../../assets/images/lock.svg";
@@ -13,6 +13,11 @@ const { Step } = Steps;
 
 export const TermCondition = observer(() => {
   let history = useHistory();
+  const params = useParams();
+
+  useEffect(() => {
+      console.log({params})
+  }, [])
 
   const onClickPdf = () => {
     window.open(pdf);

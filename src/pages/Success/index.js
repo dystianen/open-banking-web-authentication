@@ -8,8 +8,11 @@ import { Heading } from "./components/Heading";
 // Assets
 import blueDotsCombined from "../../assets/images/blue-dots-combined.svg";
 import { styles } from "./styles";
+import {useHistory} from "react-router-dom";
+import {appConfig} from "../../config/app";
 
 export const Success = observer((props) => {
+    const history = useHistory();
     const { message } = props
     return (
         <PageLogin linking={false}>
@@ -17,10 +20,10 @@ export const Success = observer((props) => {
 
             <Heading strong title={message} />
 
-            <Button size="large" block style={styles.buttonConnect}>
+            <Button size="large" block style={styles.buttonConnect} onClick={() => history.push('/bank-list')}>
                 Connect another account
             </Button>
-            <Button size="large" block style={styles.buttonDone}>
+            <Button size="large" block style={styles.buttonDone} onClick={() => window.open(`http://localhost:3000/open-banking/customer/${1}`)}>
                 Done
             </Button>
         </PageLogin>

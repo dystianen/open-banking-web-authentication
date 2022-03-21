@@ -81,8 +81,10 @@ export const LoginBNI = observer(() => {
     try {
       setIsLoading(true);
       const body = {
-        email: values.email,
-        password: values.password,
+          username: values.username,
+          password: values.password,
+          customer_identifier: values.username, // Just Dummy Value
+          customer_name: values.username, // Just Dummy Value
       };
 
       await store.bni_login.login(body);

@@ -1,8 +1,8 @@
 import { makeAutoObservable } from "mobx";
-import { http } from "../utils/http";
+import {http, httpBilling} from "../utils/http";
 
 export class ListBank {
-    baseUrl = '/setting/institution/category/all?page=0&pageSize=10';
+    baseUrl = '/setting/institution/category/all?page=1&pageSize=10';
     data = [];
     detail = [];
 
@@ -12,7 +12,7 @@ export class ListBank {
     }
 
     async getAllBanks() {
-        const res = await http.get(this.baseUrl);
+        const res = await httpBilling.get(this.baseUrl);
         return res;
     }
 

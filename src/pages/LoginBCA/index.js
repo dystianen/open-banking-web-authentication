@@ -90,8 +90,10 @@ export const LoginBCA = observer(() => {
   async function onFinishLoginBCA(values) {
     try {
       const body = {
-        email: values.email,
-        password: values.password,
+          username: values.username,
+          password: values.password,
+          customer_identifier: values.username, // Just Dummy Value
+          customer_name: values.username, // Just Dummy Value
       };
 
       setIsLoading(true);

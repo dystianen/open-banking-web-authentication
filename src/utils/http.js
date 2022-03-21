@@ -2,7 +2,7 @@ import superagent from "superagent";
 import { appConfig } from "../config/app";
 import { store } from "./useStore";
 
-export const http = {
+const http = {
     get: (url, opts = {}) => {
         let req = superagent.get(appConfig.apiUrl + url);
         if (store.accessToken) {
@@ -73,3 +73,42 @@ export const http = {
         return request;
     }
 };
+
+const httpBilling = {
+    get: (url, opts = {}) => {
+        let req = superagent.get(appConfig.apiUrlBilling + url);
+        if (store.accessToken) {
+            req = req.set('Authorization', 'Bearer ' + store.accessToken);
+        } else {
+            req = req.set('Authorization', 'Bearer ' + localStorage.getItem("access_token"));
+        }
+        return req;
+    },
+    post: (url, opts) => {
+        let req = superagent.post(appConfig.apiUrlBilling + url);
+        if (store.accessToken) {
+            req = req.set('Authorization', 'Bearer ' + store.accessToken);
+        } else {
+            req = req.set('Authorization', 'Bearer ' + localStorage.getItem("access_token"));
+        }
+        return req;
+    },
+    put: (url, opts) => {
+        let req = superagent.put(appConfig.apiUrlBilling + url);
+        if (store.accessToken) {
+            req = req.set('Authorization', 'Bearer ' + store.accessToken);
+        } else {
+            req = req.set('Authorization', 'Bearer ' + localStorage.getItem("access_token"));
+        }
+        return req;
+    },
+    del: (url, opts) => {
+        let req = superagent.del(appConfig.apiUrlBilling + url);
+        if (store.accessToken) {
+            req = req.set('Authorization', 'Bearer ' + store.accessToken);
+        }
+        return req;
+    },
+};
+
+export {http, httpBilling}
