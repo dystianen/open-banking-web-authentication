@@ -56,7 +56,9 @@ export const ListBank = observer((props) => {
                     return "bni-login";
                 case "Gopay":
                     return null;
-                case "Klik BCA":
+                case "KlikBCA":
+                    return "bca-login";
+                case "BRI":
                     return "bca-login";
                 default:
                     return null
