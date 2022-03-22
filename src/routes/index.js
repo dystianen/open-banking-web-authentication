@@ -1,31 +1,33 @@
-import { Redirect, Route, Switch } from "react-router-dom";
-import { Login } from "../pages/Login/Login";
-import { TermCondition } from "../pages/TermCondition";
-import { PublicRoute } from "../component/PublicRoute";
+import {Redirect, Route, Switch, useLocation, useParams} from "react-router-dom";
+import {Login} from "../pages/Login/Login";
+import {TermCondition} from "../pages/TermCondition";
+import {PublicRoute} from "../component/PublicRoute";
 // import { PrivateRoute } from "../component/PrivateRoute";
-import { App } from "../pages/App/App";
-import { LoginBNI } from "../pages/LoginBNI";
-import { LoginBCA } from "../pages/LoginBCA";
-import { Otp } from "../pages/Otp";
-import { LoginMandiri } from "../pages/LoginMandiri";
-import { BankList } from "../pages/BankList";
-import { Success } from "../pages/Success";
+import {App} from "../pages/App/App";
+import {LoginBNI} from "../pages/LoginBNI";
+import {LoginBCA} from "../pages/LoginBCA";
+import {Otp} from "../pages/Otp";
+import {LoginMandiri} from "../pages/LoginMandiri";
+import {BankList} from "../pages/BankList";
+import {Success} from "../pages/Success";
 
 // Test
-import { TestLogin } from "../pages/TestMobx/Login";
-import { TestMember } from "../pages/TestMobx/Member";
-import { TestMemberDetail } from "../pages/TestMobx/MemberDetail";
-import { LoginBRI } from "../pages/LoginBRI";
+import {TestLogin} from "../pages/TestMobx/Login";
+import {TestMember} from "../pages/TestMobx/Member";
+import {TestMemberDetail} from "../pages/TestMobx/MemberDetail";
+import {LoginBRI} from "../pages/LoginBRI";
 import {ChooseWay} from "../pages/ChooseWay";
+import React, {useEffect} from "react";
 
 export const MainRoutes = (props) => {
+
     return (
         <Switch>
             <Route path="/" exact>
-                <Redirect to={"/term-condition"} />
+                <Redirect to={"/term-condition"}/>
             </Route>
 
-            <PublicRoute restricted={true} component={Login} path="/login" exact />
+            <PublicRoute restricted={true} component={Login} path="/login" exact/>
 
             <PublicRoute
                 restricted={true}
@@ -76,7 +78,7 @@ export const MainRoutes = (props) => {
                 path="/bca-success"
                 exact
             >
-                <Success message={"klikBCA"} />
+                <Success message={"klikBCA"}/>
             </PublicRoute>
 
             <PublicRoute
@@ -84,7 +86,7 @@ export const MainRoutes = (props) => {
                 path="/bni-success"
                 exact
             >
-                <Success message={"BNI"} />
+                <Success message={"BNI"}/>
             </PublicRoute>
 
             <PublicRoute
@@ -92,7 +94,7 @@ export const MainRoutes = (props) => {
                 path="/bri-success"
                 exact
             >
-                <Success message={"BRI"} />
+                <Success message={"BRI"}/>
             </PublicRoute>
 
             <PublicRoute
@@ -100,19 +102,19 @@ export const MainRoutes = (props) => {
                 path="/mandiri-success"
                 exact
             >
-                <Success message={"Livin' by Mandiri"} />
+                <Success message={"Livin' by Mandiri"}/>
             </PublicRoute>
             {/* End OfSuccess Pages */}
 
             <PublicRoute
                 restricted={false} component={Otp} path="/otp" exact
             /><PublicRoute
-                restricted={true}
-                component={BankList}
-                path="/bank-list"
-                exact
-            />
-            <PublicRoute component={App} path="/app" />
+            restricted={true}
+            component={BankList}
+            path="/bank-list"
+            exact
+        />
+            <PublicRoute component={App} path="/app"/>
 
             {/* Test */}
             <PublicRoute

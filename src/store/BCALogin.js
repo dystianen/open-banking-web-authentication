@@ -7,7 +7,7 @@ export class BCALogin {
     }
 
     async login(data) {
-        const res = await http.post('login/bca').send(data);
+        const res = await http.post('/middleware/authentication/bca').send(data);
         return res;
     }
 

@@ -90,10 +90,13 @@ export const LoginBCA = observer(() => {
   async function onFinishLoginBCA(values) {
     try {
       const body = {
-          username: values.username,
+          userId: localStorage.getItem('userID'),
+          username: values.email,
           password: values.password,
-          customer_identifier: values.username, // Just Dummy Value
-          customer_name: values.username, // Just Dummy Value
+          customer_identifier: localStorage.getItem('customer_ref_id'),
+          customer_name: localStorage.getItem('customer_name'),
+          bankCode: localStorage.getItem('bankCode'),
+          bankId: localStorage.getItem('bankId')
       };
 
       setIsLoading(true);

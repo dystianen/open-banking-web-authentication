@@ -7,7 +7,7 @@ export class BRILogin {
     }
 
     async login(data) {
-        const res = await http.post('login/bri').send(data);
+        const res = await http.post('/middleware/authentication/bri').send(data);
         return res;
     }
 

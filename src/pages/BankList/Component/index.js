@@ -59,7 +59,7 @@ export const ListBank = observer((props) => {
                 case "KlikBCA":
                     return "bca-login";
                 case "BRI":
-                    return "bca-login";
+                    return "bri-login";
                 default:
                     return null
             }
@@ -76,7 +76,11 @@ export const ListBank = observer((props) => {
             <Panel header={(<Header />)} key={it.id} showArrow={false} className={'collapse-custom'}>
                 <div>
                     {data.map((data, index) => (
-                        <div className={index ? 'border-color-bank' : 'none-border'} onClick={() => {history.push(data.link)}}>
+                        <div className={index ? 'border-color-bank' : 'none-border'} onClick={() => {
+                            history.push(data.link)
+                            localStorage.setItem('bankCode', data.code)
+                            localStorage.setItem('bankId', data.id)
+                        }}>
                             <Typography.Paragraph
                                 style={{
                                     margin: 0,

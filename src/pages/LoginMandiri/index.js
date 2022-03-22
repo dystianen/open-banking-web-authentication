@@ -59,10 +59,13 @@ export const LoginMandiri = observer(() => {
   const onFinish = async () => {
     const values = await form.validateFields();
     const data = {
-      username: values.username,
-      password: values.password,
-      customer_identifier: values.username, // Just Dummy Value
-      customer_name: values.username, // Just Dummy Value
+        userId: localStorage.getItem('userID'),
+        username: values.email,
+        password: values.password,
+        customer_identifier: localStorage.getItem('customer_ref_id'),
+        customer_name: localStorage.getItem('customer_name'),
+        bankCode: localStorage.getItem('bankCode'),
+        bankId: localStorage.getItem('bankId')
     };
     try {
       setLoading(true);
@@ -143,7 +146,7 @@ export const LoginMandiri = observer(() => {
         </div>
         <Form layout={"vertical"} form={form}>
           <Form.Item
-            name={"username"}
+            name={"email"}
             style={{ color: "#4B4C48" }}
             label={
               <label style={{ color: "#161D24", fontSize: "12pt" }}>
