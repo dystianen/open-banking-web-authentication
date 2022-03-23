@@ -3,7 +3,7 @@ WORKDIR /app
 ENV PATH /app/node_modules/.bin:$PATH
 COPY ./package.json /app/
 COPY ./yarn.lock /app/
-ARG REACT_APP_API_URL=https://openbanking.k3s.bangun-kreatif.com
+ARG REACT_APP_API_URL=https://open-banking-api.k3s.bangun-kreatif.com
 ARG REACT_APP_URL_BILLING=https://open-banking.k3s.bangun-kreatif.com
 ARG REACT_APP_API_URL_BILLING=https://ob-cdi-api.k3s.bangun-kreatif.com
 ENV REACT_APP_API_URL $REACT_APP_API_URL
