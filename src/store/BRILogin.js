@@ -1,4 +1,4 @@
-import { http } from "../utils/http";
+import {http, httpBilling} from "../utils/http";
 
 export class BRILogin {
 
@@ -7,12 +7,12 @@ export class BRILogin {
     }
 
     async login(data) {
-        const res = await http.post('login/bri').send(data);
+        const res = await http.post('/middleware/authentication/bri').send(data);
         return res;
     }
 
     async instructions(id) {
-        const res = await http.get(`/config/institution/${id}`);
+        const res = await httpBilling.get(`/setting/institution/${id}`);
         return res;
     }
 

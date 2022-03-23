@@ -5,6 +5,7 @@ import { Col, Row, Typography } from "antd";
 import { ListBank } from "./Component";
 import spark from "../../assets/images/icon-sparkles.svg";
 import eBank from "../../assets/images/icon-banking.svg";
+import eWallet from "../../assets/images/icon-ewallet.svg";
 import { PageLogin } from "../../component/Layouts/PageLogin";
 
 export const BankList = observer(() => {
@@ -34,6 +35,8 @@ export const BankList = observer(() => {
         return spark;
       case "Internet Banking":
         return eBank;
+      case "E-Wallet":
+        return eWallet;
     }
   };
 

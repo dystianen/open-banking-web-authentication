@@ -1,4 +1,4 @@
-import { http } from "../utils/http";
+import {http, httpBilling} from "../utils/http";
 
 export class BCALogin {
 
@@ -7,12 +7,12 @@ export class BCALogin {
     }
 
     async login(data) {
-        const res = await http.post('login/bca').send(data);
+        const res = await http.post('/middleware/authentication/bca').send(data);
         return res;
     }
 
     async institution(id) {
-        const res = await http.get(`/config/institution/${id}`);
+        const res = await httpBilling.get(`/setting/institution/${id}`);
         return res;
     }
 
