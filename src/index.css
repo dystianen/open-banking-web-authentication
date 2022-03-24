@@ -29,12 +29,16 @@ code {
   height: 50px;
   align-items: center;
   display: flex;
+  justify-content: space-between;
+  padding-right: 15px;
 }
 
 .none-border {
   height: 50px;
   align-items: center;
   display: flex;
+  justify-content: space-between;
+  padding-right: 15px;
 }
 
 .ant-collapse {
