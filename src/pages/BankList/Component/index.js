@@ -1,8 +1,10 @@
 import React, {useState} from "react";
 import {observer} from 'mobx-react-lite';
-import {Col, Image, Row, Typography, Collapse} from 'antd';
+import {Col, Image, Row, Typography, Collapse, Avatar} from 'antd';
 import {useHistory} from "react-router-dom";
-const { Panel } = Collapse;
+import connected from "../../../assets/icons/checklist.svg";
+
+const {Panel} = Collapse;
 export const ListBank = observer((props) => {
     const [activeKey, setActiveKey] = useState(null)
 
@@ -26,7 +28,8 @@ export const ListBank = observer((props) => {
                         boxShadow: active ? '4px 4px 0px 5px rgba(254, 148, 77, 0.3)' : '15px 0px 0px 0px rgba(254, 148, 77, 0.4)',
                         display: 'flex',
                         justifyContent: 'center',
-                        alignItems: 'center'}}
+                        alignItems: 'center'
+                    }}
                     >
                         <Image src={it.image} preview={false} width={35}/>
                     </div>
@@ -73,7 +76,7 @@ export const ListBank = observer((props) => {
         })
 
         return (
-            <Panel header={(<Header />)} key={it.id} showArrow={false} className={'collapse-custom'}>
+            <Panel header={(<Header/>)} key={it.id} showArrow={false} className={'collapse-custom'}>
                 <div>
                     {data.map((data, index) => (
                         <div className={index ? 'border-color-bank' : 'none-border'} onClick={() => {
@@ -94,6 +97,9 @@ export const ListBank = observer((props) => {
                             >
                                 {data.name}
                             </Typography.Paragraph>
+                            {data.connected === true && (
+                                <Image src={connected} preview={false}/>
+                            )}
                         </div>
                     ))}
                 </div>

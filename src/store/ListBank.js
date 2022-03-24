@@ -2,7 +2,7 @@ import { makeAutoObservable } from "mobx";
 import {http, httpBilling} from "../utils/http";
 
 export class ListBank {
-    baseUrl = '/setting/institution/category/all?page=1&pageSize=10';
+    baseUrl = '/setting/institution/category/all';
     data = [];
     detail = [];
 
@@ -11,8 +11,8 @@ export class ListBank {
         makeAutoObservable(this)
     }
 
-    async getAllBanks() {
-        const res = await httpBilling.get(this.baseUrl);
+    async getAllBanks(id) {
+        const res = await httpBilling.get(this.baseUrl + `/customer?page=1&pageSize=10&customerId=${id}`);
         return res;
     }
 
