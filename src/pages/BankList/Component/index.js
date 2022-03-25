@@ -80,9 +80,11 @@ export const ListBank = observer((props) => {
                 <div>
                     {data.map((data, index) => (
                         <div className={index ? 'border-color-bank' : 'none-border'} onClick={() => {
-                            history.push(data.link)
-                            localStorage.setItem('bankCode', data.code)
-                            localStorage.setItem('bankId', data.id)
+                            if (data.connected === false) {
+                                history.push(data.link)
+                                localStorage.setItem('bankCode', data.code)
+                                localStorage.setItem('bankId', data.id)
+                            }
                         }}>
                             <Typography.Paragraph
                                 style={{
