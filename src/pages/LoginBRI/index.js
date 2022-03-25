@@ -201,23 +201,29 @@ export const LoginBRI = observer(() => {
                             Forgot password ?
                         </Button>
                     </div>
-                    <Button
-                        style={{
-                            backgroundColor: Color.secondary,
-                            color: "#FFFFFF",
-                            padding: "1.5rem 1rem",
-                            display: "flex",
-                            justifyContent: "center",
-                            alignItems: "center",
-                            fontSize: "19px",
-                            letterSpacing: "1px",
-                        }}
-                        block
-                        size="large"
-                        htmlType="submit"
-                    >
-                        Connect Account
-                    </Button>
+                    <Form.Item shouldUpdate>
+                        {() => (
+                            <Button
+                                block
+                                type="primary"
+                                htmlType="submit"
+                                disabled={
+                                    !form.isFieldsTouched(true) ||
+                                    !!form.getFieldsError().filter(({errors}) => errors.length).length
+                                }
+                                style={{
+                                    padding: "1.5rem 1rem",
+                                    display: "flex",
+                                    justifyContent: "center",
+                                    alignItems: "center",
+                                    fontSize: "19px",
+                                    letterSpacing: "1px",
+                                }}
+                            >
+                                Connect Account
+                            </Button>
+                        )}
+                    </Form.Item>
                 </Form>
             </div>
             <div>
