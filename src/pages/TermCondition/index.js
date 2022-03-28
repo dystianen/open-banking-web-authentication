@@ -1,4 +1,4 @@
-import React, {useEffect} from "react";
+import React, {useEffect, useState} from "react";
 import {observer} from "mobx-react-lite";
 import {Button, Col, Row, Typography, Steps} from "antd";
 import {useHistory, useLocation, useParams} from "react-router-dom";
@@ -9,21 +9,39 @@ import eyeSlash from "../../assets/images/eye-slash.svg";
 import pdf from "../../assets/Test.pdf";
 import {PageLogin} from "../../component/Layouts/PageLogin";
 import * as queryString from "querystring";
+import {useStore} from "../../utils/useStore";
 
 const {Step} = Steps;
 
 export const TermCondition = observer(() => {
+    const store = useStore()
     let history = useHistory();
     const {search} = useLocation();
+    const [loading, setLoading] = useState(false);
+    const [data, setProfile] = useState({})
 
     let deleteFirstCharacter = search.substr(1) // Delete character ?
     const query = queryString.parse(deleteFirstCharacter)
 
     useEffect(() => {
+        loadInitial();
         localStorage.setItem('customer_ref_id', query.customer_ref_id);
         localStorage.setItem('customer_name', query.customer_name);
         localStorage.setItem('userID', '71fd9ec5-bcbe-43f7-ad52-622a2b737a41'); // Temporary
     }, [])
+
+    const loadInitial = async () => {
+        try {
+            setLoading(true);
+            const res = await store.profile.getProfile();
+            console.log(res, 'isi res')
+            setProfile(res.body.data);
+            setLoading(false);
+        } catch (e) {
+            setLoading(false);
+            console.log(e);
+        }
+    };
 
     const onClickPdf = () => {
         window.open(pdf);
