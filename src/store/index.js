@@ -7,6 +7,7 @@ import { MandiriLogin } from "./MandiriLogin";
 import { ListBank } from "./ListBank";
 import { BCALogin } from "./BCALogin";
 import {BRILogin} from "./BRILogin";
+import {Profile} from './Profile'
 // import { AuthBCA } from "./AuthBCA";
 // import { BCAInstruction } from "./BCAInstruction";
 
@@ -25,6 +26,7 @@ export class Store {
     bni_login = new BNILogin(this);
     bri_login = new BRILogin(this);
     listBank = new ListBank(this);
+    profile = new Profile(this)
 
     @computed
     get isLoggedIn() {
