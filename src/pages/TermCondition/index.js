@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from "react";
 import {observer} from "mobx-react-lite";
-import {Button, Col, Row, Typography, Steps} from "antd";
+import {Button, Col, Row, Typography, Steps, Image} from "antd";
 import {useHistory, useLocation, useParams} from "react-router-dom";
 
 import verified from "../../assets/images/verified.svg";
@@ -18,7 +18,7 @@ export const TermCondition = observer(() => {
     let history = useHistory();
     const {search} = useLocation();
     const [loading, setLoading] = useState(false);
-    const [data, setProfile] = useState({})
+    const [profile, setProfile] = useState({})
 
     let deleteFirstCharacter = search.substr(1) // Delete character ?
     const query = queryString.parse(deleteFirstCharacter)
@@ -27,14 +27,14 @@ export const TermCondition = observer(() => {
         loadInitial();
         localStorage.setItem('customer_ref_id', query.customer_ref_id);
         localStorage.setItem('customer_name', query.customer_name);
-        localStorage.setItem('userID', '71fd9ec5-bcbe-43f7-ad52-622a2b737a41'); // Temporary
+        localStorage.setItem('access_token', query.accessToken);
+        localStorage.setItem('userID', query.userId);
     }, [])
 
     const loadInitial = async () => {
         try {
             setLoading(true);
             const res = await store.profile.getProfile();
-            console.log(res, 'isi res')
             setProfile(res.body.data);
             setLoading(false);
         } catch (e) {
@@ -42,7 +42,7 @@ export const TermCondition = observer(() => {
             console.log(e);
         }
     };
-
+    console.log(profile, 'profiles')
     const onClickPdf = () => {
         window.open(pdf);
     };
@@ -94,24 +94,17 @@ export const TermCondition = observer(() => {
                                     height: 37,
                                 }}
                             >
-                                <Typography.Paragraph
-                                    style={{
-                                        fontSize: 30,
-                                        fontWeight: 700,
-                                        color: "#04204D",
-                                    }}
-                                >
-                                    Trust
-                                    <span
-                                        style={{
-                                            color: "#FE7519",
-                                            fontSize: 30,
-                                            fontWeight: 500,
-                                        }}
-                                    >
-                    Connect
-                  </span>
-                                </Typography.Paragraph>
+                                {profile.photo_profile
+                                    ?
+                                    <Image src={eyeSlash} />
+                                    :
+                                    <Typography.Paragraph style={{fontSize: 30, fontWeight: 700, color: "#04204D",}}>
+                                        Trust
+                                        <span style={{color: "#FE7519", fontSize: 30, fontWeight: 500,}}>
+                                        Connect
+                                    </span>
+                                    </Typography.Paragraph>
+                                }
                             </div>
 
                             <div
