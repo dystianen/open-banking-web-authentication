@@ -20,7 +20,7 @@ export const BankList = observer(() => {
   const loadInitial = async () => {
     try {
       setLoading(true);
-      const res = await store.listBank.getAllBanks(localStorage.getItem('customer_ref_id'));
+      const res = await store.listBank.getAllBanks(localStorage.getItem('customer_ref_id'), localStorage.getItem('userID'));
       setDataBank(res.body.data);
       setLoading(false);
     } catch (e) {
