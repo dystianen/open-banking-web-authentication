@@ -28,7 +28,7 @@ export const TermCondition = observer(() => {
         localStorage.setItem('customer_ref_id', query.customer_ref_id);
         localStorage.setItem('customer_name', query.customer_name);
         localStorage.setItem('access_token', query.accessToken);
-        localStorage.setItem('userID', '71fd9ec5-bcbe-43f7-ad52-622a2b737a41'); // Temporary
+        localStorage.setItem('userID', query.userId);
     }, [])
 
     const loadInitial = async () => {
