@@ -23,7 +23,7 @@ export const Success = observer((props) => {
             <Button size="large" block style={styles.buttonConnect} onClick={() => history.push('/bank-list')}>
                 Connect another account
             </Button>
-            <Button size="large" block style={styles.buttonDone} onClick={() => window.open(`https://openbanking.k3s.bangun-kreatif.com/open-banking/customer/${localStorage.getItem('customer_ref_id')}`)}>
+            <Button size="large" block style={styles.buttonDone} onClick={() => window.open(`https://open-banking.k3s.bangun-kreatif.com/open-banking/customer/${localStorage.getItem('customer_ref_id')}`)}>
                 Done
             </Button>
         </PageLogin>
