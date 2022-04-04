@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from "react";
 import {observer} from "mobx-react-lite";
-import {Button, Col, Row, Typography, Steps, Image} from "antd";
+import {Button, Col, Row, Typography, Steps} from "antd";
 import {useHistory, useLocation, useParams} from "react-router-dom";
 
 import verified from "../../assets/images/verified.svg";
@@ -94,17 +94,23 @@ export const TermCondition = observer(() => {
                                     height: 37,
                                 }}
                             >
-                                {profile.photo_profile
-                                    ?
-                                    <Image src={eyeSlash} />
-                                    :
-                                    <Typography.Paragraph style={{fontSize: 30, fontWeight: 700, color: "#04204D",}}>
-                                        Trust
-                                        <span style={{color: "#FE7519", fontSize: 30, fontWeight: 500,}}>
+                                {/*{profile.photo_profile*/}
+                                {/*    ?*/}
+                                {/*    <Image src={eyeSlash} />*/}
+                                {/*    :*/}
+                                {/*    <Typography.Paragraph style={{fontSize: 30, fontWeight: 700, color: "#04204D",}}>*/}
+                                {/*        Trust*/}
+                                {/*        <span style={{color: "#FE7519", fontSize: 30, fontWeight: 500,}}>*/}
+                                {/*        Connect*/}
+                                {/*    </span>*/}
+                                {/*    </Typography.Paragraph>*/}
+                                {/*}*/}
+                                <Typography.Paragraph style={{fontSize: 30, fontWeight: 700, color: "#04204D",}}>
+                                    Trust
+                                    <span style={{color: "#FE7519", fontSize: 30, fontWeight: 500,}}>
                                         Connect
                                     </span>
-                                    </Typography.Paragraph>
-                                }
+                                </Typography.Paragraph>
                             </div>
 
                             <div
@@ -150,15 +156,15 @@ export const TermCondition = observer(() => {
                             >
                                 <Steps direction="vertical" current={2}>
                                     <Step
-                                        title="Lorem ipsum dolor sit amet, consectetur adipiscing elit Pellentesque finibus enim."
+                                        title="Protect the privacy of your personal financial data."
                                         icon={renderIconSteps(verified)}
                                     />
                                     <Step
-                                        title="Lorem ipsum dolor sit amet, consectetur adipiscing elit Pellentesque finibus enim"
+                                        title="Secure your information with end-to-end encrypt"
                                         icon={renderIconSteps(eyeSlash)}
                                     />
                                     <Step
-                                        title="Lorem ipsum dolor sit amet, consectetur adipiscing elit Pellentesque finibus enim"
+                                        title="Easy to connect and easy to unconnect"
                                         icon={renderIconSteps(lock)}
                                     />
                                 </Steps>

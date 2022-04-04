@@ -6,6 +6,8 @@ import { ListBank } from "./Component";
 import spark from "../../assets/images/icon-sparkles.svg";
 import eBank from "../../assets/images/icon-banking.svg";
 import eWallet from "../../assets/images/icon-ewallet.svg";
+import eCommerce from "../../assets/images/icon-ecommerce.svg"
+import employee from "../../assets/images/icon-employeeAcc.svg"
 import { PageLogin } from "../../component/Layouts/PageLogin";
 
 export const BankList = observer(() => {
@@ -37,6 +39,10 @@ export const BankList = observer(() => {
         return eBank;
       case "E-Wallet":
         return eWallet;
+      case "E-Commerce":
+          return eCommerce
+      case "Employment Accounts":
+          return employee
     }
   };
 
@@ -90,7 +96,7 @@ export const BankList = observer(() => {
                     >
                       <div style={{ display: "flex" }}>
                         <p style={{ color: "#FE6601" }}>Connect&nbsp;</p>Your
-                        Institution.
+                        Account.
                       </div>
                     </Typography.Paragraph>
                     <Typography.Paragraph
@@ -103,8 +109,7 @@ export const BankList = observer(() => {
                         width: 290,
                       }}
                     >
-                      Lorem ipsum dolor sit amet, consetetur sadipscing elitr,
-                      sed diam nonumy eirmod.
+                        Choose on of institutions to connect your account to Trustlink.
                     </Typography.Paragraph>
                   </div>
                 </div>
