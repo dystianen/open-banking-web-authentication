@@ -10,10 +10,10 @@ export const Heading = observer((props) => {
             <Title strong level={2} style={styles.heading}>
                 Congratulations! <br /> Your {title} account is successfully connected.
             </Title>
-            <Text style={styles.paragraph}>
-                Lorem ipsum dolor sit amet, consetetur sadipscing elitr,
-                sed diam nonumy eirmod tempor invidunt ut.
-            </Text>
+            {/*<Text style={styles.paragraph}>*/}
+            {/*    Lorem ipsum dolor sit amet, consetetur sadipscing elitr,*/}
+            {/*    sed diam nonumy eirmod tempor invidunt ut.*/}
+            {/*</Text>*/}
         </>
     )
 })
