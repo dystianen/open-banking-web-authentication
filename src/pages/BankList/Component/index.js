@@ -100,7 +100,12 @@ export const ListBank = observer((props) => {
                                 {data.name}
                             </Typography.Paragraph>
                             {data.connected === true && (
-                                <Image src={connected} preview={false}/>
+                                <div style={{display: 'flex'}}>
+                                    <Typography.Paragraph style={{margin: 0, padding: 0, fontSize: 16, color: "#161D24", fontWeight: 'semi-bold', display: 'flex', alignItems: 'center'}}>
+                                        Connected
+                                    </Typography.Paragraph>
+                                    <Image src={connected} preview={false} style={{marginLeft: 10}}/>
+                                </div>
                             )}
                         </div>
                     ))}
