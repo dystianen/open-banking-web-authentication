@@ -65,7 +65,7 @@ export const BankList = observer(() => {
         }}
       >
         <div>
-          <div style={{ width: "100vw", display: "flex" }}>
+          <div style={{display: "flex"}}>
             <Row>
               <Col>
                 <div

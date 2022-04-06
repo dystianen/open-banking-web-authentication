@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from "react";
 import {observer} from "mobx-react-lite";
-import {Button, Col, Row, Typography, Steps} from "antd";
+import {Button, Col, Row, Typography, Steps, Image} from "antd";
 import {useHistory, useLocation, useParams} from "react-router-dom";
 
 import verified from "../../assets/images/verified.svg";
@@ -10,6 +10,7 @@ import pdf from "../../assets/Test.pdf";
 import {PageLogin} from "../../component/Layouts/PageLogin";
 import * as queryString from "querystring";
 import {useStore} from "../../utils/useStore";
+import {EyeOutlined} from "@ant-design/icons";
 
 const {Step} = Steps;
 
@@ -94,23 +95,18 @@ export const TermCondition = observer(() => {
                                     height: 37,
                                 }}
                             >
-                                {/*{profile.photo_profile*/}
-                                {/*    ?*/}
-                                {/*    <Image src={eyeSlash} />*/}
-                                {/*    :*/}
-                                {/*    <Typography.Paragraph style={{fontSize: 30, fontWeight: 700, color: "#04204D",}}>*/}
-                                {/*        Trust*/}
-                                {/*        <span style={{color: "#FE7519", fontSize: 30, fontWeight: 500,}}>*/}
-                                {/*        Connect*/}
-                                {/*    </span>*/}
-                                {/*    </Typography.Paragraph>*/}
-                                {/*}*/}
-                                <Typography.Paragraph style={{fontSize: 30, fontWeight: 700, color: "#04204D",}}>
-                                    Trust
-                                    <span style={{color: "#FE7519", fontSize: 30, fontWeight: 500,}}>
-                                        Connect
+                                {profile.photo_profile
+                                    ?
+                                    // <Image src={eyeSlash} />
+                                    <EyeOutlined style={{color: 'black'}} />
+                                    :
+                                    <Typography.Paragraph style={{fontSize: 30, fontWeight: 700, color: "#04204D",}}>
+                                        Your
+                                        <span style={{color: "#FE7519", fontSize: 30, fontWeight: 500,}}>
+                                        Logo
                                     </span>
-                                </Typography.Paragraph>
+                                    </Typography.Paragraph>
+                                }
                             </div>
 
                             <div
