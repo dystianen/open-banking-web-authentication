@@ -18,8 +18,8 @@ export const ListBank = observer((props) => {
         const active = activeKey === it.id
 
         const Header = () => (
-            <Row>
-                <Col span={3}>
+            <Row gutter={24}>
+                <Col>
                     <div style={{
                         width: 70,
                         height: 56,
@@ -34,7 +34,7 @@ export const ListBank = observer((props) => {
                         <Image src={it.image} preview={false} width={35}/>
                     </div>
                 </Col>
-                <Col span={12} style={{display: 'flex', alignItems: 'center', marginLeft: 70}}>
+                <Col style={{display: 'flex', alignItems: 'center'}}>
                     <Typography.Paragraph
                         style={{
                             margin: 0,
