@@ -57,24 +57,20 @@ export const BankList = observer(() => {
     <PageLogin>
       <div
         style={{
-          justifyContent: "space-between",
           display: "flex",
           flexDirection: "column",
           flex: 1,
-          minHeight: "75vh",
         }}
       >
-        <div>
-          <div style={{display: "flex"}}>
+          <div style={{display: "flex", marginBottom: '20px'}}>
             <Row>
-              <Col>
+              <Col span={24}>
                 <div
                   style={{
                     display: "flex",
                     justifyContent: "flex-start",
-                    marginTop: "5vh",
+                    marginTop: "4vh",
                     flexDirection: "column",
-                    alignItems: "center",
                   }}
                 >
                   <div
@@ -95,30 +91,39 @@ export const BankList = observer(() => {
                       }}
                     >
                       <div style={{ display: "flex" }}>
-                        <p style={{ color: "#FE6601" }}>Connect&nbsp;</p>Your
+                        <span style={{ color: "#FE6601" }}>Connect&nbsp;</span>Your
                         Account.
                       </div>
-                    </Typography.Paragraph>
-                    <Typography.Paragraph
-                      style={{
-                        margin: 0,
-                        padding: 0,
-                        fontSize: 12,
-                        marginLeft: 5,
-                        color: "#121014",
-                        width: 290,
-                      }}
-                    >
-                        Choose on of institutions to connect your account to Trustlink.
                     </Typography.Paragraph>
                   </div>
                 </div>
               </Col>
+                <Col span={24}>
+                    <div
+                        style={{
+                            display: "flex",
+                            flexDirection: "column",
+                            alignItems: "stretch",
+                        }}
+                    >
+                        <Typography.Paragraph
+                            style={{
+                                margin: 0,
+                                padding: 0,
+                                fontSize: 12,
+                                marginLeft: 5,
+                                color: "#121014",
+                                width: 290,
+                            }}
+                        >
+                            Choose on of institutions to connect your account to Trustlink.
+                        </Typography.Paragraph>
+                    </div>
+                </Col>
             </Row>
           </div>
           <ListBank data={data} />
         </div>
-      </div>
     </PageLogin>
   );
 });
