@@ -84,14 +84,15 @@ export const LoginBRI = observer(() => {
                 userId: localStorage.getItem('userID'),
                 username: values.email,
                 password: values.password,
-                customer_identifier: localStorage.getItem('customer_ref_id'),
-                customer_name: localStorage.getItem('customer_name'),
+                customerIdentifier: localStorage.getItem('customer_ref_id'),
+                customerName: localStorage.getItem('customer_name'),
                 bankCode: localStorage.getItem('bankCode'),
                 bankId: localStorage.getItem('bankId')
             };
 
             console.log({body});
-            await store.bri_login.login(body);
+            const type = localStorage.getItem('type')
+            type === 'sandbox' ? await store.bri_login.loginSandbox(body) : await store.bri_login.login(body);
             setIsLoading(false);
             history.push("/bri-success");
         } catch (e) {
@@ -143,14 +144,9 @@ export const LoginBRI = observer(() => {
                                 required: true,
                                 message: "Please input your email!",
                             },
-                            {
-                                type: "email",
-                                message: "Please input correct email!",
-                            },
                         ]}
                     >
                         <Input
-                            type={"email"}
                             style={styles.input}
                             placeholder={"email@example.com"}
                         />

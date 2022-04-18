@@ -84,13 +84,13 @@ export const LoginBNI = observer(() => {
                 userId: localStorage.getItem('userID'),
                 username: values.email,
                 password: values.password,
-                customer_identifier: localStorage.getItem('customer_ref_id'),
-                customer_name: localStorage.getItem('customer_name'),
+                customerIdentifier: localStorage.getItem('customer_ref_id'),
+                customerName: localStorage.getItem('customer_name'),
                 bankCode: localStorage.getItem('bankCode'),
                 bankId: localStorage.getItem('bankId')
             };
-
-            await store.bni_login.login(body);
+            const type = localStorage.getItem('type')
+            type === 'sandbox' ? await store.bni_login.loginSandbox(body) : await store.bni_login.login(body);
             setIsLoading(false);
             history.push("/bni-success");
         } catch (e) {

@@ -30,6 +30,7 @@ export const TermCondition = observer(() => {
         localStorage.setItem('customer_name', query.customer_name);
         localStorage.setItem('access_token', query.accessToken);
         localStorage.setItem('userID', query.userId);
+        localStorage.setItem('type', query.type)
     }, [])
 
     const loadInitial = async () => {

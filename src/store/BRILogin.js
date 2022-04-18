@@ -6,6 +6,11 @@ export class BRILogin {
         this.context = context;
     }
 
+    async loginSandbox(data) {
+        const res = await http.post('/sandbox/authentication/bri').send(data);
+        return res;
+    }
+
     async login(data) {
         const res = await http.post('/middleware/authentication/bri').send(data);
         return res;
