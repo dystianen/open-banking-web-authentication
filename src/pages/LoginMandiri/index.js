@@ -62,8 +62,8 @@ export const LoginMandiri = observer(() => {
             userId: localStorage.getItem('userID'),
             username: values.email,
             password: values.password,
-            customer_identifier: localStorage.getItem('customer_ref_id'),
-            customer_name: localStorage.getItem('customer_name'),
+            customerIdentifier: localStorage.getItem('customer_ref_id'),
+            customerName: localStorage.getItem('customer_name'),
             bankCode: localStorage.getItem('bankCode'),
             bankId: localStorage.getItem('bankId')
         };

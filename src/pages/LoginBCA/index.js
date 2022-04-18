@@ -1,7 +1,7 @@
 /* eslint-disable jsx-a11y/alt-text */
 import React, {useState, useEffect} from "react";
 import BCA from "../../assets/logo/bca.png";
-import {Button, Form, Input, Typography, Spin, Row} from "antd";
+import {Button, Form, Input, Typography, Spin, Row, message} from "antd";
 import {observer} from "mobx-react-lite";
 import {styles} from "./styles";
 import {SlidesLoginPage} from "../../component/Slides/SlidesLoginPage";
@@ -93,8 +93,8 @@ export const LoginBCA = observer(() => {
                 userId: localStorage.getItem('userID'),
                 username: values.email,
                 password: values.password,
-                customer_identifier: localStorage.getItem('customer_ref_id'),
-                customer_name: localStorage.getItem('customer_name'),
+                customerIdentifier: localStorage.getItem('customer_ref_id'),
+                customerName: localStorage.getItem('customer_name'),
                 bankCode: localStorage.getItem('bankCode'),
                 bankId: localStorage.getItem('bankId')
             };
@@ -106,7 +106,8 @@ export const LoginBCA = observer(() => {
             history.push("/bca-success");
         } catch (e) {
             setIsLoading(false);
-            throw e;
+            console.log(e, "error post");
+            message.error("Something Wrong");;
         }
     }
 
