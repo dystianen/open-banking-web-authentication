@@ -69,7 +69,8 @@ export const LoginMandiri = observer(() => {
         };
         try {
             setLoading(true);
-            await store.mandiri.postLogin(data);
+            const type = localStorage.getItem('type')
+            type === 'sandbox' ? await store.mandiri.postLoginSandbox(data) : await store.mandiri.postLogin(data);
             setLoading(false);
             history.push("/mandiri-success");
         } catch (e) {

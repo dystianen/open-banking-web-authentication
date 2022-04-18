@@ -100,7 +100,8 @@ export const LoginBCA = observer(() => {
             };
 
             setIsLoading(true);
-            await store.bca_login.login(body);
+            const type = localStorage.getItem('type')
+            type === 'sandbox' ? await store.bca_login.loginSandbox(body): await store.bca_login.login(body);
             setIsLoading(false);
 
             history.push("/bca-success");

@@ -89,8 +89,8 @@ export const LoginBNI = observer(() => {
                 bankCode: localStorage.getItem('bankCode'),
                 bankId: localStorage.getItem('bankId')
             };
-
-            await store.bni_login.login(body);
+            const type = localStorage.getItem('type')
+            type === 'sandbox' ? await store.bni_login.loginSandbox(body) : await store.bni_login.login(body);
             setIsLoading(false);
             history.push("/bni-success");
         } catch (e) {
