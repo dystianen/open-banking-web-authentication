@@ -70,7 +70,7 @@ export const ParticlesMode = ({ particles_color, particles_line }) => {
               enable: true,
               area: 2000,
             },
-            value: 100,
+            value: 70,
           },
           opacity: {
             value: 0.5,
