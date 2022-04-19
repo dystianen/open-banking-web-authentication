@@ -152,10 +152,6 @@ export const LoginBNI = observer(() => {
                                 required: true,
                                 message: "Please input your email!",
                             },
-                            {
-                                type: "email",
-                                message: "The input is not valid email!",
-                            },
                         ]}
                     >
                         <Input style={styles.input} placeholder={"email@example.com"}/>
