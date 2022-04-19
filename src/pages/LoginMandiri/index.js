@@ -159,10 +159,6 @@ export const LoginMandiri = observer(() => {
                                 required: true,
                                 message: "Please input your email!",
                             },
-                            {
-                                type: "email",
-                                message: "Please input correct email",
-                            },
                         ]}
                     >
                         <Input
