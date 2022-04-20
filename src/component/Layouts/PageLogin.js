@@ -86,6 +86,7 @@ export const PageLogin = ({
                 flexDirection: "column",
                 flex: 1,
                 minHeight: "75vh",
+                backgroundColor: '#F6F6F6'
               }}
             >
               {children}
