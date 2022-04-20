@@ -10,7 +10,7 @@ import {Metrics} from "../../styles/Metric";
 import {Color} from "./../../styles/Color";
 import {BottomSheet} from "react-spring-bottom-sheet";
 import {useStore} from "../../utils/useStore";
-import {useHistory} from "react-router-dom";
+import {useHistory, useLocation} from "react-router-dom";
 
 // Components
 import {DynamicSheet} from "../../component/DynamicSheet";
@@ -33,6 +33,7 @@ export const LoginBCA = observer(() => {
     const store = useStore();
     const history = useHistory();
     const [form] = Form.useForm();
+    const {search} = useLocation();
 
     const [data, setData] = useState();
     const [isLoading, setIsLoading] = useState(false);
@@ -104,7 +105,7 @@ export const LoginBCA = observer(() => {
             type === 'sandbox' ? await store.bca_login.loginSandbox(body): await store.bca_login.login(body);
             setIsLoading(false);
 
-            history.push("/bca-success");
+            history.push(`/bca-success${search}`);
         } catch (e) {
             setIsLoading(false);
             console.log(e, "error post");

@@ -9,7 +9,7 @@ import {SlidesLoginPage} from "../../component/Slides/SlidesLoginPage";
 import isoLogo from "../../assets/images/iso-2.png";
 import aftechLogo from "../../assets/images/aftech.png";
 import keminfo from "../../assets/images/keminfo.png";
-import {useHistory} from "react-router-dom";
+import {useHistory, useLocation} from "react-router-dom";
 
 import "react-spring-bottom-sheet/dist/style.css";
 import {PageLogin} from "../../component/Layouts/PageLogin";
@@ -24,6 +24,7 @@ const {Title} = Typography;
 export const LoginMandiri = observer(() => {
     const history = useHistory();
     const store = useStore();
+    const {search} = useLocation();
     const [open, setOpen] = useState(false);
     const [data, setData] = useState([]);
     const [indexSlide, setIndexSlide] = useState(0);
@@ -72,7 +73,7 @@ export const LoginMandiri = observer(() => {
             const type = localStorage.getItem('type')
             type === 'sandbox' ? await store.mandiri.postLoginSandbox(data) : await store.mandiri.postLogin(data);
             setLoading(false);
-            history.push("/mandiri-success");
+            history.push(`/mandiri-success${search}`);
         } catch (e) {
             setLoading(false);
             console.log(e, "error post");

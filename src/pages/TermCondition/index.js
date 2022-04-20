@@ -221,7 +221,7 @@ export const TermCondition = observer(() => {
 
                                 <Button
                                     onClick={() => {
-                                        history.push("bank-list");
+                                        history.push(`bank-list${search}`);
                                     }}
                                     style={{
                                         marginTop: 18,

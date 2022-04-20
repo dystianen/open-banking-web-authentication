@@ -11,8 +11,8 @@ export class ListBank {
         makeAutoObservable(this)
     }
 
-    async getAllBanks(id, userId) {
-        const res = await httpBilling.get(this.baseUrl + `/customer?page=1&pageSize=10&customerId=${id}&userId=${userId}`);
+    async getAllBanks(id, userId, type) {
+        const res = await httpBilling.get(this.baseUrl + `/customer?page=1&pageSize=10&customerId=${id}&userId=${userId}&type=${type}`);
         return res;
     }
 

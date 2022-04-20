@@ -14,7 +14,7 @@ import {StaticSheet} from "../../component/StaticSheet";
 import keminfo from "../../assets/images/keminfo.png";
 import isoLogo from "../../assets/images/iso-2.png";
 import aftechLogo from "../../assets/images/aftech.png";
-import {useHistory} from "react-router-dom";
+import {useHistory, useLocation} from "react-router-dom";
 import {EyeTwoTone} from "@ant-design/icons";
 import {EyeInvisibleOutlined} from "@ant-design/icons";
 
@@ -23,6 +23,7 @@ const {Title} = Typography;
 export const LoginBNI = observer(() => {
     const history = useHistory();
     const store = useStore();
+    const {search} = useLocation();
     const [form] = Form.useForm();
     const [open, setOpen] = useState(false);
     const [isLoading, setIsLoading] = useState(false);
@@ -92,7 +93,7 @@ export const LoginBNI = observer(() => {
             const type = localStorage.getItem('type')
             type === 'sandbox' ? await store.bni_login.loginSandbox(body) : await store.bni_login.login(body);
             setIsLoading(false);
-            history.push("/bni-success");
+            history.push(`/bni-success${search}`);
         } catch (e) {
             setIsLoading(false);
             console.log(e, "error post");
