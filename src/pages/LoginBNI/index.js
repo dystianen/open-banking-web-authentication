@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from "react";
-import {Button, Form, Input, Typography, message} from "antd";
+import {Button, Form, Input, Typography, message, Spin} from "antd";
 import BNI from "../../assets/logo/BNI.png";
 import {styles} from "./Style";
 import {SlidesLoginPage} from "../../component/Slides/SlidesLoginPage";
@@ -14,7 +14,7 @@ import {StaticSheet} from "../../component/StaticSheet";
 import keminfo from "../../assets/images/keminfo.png";
 import isoLogo from "../../assets/images/iso-2.png";
 import aftechLogo from "../../assets/images/aftech.png";
-import {useHistory} from "react-router-dom";
+import {useHistory, useLocation} from "react-router-dom";
 import {EyeTwoTone} from "@ant-design/icons";
 import {EyeInvisibleOutlined} from "@ant-design/icons";
 
@@ -23,6 +23,7 @@ const {Title} = Typography;
 export const LoginBNI = observer(() => {
     const history = useHistory();
     const store = useStore();
+    const {search} = useLocation();
     const [form] = Form.useForm();
     const [open, setOpen] = useState(false);
     const [isLoading, setIsLoading] = useState(false);
@@ -92,16 +93,17 @@ export const LoginBNI = observer(() => {
             const type = localStorage.getItem('type')
             type === 'sandbox' ? await store.bni_login.loginSandbox(body) : await store.bni_login.login(body);
             setIsLoading(false);
-            history.push("/bni-success");
+            history.push(`/bni-success${search}`);
         } catch (e) {
             setIsLoading(false);
-            message.error(e);
+            console.log(e, "error post");
+            message.error("Something Wrong");
         }
     }
 
     return (
         <PageLogin>
-            <div>
+            <Spin spinning={isLoading}>
                 <div style={{marginBottom: 30, marginTop: 40}}>
                     <div style={{height: 70}}>
                         <div
@@ -226,7 +228,7 @@ export const LoginBNI = observer(() => {
                         )}
                     </Form.Item>
                 </Form>
-            </div>
+            </Spin>
             <div>
                 <SlidesLoginPage onOpenSheet={onOpenSheet}/>
 

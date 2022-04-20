@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from "react";
 import {observer} from "mobx-react-lite";
 import {useStore} from "../../utils/useStore";
-import {Button, Form, Input, Typography, message} from "antd";
+import {Button, Form, Input, Typography, message, Spin} from "antd";
 import LivinMandiri from "../../assets/images/mandiri.png";
 import {styles} from "./style";
 import {BottomSheet} from "react-spring-bottom-sheet";
@@ -9,7 +9,7 @@ import {SlidesLoginPage} from "../../component/Slides/SlidesLoginPage";
 import isoLogo from "../../assets/images/iso-2.png";
 import aftechLogo from "../../assets/images/aftech.png";
 import keminfo from "../../assets/images/keminfo.png";
-import {useHistory} from "react-router-dom";
+import {useHistory, useLocation} from "react-router-dom";
 
 import "react-spring-bottom-sheet/dist/style.css";
 import {PageLogin} from "../../component/Layouts/PageLogin";
@@ -24,6 +24,7 @@ const {Title} = Typography;
 export const LoginMandiri = observer(() => {
     const history = useHistory();
     const store = useStore();
+    const {search} = useLocation();
     const [open, setOpen] = useState(false);
     const [data, setData] = useState([]);
     const [indexSlide, setIndexSlide] = useState(0);
@@ -72,7 +73,7 @@ export const LoginMandiri = observer(() => {
             const type = localStorage.getItem('type')
             type === 'sandbox' ? await store.mandiri.postLoginSandbox(data) : await store.mandiri.postLogin(data);
             setLoading(false);
-            history.push("/mandiri-success");
+            history.push(`/mandiri-success${search}`);
         } catch (e) {
             setLoading(false);
             console.log(e, "error post");
@@ -107,7 +108,7 @@ export const LoginMandiri = observer(() => {
 
     return (
         <PageLogin>
-            <div>
+            <Spin spinning={loading}>
                 <div style={{marginBottom: 30, marginTop: 40}}>
                     <div style={{height: 70}}>
                         <div
@@ -238,7 +239,7 @@ export const LoginMandiri = observer(() => {
                         )}
                     </Form.Item>
                 </Form>
-            </div>
+            </Spin>
             <div>
                 <SlidesLoginPage
                     title={`Livin' by Mandiri`}

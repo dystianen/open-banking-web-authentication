@@ -67,7 +67,7 @@ export const TermCondition = observer(() => {
     );
 
     return (
-        <PageLogin goback={false}>
+        <PageLogin goback={false} onClose={true}>
             <div
                 style={{
                     justifyContent: "space-between",
@@ -221,7 +221,7 @@ export const TermCondition = observer(() => {
 
                                 <Button
                                     onClick={() => {
-                                        history.push("bank-list");
+                                        history.push(`bank-list${search}`);
                                     }}
                                     style={{
                                         marginTop: 18,

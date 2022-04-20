@@ -22,7 +22,11 @@ export const BankList = observer(() => {
   const loadInitial = async () => {
     try {
       setLoading(true);
-      const res = await store.listBank.getAllBanks(localStorage.getItem('customer_ref_id'), localStorage.getItem('userID'));
+      const res = await store.listBank.getAllBanks(
+          localStorage.getItem('customer_ref_id'),
+          localStorage.getItem('userID'),
+          localStorage.getItem('type')
+      );
       setDataBank(res.body.data);
       setLoading(false);
     } catch (e) {

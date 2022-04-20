@@ -1,7 +1,7 @@
 import React, {useState} from "react";
 import {observer} from 'mobx-react-lite';
 import {Col, Image, Row, Typography, Collapse, Avatar} from 'antd';
-import {useHistory} from "react-router-dom";
+import {useHistory, useLocation} from "react-router-dom";
 import connected from "../../../assets/icons/checklist.svg";
 
 const {Panel} = Collapse;
@@ -9,6 +9,7 @@ export const ListBank = observer((props) => {
     const [activeKey, setActiveKey] = useState(null)
 
     let history = useHistory();
+    const {search} = useLocation();
 
     function callback(key) {
         setActiveKey(key);
@@ -81,7 +82,7 @@ export const ListBank = observer((props) => {
                     {data.map((data, index) => (
                         <div className={index ? 'border-color-bank' : 'none-border'} style={data.connected === false ? {cursor: 'pointer'} : {}} onClick={() => {
                             if (data.connected === false) {
-                                history.push(data.link)
+                                history.push(data.link+search)
                                 localStorage.setItem('bankCode', data.code)
                                 localStorage.setItem('bankId', data.id)
                             }

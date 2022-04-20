@@ -5,7 +5,7 @@ import { faArrowLeft, faXmark } from "@fortawesome/free-solid-svg-icons";
 import { FixedTopBar } from "../../component/Header/FixedTopBar";
 import { styles } from "./Style";
 import FooterPageLogin from "./../Footer/FooterPageLogin";
-import { useHistory } from "react-router-dom";
+import {useHistory, useLocation} from "react-router-dom";
 import { ParticlesMode } from "./../ParticlesMode";
 
 function getWindowDimensions() {
@@ -19,9 +19,10 @@ export const PageLogin = ({
   goback = true,
   particles_color = "ff6600",
   particles_line = "#eb9e6c",
+  onClose = false
 }) => {
   let history = useHistory();
-
+  const {search} = useLocation();
   const [windowDimensions, setWindowDimensions] = useState(
     getWindowDimensions()
   );
@@ -33,6 +34,13 @@ export const PageLogin = ({
     window.addEventListener("resize", handleResize);
     return () => window.removeEventListener("resize", handleResize);
   }, []);
+
+
+  const closeTab = () => {
+    window.opener = null;
+    window.open("", "_self", "");
+    window.close();
+  };
 
   return (
     <div
@@ -73,7 +81,7 @@ export const PageLogin = ({
                     <FontAwesomeIcon icon={faXmark} style={styles.navButton} />
                   }
                   onClick={() => {
-                    history.push("term-condition");
+                      onClose ? closeTab() : history.push(`term-condition${search}`)
                   }}
                 />
               </div>
@@ -81,11 +89,12 @@ export const PageLogin = ({
             <div
               style={{
                 zIndex: 3,
-                justifyContent: "space-between",
+                // justifyContent: "space-between",
                 display: "flex",
                 flexDirection: "column",
                 flex: 1,
                 minHeight: "75vh",
+                backgroundColor: '#F6F6F6'
               }}
             >
               {children}
