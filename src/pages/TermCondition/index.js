@@ -67,7 +67,7 @@ export const TermCondition = observer(() => {
     );
 
     return (
-        <PageLogin goback={false}>
+        <PageLogin goback={false} onClose={true}>
             <div
                 style={{
                     justifyContent: "space-between",
