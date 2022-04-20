@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from "react";
 import {observer} from "mobx-react-lite";
 import {useStore} from "../../utils/useStore";
-import {Button, Form, Input, Typography, message} from "antd";
+import {Button, Form, Input, Typography, message, Spin} from "antd";
 import LivinMandiri from "../../assets/images/mandiri.png";
 import {styles} from "./style";
 import {BottomSheet} from "react-spring-bottom-sheet";
@@ -107,7 +107,7 @@ export const LoginMandiri = observer(() => {
 
     return (
         <PageLogin>
-            <div>
+            <Spin spinning={loading}>
                 <div style={{marginBottom: 30, marginTop: 40}}>
                     <div style={{height: 70}}>
                         <div
@@ -238,7 +238,7 @@ export const LoginMandiri = observer(() => {
                         )}
                     </Form.Item>
                 </Form>
-            </div>
+            </Spin>
             <div>
                 <SlidesLoginPage
                     title={`Livin' by Mandiri`}

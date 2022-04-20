@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from "react";
-import {Button, Card, Form, Image, Input, Typography, message} from "antd";
+import {Button, Card, Form, Image, Input, Typography, message, Spin} from "antd";
 import BRI from "../../assets/logo/BRI.png";
 import {styles} from "./Style";
 import {SlidesLoginPage} from "../../component/Slides/SlidesLoginPage";
@@ -96,13 +96,15 @@ export const LoginBRI = observer(() => {
             setIsLoading(false);
             history.push("/bri-success");
         } catch (e) {
-            message.error(e);
+            setIsLoading(false);
+            console.log(e, "error post");
+            message.error("Something Wrong");
         }
     }
 
     return (
         <PageLogin>
-            <div>
+            <Spin spinning={isLoading}>
                 <div style={{marginBottom: 30, marginTop: 40}}>
                     <div style={{height: 70}}>
                         <div style={{display: "flex", justifyItems: "center"}}>
@@ -221,7 +223,7 @@ export const LoginBRI = observer(() => {
                         )}
                     </Form.Item>
                 </Form>
-            </div>
+            </Spin>
             <div>
                 <SlidesLoginPage onOpenSheet={onOpenSheet}/>
                 <BottomSheet

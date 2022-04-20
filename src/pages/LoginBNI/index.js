@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from "react";
-import {Button, Form, Input, Typography, message} from "antd";
+import {Button, Form, Input, Typography, message, Spin} from "antd";
 import BNI from "../../assets/logo/BNI.png";
 import {styles} from "./Style";
 import {SlidesLoginPage} from "../../component/Slides/SlidesLoginPage";
@@ -95,13 +95,14 @@ export const LoginBNI = observer(() => {
             history.push("/bni-success");
         } catch (e) {
             setIsLoading(false);
-            message.error(e);
+            console.log(e, "error post");
+            message.error("Something Wrong");
         }
     }
 
     return (
         <PageLogin>
-            <div>
+            <Spin spinning={isLoading}>
                 <div style={{marginBottom: 30, marginTop: 40}}>
                     <div style={{height: 70}}>
                         <div
@@ -226,7 +227,7 @@ export const LoginBNI = observer(() => {
                         )}
                     </Form.Item>
                 </Form>
-            </div>
+            </Spin>
             <div>
                 <SlidesLoginPage onOpenSheet={onOpenSheet}/>
 
