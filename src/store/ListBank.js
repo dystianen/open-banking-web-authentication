@@ -2,7 +2,7 @@ import { makeAutoObservable } from "mobx";
 import {http, httpBilling} from "../utils/http";
 
 export class ListBank {
-    baseUrl = '/setting/institution/category/all';
+    baseUrl = '/settings/institution/category/all';
     data = [];
     detail = [];
 

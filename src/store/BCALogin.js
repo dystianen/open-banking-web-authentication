@@ -17,7 +17,7 @@ export class BCALogin {
     }
 
     async institution(id) {
-        const res = await httpBilling.get(`/setting/institution/${id}`);
+        const res = await httpBilling.get(`/settings/institution/${id}`);
         return res;
     }
 

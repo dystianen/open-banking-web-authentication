@@ -11,7 +11,7 @@ export class MandiriLogin {
     detail = [];
 
     async getData(id) {
-        const res = await httpBilling.get(`/setting/institution/${id}`);
+        const res = await httpBilling.get(`/settings/institution/${id}`);
         return res.body
     }
 
