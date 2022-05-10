@@ -53,7 +53,7 @@ export const PageLogin = ({
     >
       <div
         style={{
-          maxWidth: `${windowDimensions >= 520 ? 520 : windowDimensions}px`,
+          maxWidth: `${windowDimensions >= 400 ? 400 : windowDimensions}px`,
         }}
       >
         <FixedTopBar />
