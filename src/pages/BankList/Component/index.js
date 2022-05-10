@@ -58,8 +58,6 @@ export const ListBank = observer((props) => {
                     return "mandiri-login";
                 case "BNI":
                     return "bni-login";
-                case "Gopay":
-                    return null;
                 case "KlikBCA":
                     return "bca-login";
                 case "BRI":

@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from "react";
 import {observer} from "mobx-react-lite";
-import {Button, Col, Row, Typography, Steps, Image} from "antd";
+import {Button, Col, Row, Typography, Steps, Image, Avatar} from "antd";
 import {useHistory, useLocation, useParams} from "react-router-dom";
 
 import verified from "../../assets/images/verified.svg";
@@ -11,6 +11,7 @@ import {PageLogin} from "../../component/Layouts/PageLogin";
 import * as queryString from "querystring";
 import {useStore} from "../../utils/useStore";
 import {EyeOutlined} from "@ant-design/icons";
+import {appConfig} from "../../config/app";
 
 const {Step} = Steps;
 
@@ -93,13 +94,14 @@ export const TermCondition = observer(() => {
                                     display: "flex",
                                     flexDirection: "column",
                                     alignItems: "stretch",
-                                    height: 37,
                                 }}
                             >
                                 {profile.photo_profile
                                     ?
-                                    // <Image src={eyeSlash} />
-                                    <EyeOutlined style={{color: 'black'}} />
+                                    <Avatar
+                                        size={100}
+                                        src={appConfig.apiUrl + '/file/' + profile?.photo_profile}
+                                    />
                                     :
                                     <Typography.Paragraph style={{fontSize: 30, fontWeight: 700, color: "#04204D",}}>
                                         Your
