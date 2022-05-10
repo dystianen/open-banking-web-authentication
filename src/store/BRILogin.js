@@ -17,7 +17,7 @@ export class BRILogin {
     }
 
     async instructions(id) {
-        const res = await httpBilling.get(`/settings/institution/${id}`);
+        const res = await httpBilling.get(`/setting/institution/${id}`);
         return res;
     }
 
