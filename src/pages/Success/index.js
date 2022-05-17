@@ -37,7 +37,7 @@ export const Success = observer((props) => {
                 block
                 style={styles.buttonDone}
                 onClick={() => {
-                    query.type !== 'sandbox' ? onClose() : window.open(`https://open-banking.k3s.bangun-kreatif.com/open-banking/customer/${localStorage.getItem('customer_ref_id')}`)
+                    query.type !== 'sandbox' ? onClose() : window.open(`https://cdi.k3s.bangun-kreatif.com/open-banking/customer/${localStorage.getItem('customer_ref_id')}`)
                 }
             }>
                 Done
