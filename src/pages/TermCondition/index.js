@@ -26,12 +26,12 @@ export const TermCondition = observer(() => {
     const query = queryString.parse(deleteFirstCharacter)
 
     useEffect(() => {
-        loadInitial();
         localStorage.setItem('customer_ref_id', query.customer_ref_id);
         localStorage.setItem('customer_name', query.customer_name);
         localStorage.setItem('access_token', query.accessToken);
         localStorage.setItem('userID', query.userId);
         localStorage.setItem('type', query.type)
+        loadInitial();
     }, [])
 
     const loadInitial = async () => {
