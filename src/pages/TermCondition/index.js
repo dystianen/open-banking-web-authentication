@@ -37,6 +37,7 @@ export const TermCondition = observer(() => {
     const loadInitial = async () => {
         try {
             setLoading(true);
+            console.log(localStorage.getItem('access_token'))
             const res = await store.profile.getProfile();
             setProfile(res.body.data);
             setLoading(false);
