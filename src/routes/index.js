@@ -32,7 +32,7 @@ useEffect(() => {
     localStorage.setItem('access_token', query.accessToken);
     localStorage.setItem('userID', query.userId);
     localStorage.setItem('type', query.type)
-}, [])
+}, [search])
     return (
         <Switch>
             <Route path="/" exact>
