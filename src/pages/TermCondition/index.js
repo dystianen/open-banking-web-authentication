@@ -24,13 +24,13 @@ export const TermCondition = observer(() => {
 
     let deleteFirstCharacter = search.substr(1) // Delete character ?
     const query = queryString.parse(deleteFirstCharacter)
+    localStorage.setItem('customer_ref_id', query.customer_ref_id);
+    localStorage.setItem('customer_name', query.customer_name);
+    localStorage.setItem('access_token', query.accessToken);
+    localStorage.setItem('userID', query.userId);
+    localStorage.setItem('type', query.type)
 
     useEffect(() => {
-        localStorage.setItem('customer_ref_id', query.customer_ref_id);
-        localStorage.setItem('customer_name', query.customer_name);
-        localStorage.setItem('access_token', query.accessToken);
-        localStorage.setItem('userID', query.userId);
-        localStorage.setItem('type', query.type)
         loadInitial();
     }, [])
 
