@@ -18,9 +18,21 @@ import {TestMemberDetail} from "../pages/TestMobx/MemberDetail";
 import {LoginBRI} from "../pages/LoginBRI";
 import {ChooseWay} from "../pages/ChooseWay";
 import React, {useEffect} from "react";
+import queryString from "querystring";
 
 export const MainRoutes = (props) => {
+    const {search} = useLocation();
 
+    let deleteFirstCharacter = search.substr(1) // Delete character ?
+    const query = queryString.parse(deleteFirstCharacter)
+
+useEffect(() => {
+    localStorage.setItem('customer_ref_id', query.customer_ref_id);
+    localStorage.setItem('customer_name', query.customer_name);
+    localStorage.setItem('access_token', query.accessToken);
+    localStorage.setItem('userID', query.userId);
+    localStorage.setItem('type', query.type)
+}, [])
     return (
         <Switch>
             <Route path="/" exact>
