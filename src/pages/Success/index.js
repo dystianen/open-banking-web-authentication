@@ -29,7 +29,7 @@ export const Success = observer((props) => {
 
             <Heading strong title={message} />
 
-            <Button size="large" block style={styles.buttonConnect} onClick={() => history.push('/bank-list')}>
+            <Button size="large" block style={styles.buttonConnect} onClick={() => history.push(`/bank-list${search}`)}>
                 Connect another account
             </Button>
             <Button

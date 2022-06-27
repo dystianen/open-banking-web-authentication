@@ -10,6 +10,7 @@ import {BRILogin} from "./BRILogin";
 import {Profile} from './Profile'
 import {TokopediaLogin} from "./TokopediaLogin";
 import {GojekLogin} from "./GojekLogin";
+import {OVOLogin} from "./OVOLogin";
 // import { AuthBCA } from "./AuthBCA";
 // import { BCAInstruction } from "./BCAInstruction";
 
@@ -29,6 +30,7 @@ export class Store {
     bri_login = new BRILogin(this);
     tokopedia_login = new TokopediaLogin(this);
     gojek_login = new GojekLogin(this);
+    ovo_login = new OVOLogin(this);
     listBank = new ListBank(this);
     profile = new Profile(this)
 
