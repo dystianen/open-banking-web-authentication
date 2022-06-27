@@ -8,6 +8,8 @@ import { ListBank } from "./ListBank";
 import { BCALogin } from "./BCALogin";
 import {BRILogin} from "./BRILogin";
 import {Profile} from './Profile'
+import {TokopediaLogin} from "./TokopediaLogin";
+import {GojekLogin} from "./GojekLogin";
 // import { AuthBCA } from "./AuthBCA";
 // import { BCAInstruction } from "./BCAInstruction";
 
@@ -25,6 +27,8 @@ export class Store {
     bca_login = new BCALogin(this);
     bni_login = new BNILogin(this);
     bri_login = new BRILogin(this);
+    tokopedia_login = new TokopediaLogin(this);
+    gojek_login = new GojekLogin(this);
     listBank = new ListBank(this);
     profile = new Profile(this)
 
