@@ -172,6 +172,22 @@ export const MainRoutes = (props) => {
             >
                 <Success message={"Tokopedia"}/>
             </PublicRoute>
+
+            <PublicRoute
+                restricted={false}
+                path="/gojek-success"
+                exact
+            >
+                <Success message={"Gojek"}/>
+            </PublicRoute>
+
+            <PublicRoute
+                restricted={false}
+                path="/ovo-success"
+                exact
+            >
+                <Success message={"OVO"}/>
+            </PublicRoute>
             {/* End OfSuccess Pages */}
 
             <PublicRoute
