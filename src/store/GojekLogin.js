@@ -23,6 +23,10 @@ export class GojekLogin {
     }
 
     async otp(data) {
-        return await http.post(`/authentication/validate-otp`).send(data)
+        return await http.post(`/middleware/authentication/validate-otp`).send(data)
+    }
+
+    async checkStatus(data) {
+        return await http.post(`/middleware/authentication/check-status`).send(data)
     }
 }
