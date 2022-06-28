@@ -62,6 +62,14 @@ export const ListBank = observer((props) => {
                     return "bca-login";
                 case "BRI":
                     return "bri-login";
+                case "GOJEK":
+                    return "gojek-login";
+                case "OVO":
+                    return "ovo-login";
+                case "TOKOPEDIA":
+                    return "tokopedia-login";
+                case "SHOPEE":
+                    return "shopee-login";
                 default:
                     return null
             }
