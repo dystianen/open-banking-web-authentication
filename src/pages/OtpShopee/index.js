@@ -2,7 +2,7 @@ import React, {useEffect, useState} from "react";
 import {observer} from "mobx-react-lite";
 import {useStore} from "../../utils/useStore";
 import {Button, Form, Input, Typography, message, Spin} from "antd";
-import tokopedia from "../../assets/logo/tokopedia.png";
+import shopee from "../../assets/logo/shopee.png";
 import {styles} from "../../styles/index";
 import {BottomSheet} from "react-spring-bottom-sheet";
 import {SlidesLoginPage} from "../../component/Slides/SlidesLoginPage";
@@ -21,7 +21,7 @@ import {EyeInvisibleOutlined, EyeTwoTone} from "@ant-design/icons";
 
 const {Title} = Typography;
 
-export const LoginTokopedia = observer(() => {
+export const LoginShopee = observer(() => {
     const history = useHistory();
     const store = useStore();
     const {search} = useLocation();
@@ -41,7 +41,7 @@ export const LoginTokopedia = observer(() => {
     const loadInitialData = async () => {
         try {
             setLoading(true);
-            const res = await store.tokopedia_login.getData(
+            const res = await store.shopee_login.getData(
                 `d66b02dd-546d-4d03-bf6f-d6e3aa57996a`
             );
             setData(res.data?.instruction);
@@ -69,7 +69,7 @@ export const LoginTokopedia = observer(() => {
             bankId: localStorage.getItem('bankId')
         };
         localStorage.setItem('data', JSON.stringify(data));
-        history.push(`/tokopedia-otp${search}`);
+        history.push(`/shopee-otp${search}`);
     };
 
     const onFinish = async () => {
@@ -85,12 +85,12 @@ export const LoginTokopedia = observer(() => {
         };
         try {
             setLoading(true);
-            const res = await store.tokopedia_login.postLogin(data);
+            const res = await store.shopee_login.postLogin(data);
             localStorage.setItem('data', JSON.stringify(data));
             localStorage.setItem('referenceNo', res.body.data.referenceNo);
             localStorage.setItem('secCode', res.body.data.secCode);
             setLoading(false);
-            history.push(`/tokopedia-otp`);
+            history.push(`/shopee-otp`);
         } catch (err) {
             setLoading(false);
             console.log(err, "error post");
@@ -136,7 +136,7 @@ export const LoginTokopedia = observer(() => {
                             }}
                         >
                             <img
-                                src={tokopedia}
+                                src={shopee}
                                 style={{
                                     height: 80,
                                     width: "auto",

@@ -25,6 +25,8 @@ import {LoginGojek} from "../pages/OtpGojek";
 import {OtpGojek} from "../pages/OtpGojek/Component/index";
 import {LoginOVO} from "../pages/OtpOVO";
 import {OtpOVO} from "../pages/OtpOVO/Component";
+import {LoginShopee} from "../pages/OtpShopee";
+import {OtpShopee} from "../pages/OtpShopee/Component";
 
 export const MainRoutes = (props) => {
     const {search} = useLocation();
@@ -132,6 +134,20 @@ export const MainRoutes = (props) => {
                 exact
             />
 
+            <PublicRoute
+                restricted={false}
+                component={LoginShopee}
+                path="/shopee-login"
+                exact
+            />
+
+            <PublicRoute
+                restricted={false}
+                component={OtpShopee}
+                path="/shopee-otp"
+                exact
+            />
+
             {/* Success Pages */}
             <PublicRoute
                 restricted={false}
@@ -187,6 +203,14 @@ export const MainRoutes = (props) => {
                 exact
             >
                 <Success message={"OVO"}/>
+            </PublicRoute>
+
+            <PublicRoute
+                restricted={false}
+                path="/shopee-success"
+                exact
+            >
+                <Success message={"SHOPEE"}/>
             </PublicRoute>
             {/* End OfSuccess Pages */}
 
