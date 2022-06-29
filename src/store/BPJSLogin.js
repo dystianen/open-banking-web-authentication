@@ -21,4 +21,8 @@ export class BPJSLogin {
     async postLogin(data) {
         return await http.post(`/middleware/authentication/bpjs`).send(data)
     }
+
+    async checkStatus(data) {
+        return await http.post(`/middleware/authentication/check-status`).send(data)
+    }
 }
