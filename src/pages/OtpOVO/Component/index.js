@@ -169,7 +169,6 @@ export const OtpOVO = observer(() => {
                                     <span> Didn’t receive code? </span>
                                     <span style={{color: "#0581FF"}}> Request again</span>
                                 </p>
-                                {console.log({OTP})}
                                 <Form.Item shouldUpdate>
                                     {() => (
                                         <Button

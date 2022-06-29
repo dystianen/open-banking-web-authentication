@@ -57,6 +57,29 @@ export const LoginTokopedia = observer(() => {
         setIndexSlide(index);
     };
 
+    let time = 0;
+    let status = '';
+    const intervalStatus = async () => {
+        await isStatus();
+        let interval = setInterval(() => {
+            time += 1;
+            setLoading(true)
+
+            if (time !== 4) {
+                if (status === 'BUSY') {
+                    isStatus();
+                    setLoading(true)
+                } else {
+                    clearInterval(interval)
+                    setLoading(false)
+                }
+            } else {
+                clearInterval(interval)
+                setLoading(false)
+            }
+        }, 15000)
+    }
+
     const onFinishSandbox = async () => {
         const values = await form.validateFields();
         const data = {
@@ -73,28 +96,59 @@ export const LoginTokopedia = observer(() => {
     };
 
     const onFinish = async () => {
-        const values = await form.validateFields();
-        const data = {
-            userId: localStorage.getItem('userID'),
-            username: values.email,
-            password: values.password,
-            customerIdentifier: localStorage.getItem('customer_ref_id'),
-            customerName: localStorage.getItem('customer_name'),
-            bankCode: localStorage.getItem('bankCode'),
-            bankId: localStorage.getItem('bankId')
-        };
         try {
             setLoading(true);
+            const values = await form.validateFields();
+            const data = {
+                userId: localStorage.getItem('userID'),
+                username: values.email,
+                password: values.password,
+                customerIdentifier: localStorage.getItem('customer_ref_id'),
+                customerName: localStorage.getItem('customer_name'),
+                partnerReferenceNo: localStorage.getItem('partnerReferenceNo'),
+                bankCode: localStorage.getItem('bankCode'),
+                bankId: localStorage.getItem('bankId'),
+            };
             const res = await store.tokopedia_login.postLogin(data);
             localStorage.setItem('data', JSON.stringify(data));
             localStorage.setItem('referenceNo', res.body.data.referenceNo);
             localStorage.setItem('secCode', res.body.data.secCode);
-            setLoading(false);
-            history.push(`/tokopedia-otp`);
+            await intervalStatus();
         } catch (err) {
             setLoading(false);
             console.log(err, "error post");
             message.error(err.response.data.message);
+        }
+    };
+
+    const isStatus = async () => {
+        try {
+            const values = JSON.parse(localStorage.getItem("data"));
+
+            const data = {
+                userId: values.userId,
+                username: values.username,
+                customerIdentifier: values.customerIdentifier,
+                customerName: values.customerName,
+                bankCode: values.bankCode,
+                bankId: values.bankId,
+                partnerReferenceNo: values.partnerReferenceNo,
+                referenceNo: localStorage.getItem('referenceNo'),
+                secCode: localStorage.getItem('secCode'),
+            };
+
+            const res = await store.gojek_login.checkStatus(data)
+            status = res.body.data.status
+            if (status === 'WAITING_FOR_OTP') {
+                history.push(`/tokopedia-otp${search}`);
+            } else if (status === 'FAILED') {
+                setLoading(false)
+            } else if (status === 'FAILED_PASS') {
+                setLoading(false)
+            }
+        } catch (err) {
+            console.log({err});
+            message.error(err.message)
         }
     };
 
@@ -124,8 +178,8 @@ export const LoginTokopedia = observer(() => {
     ];
 
     return (
-        <PageLogin>
-            <Spin spinning={loading}>
+        <Spin spinning={loading}>
+            <PageLogin>
                 <div style={{marginBottom: 30, marginTop: 40}}>
                     <div style={{height: 70}}>
                         <div
@@ -262,26 +316,27 @@ export const LoginTokopedia = observer(() => {
                         )}
                     </Form.Item>
                 </Form>
-            </Spin>
-            <div>
-                <SlidesLoginPage
-                    title={`Livin' by Mandiri`}
-                    onOpenSheet={onOpenSheet}
-                />
-                <BottomSheet
-                    open={open}
-                    onDismiss={onDismiss}
-                    snapPoints={({maxHeight}) => maxHeight / 2.1}
-                >
-                    {indexSlide === 1 ? (
-                        <StaticSheet data={dataHardcode}/>
-                    ) : (
-                        <DynamicSheet
-                            data={indexSlide === 2 ? instructionForgot : instructionLogin}
-                        />
-                    )}
-                </BottomSheet>{" "}
-            </div>
-        </PageLogin>
+
+                <div>
+                    <SlidesLoginPage
+                        title={`Livin' by Mandiri`}
+                        onOpenSheet={onOpenSheet}
+                    />
+                    <BottomSheet
+                        open={open}
+                        onDismiss={onDismiss}
+                        snapPoints={({maxHeight}) => maxHeight / 2.1}
+                    >
+                        {indexSlide === 1 ? (
+                            <StaticSheet data={dataHardcode}/>
+                        ) : (
+                            <DynamicSheet
+                                data={indexSlide === 2 ? instructionForgot : instructionLogin}
+                            />
+                        )}
+                    </BottomSheet>{" "}
+                </div>
+            </PageLogin>
+        </Spin>
     );
 });
