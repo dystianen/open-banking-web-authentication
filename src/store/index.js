@@ -12,6 +12,7 @@ import {TokopediaLogin} from "./TokopediaLogin";
 import {GojekLogin} from "./GojekLogin";
 import {OVOLogin} from "./OVOLogin";
 import {ShopeeLogin} from "./ShopeeLogin";
+import {BPJSLogin} from "./BPJSLogin";
 // import { AuthBCA } from "./AuthBCA";
 // import { BCAInstruction } from "./BCAInstruction";
 
@@ -33,6 +34,7 @@ export class Store {
     gojek_login = new GojekLogin(this);
     ovo_login = new OVOLogin(this);
     shopee_login = new ShopeeLogin(this);
+    bpjs_login = new BPJSLogin(this);
     listBank = new ListBank(this);
     profile = new Profile(this)
 
