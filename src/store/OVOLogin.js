@@ -23,6 +23,6 @@ export class OVOLogin {
     }
 
     async otp(data) {
-        return await http.post(`/authentication/validate-otp`).send(data)
+        return await http.post(`/middleware/authentication/validate-otp`).send(data)
     }
 }

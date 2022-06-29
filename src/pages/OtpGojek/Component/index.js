@@ -26,13 +26,12 @@ export const OtpGojek = observer(() => {
             setIsLoading(true)
 
             if (time !== 4) {
-                if (status === 'SUCCESS') {
-                    clearInterval(interval)
-                    history.push(`/gojek-success${search}`);
-                    setIsLoading(false)
-                } else {
+                if (status === 'BUSY') {
                     isStatus();
                     setIsLoading(true)
+                } else {
+                    clearInterval(interval)
+                    setIsLoading(false)
                 }
             } else {
                 clearInterval(interval)
@@ -93,7 +92,13 @@ export const OtpGojek = observer(() => {
             const res = await store.gojek_login.checkStatus(data)
             status = res.body.data.status
             if (status === 'SUCCESS') {
-                history.push(`/gojek-success${search}`)
+                history.push(`/gojek-success${search}`);
+            } else if (status === 'FAILED') {
+                setIsLoading(false)
+            } else if (status === 'FAILED_PASS') {
+                setIsLoading(false)
+            } else if (status === 'WAITING_FOR_OTP') {
+                setIsLoading(false)
             }
         } catch (err) {
             console.log({err});
