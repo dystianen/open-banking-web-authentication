@@ -28,6 +28,7 @@ import {OtpOVO} from "../pages/OtpOVO/Component";
 import {LoginShopee} from "../pages/OtpShopee";
 import {OtpShopee} from "../pages/OtpShopee/Component";
 import {LoginBPJS} from "../pages/LoginBPJS";
+import {LoginDJP} from "../pages/LoginDJP";
 
 export const MainRoutes = (props) => {
     const {search} = useLocation();
@@ -43,6 +44,7 @@ export const MainRoutes = (props) => {
         localStorage.setItem('type', query.type);
         localStorage.setItem('partnerReferenceNo', query.partnerReferenceNo);
     }, [search])
+
     return (
         <Switch>
             <Route path="/" exact>
@@ -157,6 +159,13 @@ export const MainRoutes = (props) => {
                 exact
             />
 
+            <PublicRoute
+                restricted={false}
+                component={LoginDJP}
+                path="/djp-login"
+                exact
+            />
+
             {/* Success Pages */}
             <PublicRoute
                 restricted={false}
@@ -228,6 +237,14 @@ export const MainRoutes = (props) => {
                 exact
             >
                 <Success message={"BPJS"}/>
+            </PublicRoute>
+
+            <PublicRoute
+                restricted={false}
+                path="/djp-success"
+                exact
+            >
+                <Success message={"DJP"}/>
             </PublicRoute>
             {/* End OfSuccess Pages */}
 

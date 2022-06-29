@@ -114,7 +114,7 @@ export const LoginOVO = observer(() => {
         } catch (e) {
             setLoading(false);
             console.log(e, "error post");
-            message.error("Something Wrong");
+            message.error('Failed to login!')
         }
     };
 
@@ -145,7 +145,7 @@ export const LoginOVO = observer(() => {
             }
         } catch (err) {
             console.log({err});
-            message.error(err.message)
+            message.error('Failed to login!')
         }
     };
 
