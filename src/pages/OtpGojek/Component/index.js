@@ -5,7 +5,7 @@ import {SlidesLoginPage} from "./../../../component/Slides/SlidesLoginPage";
 import {observer} from "mobx-react-lite";
 import {styles} from "../../../styles/index";
 import {PageLogin} from "./../../../component/Layouts/PageLogin";
-import {message, Spin} from "antd";
+import {Button, message, Spin} from "antd";
 import {useStore} from "../../../utils/useStore";
 import {useHistory, useLocation} from "react-router-dom";
 
@@ -25,7 +25,7 @@ export const OtpGojek = observer(() => {
             time += 1;
             setIsLoading(true)
 
-            if (time !== 6) {
+            if (time !== 4) {
                 if (status === 'SUCCESS') {
                     clearInterval(interval)
                     history.push(`/gojek-success${search}`);
@@ -39,7 +39,7 @@ export const OtpGojek = observer(() => {
                 setOTP('');
                 setIsLoading(false)
             }
-        }, 10000)
+        }, 15000)
     }
 
     const onFinish = async () => {
@@ -47,10 +47,6 @@ export const OtpGojek = observer(() => {
             setIsLoading(true);
             const type = localStorage.getItem('type');
 
-            if (!OTP) {
-                message.error('Please input your OTP!')
-                return false;
-            }
             const data = {
                 userId: values.userId,
                 username: values.username,
@@ -96,6 +92,9 @@ export const OtpGojek = observer(() => {
 
             const res = await store.gojek_login.checkStatus(data)
             status = res.body.data.status
+            if (status === 'SUCCESS') {
+                history.push(`/gojek-success${search}`)
+            }
         } catch (err) {
             console.log({err});
             message.error(err.message)
@@ -148,7 +147,14 @@ export const OtpGojek = observer(() => {
                             <span style={{color: "#0581FF"}}> Request again</span>
                         </p>
                         <div style={{display: "flex", justifyContent: "center"}}>
-                            <button style={styles.button} onClick={onFinish}>Submit</button>
+                            <Button
+                                block
+                                type="primary"
+                                size='large'
+                                disabled={OTP.length === 4 ? false : true}
+                                onClick={onFinish}
+                                style={styles.button}
+                            >Submit</Button>
                         </div>
                     </div>
                 </div>

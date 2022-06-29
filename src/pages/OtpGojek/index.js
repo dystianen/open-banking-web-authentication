@@ -54,6 +54,30 @@ export const LoginGojek = observer(() => {
         setIndexSlide(index);
     };
 
+    let time = 0;
+    let status = '';
+    const intervalStatus = async () => {
+        await isStatus();
+        let interval = setInterval(() => {
+            time += 1;
+            setLoading(true)
+
+            if (time !== 4) {
+                if (status === 'WAITING_FOR_OTP') {
+                    clearInterval(interval)
+                    history.push(`/gojek-otp${search}`);
+                    setLoading(false)
+                } else {
+                    isStatus();
+                    setLoading(true)
+                }
+            } else {
+                clearInterval(interval)
+                setLoading(false)
+            }
+        }, 15000)
+    }
+
     const onFinishSandbox = async () => {
         const values = await form.validateFields();
         const data = {
@@ -69,30 +93,56 @@ export const LoginGojek = observer(() => {
     };
 
     const onFinish = async () => {
-        const values = await form.validateFields();
-
-        const data = {
-            userId: localStorage.getItem('userID'),
-            username: 0 + values.phone_number,
-            customerIdentifier: localStorage.getItem('customer_ref_id'),
-            customerName: localStorage.getItem('customer_name'),
-            bankCode: localStorage.getItem('bankCode'),
-            bankId: localStorage.getItem('bankId'),
-            partnerReferenceNo: localStorage.getItem('partnerReferenceNo'),
-        };
-
         try {
             setLoading(true);
+            const values = await form.validateFields();
+
+            const data = {
+                userId: localStorage.getItem('userID'),
+                username: 0 + values.phone_number,
+                customerIdentifier: localStorage.getItem('customer_ref_id'),
+                customerName: localStorage.getItem('customer_name'),
+                bankCode: localStorage.getItem('bankCode'),
+                bankId: localStorage.getItem('bankId'),
+                partnerReferenceNo: localStorage.getItem('partnerReferenceNo'),
+            };
+
             const res = await store.gojek_login.postLogin(data);
             localStorage.setItem('data', JSON.stringify(data));
             localStorage.setItem('referenceNo', res.body.data.referenceNo);
             localStorage.setItem('secCode', res.body.data.secCode);
-            setLoading(false);
-            history.push(`/gojek-otp${search}`);
+            await intervalStatus();
         } catch (e) {
             setLoading(false);
             console.log(e, "error post");
             message.error("Something Wrong");
+        }
+    };
+
+    const isStatus = async () => {
+        try {
+            const values = JSON.parse(localStorage.getItem("data"));
+
+            const data = {
+                userId: values.userId,
+                username: values.username,
+                customerIdentifier: values.customerIdentifier,
+                customerName: values.customerName,
+                bankCode: values.bankCode,
+                bankId: values.bankId,
+                partnerReferenceNo: values.partnerReferenceNo,
+                referenceNo: localStorage.getItem('referenceNo'),
+                secCode: localStorage.getItem('secCode'),
+            };
+
+            const res = await store.gojek_login.checkStatus(data)
+            status = res.body.data.status
+            if (status === 'WAITING_FOR_OTP') {
+                history.push(`/gojek-otp${search}`);
+            }
+        } catch (err) {
+            console.log({err});
+            message.error(err.message)
         }
     };
 
@@ -128,8 +178,8 @@ export const LoginGojek = observer(() => {
     );
 
     return (
-        <PageLogin>
-            <Spin spinning={loading}>
+        <Spin spinning={loading}>
+            <PageLogin>
                 <div style={{marginBottom: 30, marginTop: 40}}>
                     <div style={{height: 70}}>
                         <div
@@ -164,7 +214,7 @@ export const LoginGojek = observer(() => {
                             color: "#4B4C48",
                         }}
                     >
-                        Input your phone number <br /> registered with Gopay.
+                        Input your phone number <br/> registered with Gopay.
                     </Title>
                 </div>
                 <Form layout={"vertical"} form={form}>
@@ -177,10 +227,8 @@ export const LoginGojek = observer(() => {
                             </label>
                         }
                         rules={[
-                            {
-                                required: true,
-                                message: "Please input your phone number!",
-                            },
+                            {required: true, message: "Please input your phone number!"},
+                            {min: 10, max: 14, message: "Please input Valid Phone Number!"},
                         ]}
                     >
                         <Input type={'number'} size={'large'} addonBefore={selectBefore} prefix={'+62'}/>
@@ -217,26 +265,26 @@ export const LoginGojek = observer(() => {
                         )}
                     </Form.Item>
                 </Form>
-            </Spin>
-            <div>
-                <SlidesLoginPage
-                    title={`Livin' by Mandiri`}
-                    onOpenSheet={onOpenSheet}
-                />
-                <BottomSheet
-                    open={open}
-                    onDismiss={onDismiss}
-                    snapPoints={({maxHeight}) => maxHeight / 2.1}
-                >
-                    {indexSlide === 1 ? (
-                        <StaticSheet data={dataHardcode}/>
-                    ) : (
-                        <DynamicSheet
-                            data={indexSlide === 2 ? instructionForgot : instructionLogin}
-                        />
-                    )}
-                </BottomSheet>{" "}
-            </div>
-        </PageLogin>
+                <div>
+                    <SlidesLoginPage
+                        title={`Livin' by Mandiri`}
+                        onOpenSheet={onOpenSheet}
+                    />
+                    <BottomSheet
+                        open={open}
+                        onDismiss={onDismiss}
+                        snapPoints={({maxHeight}) => maxHeight / 2.1}
+                    >
+                        {indexSlide === 1 ? (
+                            <StaticSheet data={dataHardcode}/>
+                        ) : (
+                            <DynamicSheet
+                                data={indexSlide === 2 ? instructionForgot : instructionLogin}
+                            />
+                        )}
+                    </BottomSheet>{" "}
+                </div>
+            </PageLogin>
+        </Spin>
     );
 });
