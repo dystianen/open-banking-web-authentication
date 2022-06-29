@@ -113,7 +113,7 @@ export const ListBank = observer((props) => {
                                     <Typography.Paragraph style={{margin: 0, padding: 0, fontSize: 16, color: "#161D24", fontWeight: 'semi-bold', display: 'flex', alignItems: 'center'}}>
                                         Connected
                                     </Typography.Paragraph>
-                                    <Image src={connected} preview={false} style={{marginLeft: 10}}/>
+                                    <Image src={connected} preview={false} style={{marginLeft: 10, width: 25}}/>
                                 </div>
                             )}
                         </div>
