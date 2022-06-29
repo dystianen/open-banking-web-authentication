@@ -27,6 +27,7 @@ import {LoginOVO} from "../pages/OtpOVO";
 import {OtpOVO} from "../pages/OtpOVO/Component";
 import {LoginShopee} from "../pages/OtpShopee";
 import {OtpShopee} from "../pages/OtpShopee/Component";
+import {LoginBPJS} from "../pages/LoginBPJS";
 
 export const MainRoutes = (props) => {
     const {search} = useLocation();
@@ -39,7 +40,8 @@ export const MainRoutes = (props) => {
         localStorage.setItem('customer_name', query.customer_name);
         localStorage.setItem('access_token', query.accessToken);
         localStorage.setItem('userID', query.userId);
-        localStorage.setItem('type', query.type)
+        localStorage.setItem('type', query.type);
+        localStorage.setItem('partnerReferenceNo', query.partnerReferenceNo);
     }, [search])
     return (
         <Switch>
@@ -148,6 +150,13 @@ export const MainRoutes = (props) => {
                 exact
             />
 
+            <PublicRoute
+                restricted={false}
+                component={LoginBPJS}
+                path="/bpjs-login"
+                exact
+            />
+
             {/* Success Pages */}
             <PublicRoute
                 restricted={false}
@@ -211,6 +220,14 @@ export const MainRoutes = (props) => {
                 exact
             >
                 <Success message={"SHOPEE"}/>
+            </PublicRoute>
+
+            <PublicRoute
+                restricted={false}
+                path="/bpjs-success"
+                exact
+            >
+                <Success message={"BPJS"}/>
             </PublicRoute>
             {/* End OfSuccess Pages */}
 
