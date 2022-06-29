@@ -63,13 +63,12 @@ export const LoginGojek = observer(() => {
             setLoading(true)
 
             if (time !== 4) {
-                if (status === 'WAITING_FOR_OTP') {
-                    clearInterval(interval)
-                    history.push(`/gojek-otp${search}`);
-                    setLoading(false)
-                } else {
+                if (status === 'BUSY') {
                     isStatus();
                     setLoading(true)
+                } else {
+                    clearInterval(interval)
+                    setLoading(false)
                 }
             } else {
                 clearInterval(interval)
@@ -139,6 +138,10 @@ export const LoginGojek = observer(() => {
             status = res.body.data.status
             if (status === 'WAITING_FOR_OTP') {
                 history.push(`/gojek-otp${search}`);
+            } else if (status === 'FAILED') {
+                setLoading(false)
+            } else if (status === 'FAILED_PASS') {
+                setLoading(false)
             }
         } catch (err) {
             console.log({err});
