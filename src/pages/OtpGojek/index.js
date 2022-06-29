@@ -73,7 +73,7 @@ export const LoginGojek = observer(() => {
 
         const data = {
             userId: localStorage.getItem('userID'),
-            username: values.phone_number,
+            username: 0 + values.phone_number,
             customerIdentifier: localStorage.getItem('customer_ref_id'),
             customerName: localStorage.getItem('customer_name'),
             bankCode: localStorage.getItem('bankCode'),

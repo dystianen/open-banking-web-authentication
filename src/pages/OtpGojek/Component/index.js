@@ -53,7 +53,7 @@ export const OtpGojek = observer(() => {
             }
             const data = {
                 userId: values.userId,
-                username: values.username,
+                username: 0 + values.phone_number,
                 customerIdentifier: values.customerIdentifier,
                 customerName: values.customerName,
                 bankCode: values.bankCode,
