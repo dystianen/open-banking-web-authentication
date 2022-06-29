@@ -80,25 +80,12 @@ export const LoginDJP = observer(() => {
         }, 15000)
     }
 
-    const onFinishSandbox = async () => {
-        const values = await form.validateFields();
-        const data = {
-            userId: localStorage.getItem('userID'),
-            username: values.email,
-            password: values.password,
-            customerIdentifier: localStorage.getItem('customer_ref_id'),
-            customerName: localStorage.getItem('customer_name'),
-            bankCode: localStorage.getItem('bankCode'),
-            bankId: localStorage.getItem('bankId')
-        };
-        localStorage.setItem('data', JSON.stringify(data));
-        history.push(`/tokopedia-otp${search}`);
-    };
-
     const onFinish = async () => {
         try {
             setLoading(true);
             const values = await form.validateFields();
+            const type = localStorage.getItem('type');
+
             const data = {
                 userId: localStorage.getItem('userID'),
                 username: values.email,
@@ -109,7 +96,7 @@ export const LoginDJP = observer(() => {
                 bankCode: localStorage.getItem('bankCode'),
                 bankId: localStorage.getItem('bankId'),
             };
-            const res = await store.djp_login.postLogin(data);
+            const res = type === 'sandbox' ? await store.djp_login.postLoginSandbox(data) : await store.djp_login.postLogin(data);
             localStorage.setItem('data', JSON.stringify(data));
             localStorage.setItem('referenceNo', res.body.data.referenceNo);
             localStorage.setItem('secCode', res.body.data.secCode);
@@ -302,13 +289,7 @@ export const LoginDJP = observer(() => {
                                     fontSize: "19px",
                                     letterSpacing: "1px",
                                 }}
-                                onClick={() => {
-                                    if (localStorage.getItem("type") === 'sandbox') {
-                                        onFinishSandbox()
-                                    } else {
-                                        onFinish();
-                                    }
-                                }}
+                                onClick={onFinish}
                             >
                                 Connect Account
                             </Button>
