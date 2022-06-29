@@ -41,8 +41,8 @@ export const LoginBPJS = observer(() => {
     const loadInitialData = async () => {
         try {
             setLoading(true);
-            const res = await store.tokopedia_login.getData(
-                `d66b02dd-546d-4d03-bf6f-d6e3aa57996a`
+            const res = await store.bpjs_login.getData(
+                `fbf47a1c-272a-4943-8bdd-3c6ba44014c8`
             );
             setData(res.data?.instruction);
             setLoading(false);
@@ -57,7 +57,30 @@ export const LoginBPJS = observer(() => {
         setIndexSlide(index);
     };
 
-    const onFinish = async () => {
+    let time = 0;
+    let status = '';
+    const intervalStatus = async () => {
+        await isStatus();
+        let interval = setInterval(() => {
+            time += 1;
+            setLoading(true)
+
+            if (time !== 4) {
+                if (status === 'BUSY') {
+                    isStatus();
+                    setLoading(true)
+                } else {
+                    clearInterval(interval)
+                    setLoading(false)
+                }
+            } else {
+                clearInterval(interval)
+                setLoading(false)
+            }
+        }, 15000)
+    }
+
+    const onFinishSandbox = async () => {
         const values = await form.validateFields();
         const data = {
             userId: localStorage.getItem('userID'),
@@ -68,18 +91,64 @@ export const LoginBPJS = observer(() => {
             bankCode: localStorage.getItem('bankCode'),
             bankId: localStorage.getItem('bankId')
         };
+        localStorage.setItem('data', JSON.stringify(data));
+        history.push(`/tokopedia-otp${search}`);
+    };
+
+    const onFinish = async () => {
         try {
             setLoading(true);
+            const values = await form.validateFields();
+            const data = {
+                userId: localStorage.getItem('userID'),
+                username: values.email,
+                password: values.password,
+                customerIdentifier: localStorage.getItem('customer_ref_id'),
+                customerName: localStorage.getItem('customer_name'),
+                partnerReferenceNo: localStorage.getItem('partnerReferenceNo'),
+                bankCode: localStorage.getItem('bankCode'),
+                bankId: localStorage.getItem('bankId'),
+            };
             const res = await store.bpjs_login.postLogin(data);
             localStorage.setItem('data', JSON.stringify(data));
             localStorage.setItem('referenceNo', res.body.data.referenceNo);
             localStorage.setItem('secCode', res.body.data.secCode);
-            setLoading(false);
-            history.push(`/bpjs-succes${search}`);
+            await intervalStatus();
         } catch (err) {
             setLoading(false);
             console.log(err, "error post");
-            message.error(err.response.data.message);
+            message.error('Failed to login!')
+        }
+    };
+
+    const isStatus = async () => {
+        try {
+            const values = JSON.parse(localStorage.getItem("data"));
+
+            const data = {
+                userId: values.userId,
+                username: values.username,
+                customerIdentifier: values.customerIdentifier,
+                customerName: values.customerName,
+                bankCode: values.bankCode,
+                bankId: values.bankId,
+                partnerReferenceNo: values.partnerReferenceNo,
+                referenceNo: localStorage.getItem('referenceNo'),
+                secCode: localStorage.getItem('secCode'),
+            };
+
+            const res = await store.bpjs_login.checkStatus(data)
+            status = res.body.data.status
+            if (status === 'SUCCESS') {
+                history.push(`/bpjs-success${search}`);
+            } else if (status === 'FAILED') {
+                setLoading(false)
+            } else if (status === 'FAILED_PASS') {
+                setLoading(false)
+            }
+        } catch (err) {
+            console.log({err});
+            message.error('Failed to login!')
         }
     };
 
@@ -109,8 +178,8 @@ export const LoginBPJS = observer(() => {
     ];
 
     return (
-        <PageLogin>
-            <Spin spinning={loading}>
+        <Spin spinning={loading}>
+            <PageLogin>
                 <div style={{marginBottom: 30, marginTop: 40}}>
                     <div style={{height: 70}}>
                         <div
@@ -131,7 +200,7 @@ export const LoginBPJS = observer(() => {
                                     alignSelf: "flex-end",
                                     marginBottom: 20,
                                 }}
-                                alt="BPJS Ketenagakerjaan"
+                                alt="DJP"
                             />
                         </div>
                     </div>
@@ -165,9 +234,8 @@ export const LoginBPJS = observer(() => {
                         ]}
                     >
                         <Input
-                            type={"email"}
                             style={styles.input}
-                            placeholder={"email@example.com"}
+                            placeholder={"819450057427000"}
                         />
                     </Form.Item>
                     <Form.Item
@@ -234,33 +302,40 @@ export const LoginBPJS = observer(() => {
                                     fontSize: "19px",
                                     letterSpacing: "1px",
                                 }}
-                                onClick={onFinish}
+                                onClick={() => {
+                                    if (localStorage.getItem("type") === 'sandbox') {
+                                        onFinishSandbox()
+                                    } else {
+                                        onFinish();
+                                    }
+                                }}
                             >
                                 Connect Account
                             </Button>
                         )}
                     </Form.Item>
                 </Form>
-            </Spin>
-            <div>
-                <SlidesLoginPage
-                    title={`Livin' by Mandiri`}
-                    onOpenSheet={onOpenSheet}
-                />
-                <BottomSheet
-                    open={open}
-                    onDismiss={onDismiss}
-                    snapPoints={({maxHeight}) => maxHeight / 2.1}
-                >
-                    {indexSlide === 1 ? (
-                        <StaticSheet data={dataHardcode}/>
-                    ) : (
-                        <DynamicSheet
-                            data={indexSlide === 2 ? instructionForgot : instructionLogin}
-                        />
-                    )}
-                </BottomSheet>{" "}
-            </div>
-        </PageLogin>
+
+                <div>
+                    <SlidesLoginPage
+                        title={`Livin' by Mandiri`}
+                        onOpenSheet={onOpenSheet}
+                    />
+                    <BottomSheet
+                        open={open}
+                        onDismiss={onDismiss}
+                        snapPoints={({maxHeight}) => maxHeight / 2.1}
+                    >
+                        {indexSlide === 1 ? (
+                            <StaticSheet data={dataHardcode}/>
+                        ) : (
+                            <DynamicSheet
+                                data={indexSlide === 2 ? instructionForgot : instructionLogin}
+                            />
+                        )}
+                    </BottomSheet>{" "}
+                </div>
+            </PageLogin>
+        </Spin>
     );
 });

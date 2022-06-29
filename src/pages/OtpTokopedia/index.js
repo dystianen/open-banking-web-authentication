@@ -137,7 +137,7 @@ export const LoginTokopedia = observer(() => {
                 secCode: localStorage.getItem('secCode'),
             };
 
-            const res = await store.gojek_login.checkStatus(data)
+            const res = await store.tokopedia_login.checkStatus(data)
             status = res.body.data.status
             if (status === 'WAITING_FOR_OTP') {
                 history.push(`/tokopedia-otp${search}`);
