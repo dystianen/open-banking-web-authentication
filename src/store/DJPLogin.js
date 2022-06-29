@@ -1,7 +1,7 @@
 import {makeAutoObservable} from "mobx";
 import {http, httpBilling} from "../utils/http";
 
-export class TokopediaLogin {
+export class DJPLogin {
     constructor(context) {
         this.context = context;
         makeAutoObservable(this)
@@ -15,14 +15,14 @@ export class TokopediaLogin {
     }
 
     async postLoginSandbox(data) {
-        return await http.post(`/sandbox/authentication/tokped`).send(data)
+        return await http.post(`/sandbox/authentication/djp`).send(data)
     }
 
     async postLogin(data) {
-        return await http.post(`/middleware/authentication/tokped`).send(data)
+        return await http.post(`/middleware/authentication/djp`).send(data)
     }
 
-    async otp(data) {
-        return await http.post(`/middleware/authentication/validate-otp`).send(data)
+    async checkStatus(data) {
+        return await http.post(`/middleware/authentication/check-status`).send(data)
     }
 }

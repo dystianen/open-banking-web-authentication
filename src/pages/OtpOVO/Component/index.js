@@ -72,7 +72,7 @@ export const OtpOVO = observer(() => {
             await intervalStatus();
         } catch (err) {
             console.log(err, "error post");
-            message.error(err.response.data.message);
+            message.error('Failed to login!')
         }
     };
 
@@ -105,7 +105,7 @@ export const OtpOVO = observer(() => {
             }
         } catch (err) {
             console.log({err});
-            message.error(err.message)
+            message.error('Failed to login!')
         }
     };
 
@@ -169,7 +169,6 @@ export const OtpOVO = observer(() => {
                                     <span> Didn’t receive code? </span>
                                     <span style={{color: "#0581FF"}}> Request again</span>
                                 </p>
-                                {console.log({OTP})}
                                 <Form.Item shouldUpdate>
                                     {() => (
                                         <Button

@@ -2,7 +2,7 @@ import React, {useEffect, useState} from "react";
 import {observer} from "mobx-react-lite";
 import {useStore} from "../../utils/useStore";
 import {Button, Form, Input, Typography, message, Spin} from "antd";
-import tokopedia from "../../assets/logo/tokopedia.png";
+import djp from "../../assets/logo/djp.png";
 import {styles} from "../../styles/index";
 import {BottomSheet} from "react-spring-bottom-sheet";
 import {SlidesLoginPage} from "../../component/Slides/SlidesLoginPage";
@@ -21,7 +21,7 @@ import {EyeInvisibleOutlined, EyeTwoTone} from "@ant-design/icons";
 
 const {Title} = Typography;
 
-export const LoginTokopedia = observer(() => {
+export const LoginDJP = observer(() => {
     const history = useHistory();
     const store = useStore();
     const {search} = useLocation();
@@ -41,8 +41,8 @@ export const LoginTokopedia = observer(() => {
     const loadInitialData = async () => {
         try {
             setLoading(true);
-            const res = await store.tokopedia_login.getData(
-                `d66b02dd-546d-4d03-bf6f-d6e3aa57996a`
+            const res = await store.djp_login.getData(
+                `656f1e31-4d22-4b59-a452-1f36d2716236`
             );
             setData(res.data?.instruction);
             setLoading(false);
@@ -109,7 +109,7 @@ export const LoginTokopedia = observer(() => {
                 bankCode: localStorage.getItem('bankCode'),
                 bankId: localStorage.getItem('bankId'),
             };
-            const res = await store.tokopedia_login.postLogin(data);
+            const res = await store.djp_login.postLogin(data);
             localStorage.setItem('data', JSON.stringify(data));
             localStorage.setItem('referenceNo', res.body.data.referenceNo);
             localStorage.setItem('secCode', res.body.data.secCode);
@@ -137,10 +137,10 @@ export const LoginTokopedia = observer(() => {
                 secCode: localStorage.getItem('secCode'),
             };
 
-            const res = await store.gojek_login.checkStatus(data)
+            const res = await store.djp_login.checkStatus(data)
             status = res.body.data.status
-            if (status === 'WAITING_FOR_OTP') {
-                history.push(`/tokopedia-otp${search}`);
+            if (status === 'SUCCESS') {
+                history.push(`/djp-success${search}`);
             } else if (status === 'FAILED') {
                 setLoading(false)
             } else if (status === 'FAILED_PASS') {
@@ -190,9 +190,9 @@ export const LoginTokopedia = observer(() => {
                             }}
                         >
                             <img
-                                src={tokopedia}
+                                src={djp}
                                 style={{
-                                    height: 80,
+                                    height: 60,
                                     width: "auto",
                                     marginLeft: "auto",
                                     marginRight: "auto",
@@ -200,7 +200,7 @@ export const LoginTokopedia = observer(() => {
                                     alignSelf: "flex-end",
                                     marginBottom: 20,
                                 }}
-                                alt="BNI"
+                                alt="DJP"
                             />
                         </div>
                     </div>
@@ -234,9 +234,8 @@ export const LoginTokopedia = observer(() => {
                         ]}
                     >
                         <Input
-                            type={"email"}
                             style={styles.input}
-                            placeholder={"email@example.com"}
+                            placeholder={"819450057427000"}
                         />
                     </Form.Item>
                     <Form.Item

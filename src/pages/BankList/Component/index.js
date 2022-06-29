@@ -72,6 +72,8 @@ export const ListBank = observer((props) => {
                     return "shopee-login";
                 case "BPJS":
                     return "bpjs-login";
+                case "DJP":
+                    return "djp-login";
                 default:
                     return null
             }

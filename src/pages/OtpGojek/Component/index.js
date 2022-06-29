@@ -69,7 +69,7 @@ export const OtpGojek = observer(() => {
             await intervalStatus();
         } catch (err) {
             setIsLoading(false);
-            message.error('Something Wrong!');
+            message.error('Failed to login!')
         }
     };
 
@@ -102,7 +102,7 @@ export const OtpGojek = observer(() => {
             }
         } catch (err) {
             console.log({err});
-            message.error(err.message)
+            message.error('Failed to login!')
         }
     };
 
