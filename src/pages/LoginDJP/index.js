@@ -210,13 +210,13 @@ export const LoginDJP = observer(() => {
                         style={{color: "#4B4C48"}}
                         label={
                             <label style={{color: "#161D24", fontSize: "12pt"}}>
-                                Username
+                                NPWP
                             </label>
                         }
                         rules={[
                             {
                                 required: true,
-                                message: "Please input your username!",
+                                message: "Please input your NPWP!",
                             },
                         ]}
                     >
