@@ -15,11 +15,12 @@ export const OtpGojek = observer(() => {
     const {search} = useLocation();
     const [OTP, setOTP] = useState("");
     const [isLoading, setIsLoading] = useState(false);
-    const [status, setStatus] = useState('');
     const values = JSON.parse(localStorage.getItem("data"));
 
     let time = 0;
+    let status = '';
     const intervalStatus = async () => {
+        await isStatus();
         let interval = setInterval(() => {
             time += 1;
             setIsLoading(true)
@@ -70,7 +71,6 @@ export const OtpGojek = observer(() => {
             }
 
             type === 'sandbox' ? await store.gojek_login.postLoginSandbox(data) : await store.gojek_login.otp(data);
-            await isStatus();
             await intervalStatus();
         } catch (err) {
             setIsLoading(false);
@@ -95,7 +95,7 @@ export const OtpGojek = observer(() => {
             };
 
             const res = await store.gojek_login.checkStatus(data)
-            setStatus(res.body.data.status)
+            status = res.body.data.status
         } catch (err) {
             console.log({err});
             message.error(err.message)
