@@ -95,10 +95,13 @@ export const OtpGojek = observer(() => {
                 history.push(`/gojek-success${search}`);
             } else if (status === 'FAILED') {
                 setIsLoading(false)
+                message.error('Failed to login!')
             } else if (status === 'FAILED_PASS') {
                 setIsLoading(false)
+                message.error('Failed to login!')
             } else if (status === 'WAITING_FOR_OTP') {
                 setIsLoading(false)
+                message.error('Failed to login!')
             }
         } catch (err) {
             console.log({err});

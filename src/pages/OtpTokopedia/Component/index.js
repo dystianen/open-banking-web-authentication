@@ -96,10 +96,13 @@ export const OtpTokopedia = observer(() => {
                 history.push(`/tokopedia-success${search}`);
             } else if (status === 'FAILED') {
                 setLoading(false)
+                message.error('Failed to login!')
             } else if (status === 'FAILED_PASS') {
                 setLoading(false)
+                message.error('Failed to login!')
             } else if (status === 'WAITING_FOR_OTP') {
                 setLoading(false)
+                message.error('Failed to login!')
             }
         } catch (err) {
             console.log({err});
