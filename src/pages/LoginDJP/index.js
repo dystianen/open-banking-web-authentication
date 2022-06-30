@@ -65,7 +65,7 @@ export const LoginDJP = observer(() => {
             time += 1;
             setLoading(true)
 
-            if (time !== 4) {
+            if (time !== 6) {
                 if (status === 'BUSY') {
                     isStatus();
                     setLoading(true)
@@ -77,7 +77,7 @@ export const LoginDJP = observer(() => {
                 clearInterval(interval)
                 setLoading(false)
             }
-        }, 15000)
+        }, 5000)
     }
 
     const onFinish = async () => {

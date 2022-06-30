@@ -25,7 +25,7 @@ export const OtpGojek = observer(() => {
             time += 1;
             setIsLoading(true)
 
-            if (time !== 4) {
+            if (time !== 6) {
                 if (status === 'BUSY') {
                     isStatus();
                     setIsLoading(true)
@@ -38,7 +38,7 @@ export const OtpGojek = observer(() => {
                 setOTP('');
                 setIsLoading(false)
             }
-        }, 15000)
+        }, 5000)
     }
 
     const onFinish = async () => {
