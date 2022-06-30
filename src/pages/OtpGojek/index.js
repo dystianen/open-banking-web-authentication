@@ -265,7 +265,7 @@ export const LoginGojek = observer(() => {
                                     }
                                 }}
                             >
-                                Submit
+                                Connect Account
                             </Button>
                         )}
                     </Form.Item>
