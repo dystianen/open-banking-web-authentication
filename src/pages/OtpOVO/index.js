@@ -263,7 +263,7 @@ export const LoginOVO = observer(() => {
                                     }
                                 }}
                             >
-                                Submit
+                                Connect Account
                             </Button>
                         )}
                     </Form.Item>
