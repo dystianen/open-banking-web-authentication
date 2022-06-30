@@ -24,7 +24,7 @@ export const OtpTokopedia = observer(() => {
         let interval = setInterval(() => {
             time += 1;
 
-            if (time !== 4) {
+            if (time !== 6) {
                 if (status === 'BUSY') {
                     isStatus();
                     setLoading(true)
@@ -37,7 +37,7 @@ export const OtpTokopedia = observer(() => {
                 setOTP('');
                 setLoading(false)
             }
-        }, 15000)
+        }, 5000)
     }
 
     const onFinish = async () => {

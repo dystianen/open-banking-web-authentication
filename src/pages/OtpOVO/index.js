@@ -62,7 +62,7 @@ export const LoginOVO = observer(() => {
             time += 1;
             setLoading(true)
 
-            if (time !== 4) {
+            if (time !== 6) {
                 if (status === 'BUSY') {
                     isStatus();
                     setLoading(true)
@@ -74,7 +74,7 @@ export const LoginOVO = observer(() => {
                 clearInterval(interval)
                 setLoading(false)
             }
-        }, 15000)
+        }, 5000)
     }
 
     const onFinishSandbox = async () => {

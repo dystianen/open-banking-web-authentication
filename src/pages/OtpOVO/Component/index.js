@@ -26,7 +26,7 @@ export const OtpOVO = observer(() => {
         let interval = setInterval(() => {
             time += 1;
 
-            if (time !== 4) {
+            if (time !== 6) {
                 if (status === 'BUSY') {
                     isStatus();
                     setLoading(true)
@@ -39,7 +39,7 @@ export const OtpOVO = observer(() => {
                 setOTP('');
                 setLoading(false)
             }
-        }, 15000)
+        }, 5000)
     }
 
     const onFinish = async () => {
