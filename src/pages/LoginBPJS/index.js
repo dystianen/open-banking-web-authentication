@@ -129,8 +129,10 @@ export const LoginBPJS = observer(() => {
                 history.push(`/bpjs-success${search}`);
             } else if (status === 'FAILED') {
                 setLoading(false)
+                message.error('Failed to login!')
             } else if (status === 'FAILED_PASS') {
                 setLoading(false)
+                message.error('Failed to login!')
             }
         } catch (err) {
             console.log({err});
@@ -220,7 +222,6 @@ export const LoginBPJS = observer(() => {
                         ]}
                     >
                         <Input
-                            type={'number'}
                             style={styles.input}
                             placeholder={"819450057427000"}
                         />
