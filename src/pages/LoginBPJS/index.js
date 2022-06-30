@@ -220,6 +220,7 @@ export const LoginBPJS = observer(() => {
                         ]}
                     >
                         <Input
+                            type={'number'}
                             style={styles.input}
                             placeholder={"819450057427000"}
                         />

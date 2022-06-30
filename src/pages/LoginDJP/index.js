@@ -88,7 +88,7 @@ export const LoginDJP = observer(() => {
 
             const data = {
                 userId: localStorage.getItem('userID'),
-                username: values.email,
+                username: values.npwp,
                 password: values.password,
                 customerIdentifier: localStorage.getItem('customer_ref_id'),
                 customerName: localStorage.getItem('customer_name'),
@@ -206,7 +206,7 @@ export const LoginDJP = observer(() => {
                 </div>
                 <Form layout={"vertical"} form={form}>
                     <Form.Item
-                        name={"email"}
+                        name={"npwp"}
                         style={{color: "#4B4C48"}}
                         label={
                             <label style={{color: "#161D24", fontSize: "12pt"}}>
@@ -214,13 +214,12 @@ export const LoginDJP = observer(() => {
                             </label>
                         }
                         rules={[
-                            {
-                                required: true,
-                                message: "Please input your NPWP!",
-                            },
+                            {required: true, message: "Please input your NPWP!"},
+                            {min: 15, max: 16, message: "Please input Valid NPWP!"},
                         ]}
                     >
                         <Input
+                            type={'number'}
                             style={styles.input}
                             placeholder={"819450057427000"}
                         />
