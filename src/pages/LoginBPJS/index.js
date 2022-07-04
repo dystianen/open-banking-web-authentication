@@ -100,7 +100,12 @@ export const LoginBPJS = observer(() => {
             localStorage.setItem('data', JSON.stringify(data));
             localStorage.setItem('referenceNo', res.body.data.referenceNo);
             localStorage.setItem('secCode', res.body.data.secCode);
-            await intervalStatus();
+
+            if (type === 'sandbox') {
+                history.push(`/bpjs-success${search}`);
+            } else {
+                await intervalStatus();
+            }
         } catch (err) {
             setLoading(false);
             console.log(err, "error post");
