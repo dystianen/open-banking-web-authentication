@@ -66,7 +66,11 @@ export const OtpGojek = observer(() => {
             }
 
             type === 'sandbox' ? await store.gojek_login.postLoginSandbox(data) : await store.gojek_login.otp(data);
-            await intervalStatus();
+            if (type === 'sandbox') {
+                history.push(`/gojek-success${search}`);
+            } else {
+                await intervalStatus();
+            }
         } catch (err) {
             setIsLoading(false);
             message.error('Failed to login!')

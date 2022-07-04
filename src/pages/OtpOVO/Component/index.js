@@ -69,7 +69,11 @@ export const OtpOVO = observer(() => {
             }
 
             type === 'sandbox' ? await store.ovo_login.postLoginSandbox(data) : await store.ovo_login.otp(data);
-            await intervalStatus();
+            if (type === 'sandbox') {
+                history.push(`/ovo-success${search}`);
+            } else {
+                await intervalStatus();
+            }
         } catch (err) {
             console.log(err, "error post");
             message.error('Failed to login!')

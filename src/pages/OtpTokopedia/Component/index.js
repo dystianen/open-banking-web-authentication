@@ -66,7 +66,11 @@ export const OtpTokopedia = observer(() => {
             }
 
             type === 'sandbox' ? await store.tokopedia_login.postLoginSandbox(data) : await store.tokopedia_login.otp(data);
-            await intervalStatus();
+            if (type === 'sandbox') {
+                history.push(`/tokopedia-success${search}`);
+            } else {
+                await intervalStatus();
+            }
         } catch (err) {
             setLoading(false);
             console.log(err, "error post");
