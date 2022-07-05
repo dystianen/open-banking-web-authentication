@@ -106,10 +106,10 @@ export const LoginBCA = observer(() => {
             setIsLoading(false);
 
             history.push(`/bca-success${search}`);
-        } catch (e) {
+        } catch (err) {
             setIsLoading(false);
-            console.log(e, "error post");
-            message.error("Something Wrong");;
+            console.log(err.response?.body?.data, "error post");
+            message.error(err.response?.body?.data);
         }
     }
 

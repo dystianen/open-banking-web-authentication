@@ -107,8 +107,8 @@ export const LoginDJP = observer(() => {
             }
         } catch (err) {
             setLoading(false);
-            console.log(err, "error post");
-            message.error('Failed to login!')
+            console.log(err.response?.body?.data, "error post");
+            message.error(err.response?.body?.data);
         }
     };
 
