@@ -76,8 +76,8 @@ export const LoginMandiri = observer(() => {
             history.push(`/mandiri-success${search}`);
         } catch (e) {
             setLoading(false);
-            console.log(e, "error post");
-            message.error("Something Wrong");
+            console.log(e.response?.data?.error, "error post");
+            message.error(e.response?.data?.error);
         }
     };
 

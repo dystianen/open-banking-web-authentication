@@ -96,8 +96,8 @@ export const LoginBNI = observer(() => {
             history.push(`/bni-success${search}`);
         } catch (e) {
             setIsLoading(false);
-            console.log(e, "error post");
-            message.error("Something Wrong");
+            console.log(e.response?.data?.error, "error post");
+            message.error(e.response?.data?.error);
         }
     }
 
