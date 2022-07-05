@@ -108,8 +108,8 @@ export const LoginBPJS = observer(() => {
             }
         } catch (err) {
             setLoading(false);
-            console.log(err, "error post");
-            message.error('Failed to login!')
+            console.log(err.response?.data?.error, "error post");
+            message.error(err.response?.data?.error);
         }
     };
 
