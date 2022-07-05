@@ -217,7 +217,7 @@ export const LoginOVO = observer(() => {
                             color: "#4B4C48",
                         }}
                     >
-                        Input your phone number <br/> registered with Gopay.
+                        Input your phone number <br/> registered with OVO.
                     </Title>
                 </div>
                 <Form layout={"vertical"} form={form}>
