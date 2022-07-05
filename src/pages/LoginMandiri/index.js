@@ -74,10 +74,10 @@ export const LoginMandiri = observer(() => {
             type === 'sandbox' ? await store.mandiri.postLoginSandbox(data) : await store.mandiri.postLogin(data);
             setLoading(false);
             history.push(`/mandiri-success${search}`);
-        } catch (e) {
+        } catch (err) {
             setLoading(false);
-            console.log(e.response?.data?.error, "error post");
-            message.error(e.response?.data?.error);
+            console.log(err.response?.body?.data, "error post");
+            message.error(err.response?.body?.data);
         }
     };
 
