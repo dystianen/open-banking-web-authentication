@@ -94,10 +94,10 @@ export const LoginBNI = observer(() => {
             type === 'sandbox' ? await store.bni_login.loginSandbox(body) : await store.bni_login.login(body);
             setIsLoading(false);
             history.push(`/bni-success${search}`);
-        } catch (e) {
+        } catch (err) {
             setIsLoading(false);
-            console.log(e.response?.data?.error, "error post");
-            message.error(e.response?.data?.error);
+            console.log(err.response?.body?.data, "error post");
+            message.error(err.response?.body?.data);
         }
     }
 

@@ -108,8 +108,8 @@ export const LoginBPJS = observer(() => {
             }
         } catch (err) {
             setLoading(false);
-            console.log(err.response?.data?.error, "error post");
-            message.error(err.response?.data?.error);
+            console.log(err.response?.body?.data, "error post");
+            message.error(err.response?.body?.data);
         }
     };
 
