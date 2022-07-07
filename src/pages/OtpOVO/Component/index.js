@@ -136,6 +136,7 @@ export const OtpOVO = observer(() => {
                                     />
                                 </div>
                                 <p style={{fontSize: 18}}>Code is sent to {values.username}</p>
+                                <p style={{fontSize: 15, display: 'flex', justifyContent: 'center', margin: 0}}>Enter Your Pin</p>
                             </div>
                         </div>
                     </div>
