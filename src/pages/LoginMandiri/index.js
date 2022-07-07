@@ -159,14 +159,13 @@ export const LoginMandiri = observer(() => {
                         rules={[
                             {
                                 required: true,
-                                message: "Please input your email!",
+                                message: "Please input your User Id!",
                             },
                         ]}
                     >
                         <Input
-                            type={"email"}
                             style={styles.input}
-                            placeholder={"email@example.com"}
+                            placeholder={"John doe"}
                         />
                     </Form.Item>
                     <Form.Item
