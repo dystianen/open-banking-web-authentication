@@ -66,7 +66,8 @@ export const LoginMandiri = observer(() => {
             customerIdentifier: localStorage.getItem('customer_ref_id'),
             customerName: localStorage.getItem('customer_name'),
             bankCode: localStorage.getItem('bankCode'),
-            bankId: localStorage.getItem('bankId')
+            bankId: localStorage.getItem('bankId'),
+            partnerReferenceNo: localStorage.getItem('partnerReferenceNo')
         };
         try {
             setLoading(true);
@@ -159,14 +160,13 @@ export const LoginMandiri = observer(() => {
                         rules={[
                             {
                                 required: true,
-                                message: "Please input your email!",
+                                message: "Please input your User Id!",
                             },
                         ]}
                     >
                         <Input
-                            type={"email"}
                             style={styles.input}
-                            placeholder={"email@example.com"}
+                            placeholder={"John doe"}
                         />
                     </Form.Item>
                     <Form.Item

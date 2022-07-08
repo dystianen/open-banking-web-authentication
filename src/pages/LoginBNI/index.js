@@ -88,7 +88,8 @@ export const LoginBNI = observer(() => {
                 customerIdentifier: localStorage.getItem('customer_ref_id'),
                 customerName: localStorage.getItem('customer_name'),
                 bankCode: localStorage.getItem('bankCode'),
-                bankId: localStorage.getItem('bankId')
+                bankId: localStorage.getItem('bankId'),
+                partnerReferenceNo: localStorage.getItem('partnerReferenceNo')
             };
             const type = localStorage.getItem('type')
             const res = type === 'sandbox' ? await store.bni_login.loginSandbox(body) : await store.bni_login.login(body);

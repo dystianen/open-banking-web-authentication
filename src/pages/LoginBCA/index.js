@@ -97,7 +97,8 @@ export const LoginBCA = observer(() => {
                 customerIdentifier: localStorage.getItem('customer_ref_id'),
                 customerName: localStorage.getItem('customer_name'),
                 bankCode: localStorage.getItem('bankCode'),
-                bankId: localStorage.getItem('bankId')
+                bankId: localStorage.getItem('bankId'),
+                partnerReferenceNo: localStorage.getItem('partnerReferenceNo')
             };
 
             setIsLoading(true);
