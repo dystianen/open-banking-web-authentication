@@ -92,7 +92,8 @@ export const LoginBNI = observer(() => {
                 partnerReferenceNo: localStorage.getItem('partnerReferenceNo')
             };
             const type = localStorage.getItem('type')
-            type === 'sandbox' ? await store.bni_login.loginSandbox(body) : await store.bni_login.login(body);
+            const res = type === 'sandbox' ? await store.bni_login.loginSandbox(body) : await store.bni_login.login(body);
+            localStorage.setItem('customerId', res.body.data.customerId)
             setIsLoading(false);
             history.push(`/bni-success${search}`);
         } catch (err) {

@@ -94,7 +94,8 @@ export const LoginBRI = observer(() => {
 
             console.log({body});
             const type = localStorage.getItem('type')
-            type === 'sandbox' ? await store.bri_login.loginSandbox(body) : await store.bri_login.login(body);
+            const res = type === 'sandbox' ? await store.bri_login.loginSandbox(body) : await store.bri_login.login(body);
+            localStorage.setItem('customerId', res.body.data.customerId)
             setIsLoading(false);
             history.push(`/bri-success${search}`);
         } catch (err) {
