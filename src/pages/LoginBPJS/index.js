@@ -131,6 +131,7 @@ export const LoginBPJS = observer(() => {
             const res = await store.bpjs_login.checkStatus(data)
             status = res.body.data.status
             if (status === 'SUCCESS') {
+                localStorage.setItem('customerId', res.body.data.customerId)
                 history.push(`/bpjs-success${search}`);
             } else if (status === 'FAILED') {
                 setLoading(false)

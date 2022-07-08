@@ -99,6 +99,7 @@ export const OtpOVO = observer(() => {
             const res = await store.gojek_login.checkStatus(data)
             status = res.body.data.status
             if (status === 'SUCCESS') {
+                localStorage.setItem('customerId', res.body.data.customerId)
                 history.push(`/ovo-success${search}`);
             } else if (status === 'FAILED') {
                 setLoading(false)

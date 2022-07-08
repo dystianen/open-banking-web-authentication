@@ -71,7 +71,8 @@ export const LoginMandiri = observer(() => {
         try {
             setLoading(true);
             const type = localStorage.getItem('type')
-            type === 'sandbox' ? await store.mandiri.postLoginSandbox(data) : await store.mandiri.postLogin(data);
+            const res = type === 'sandbox' ? await store.mandiri.postLoginSandbox(data) : await store.mandiri.postLogin(data);
+            localStorage.setItem('customerId', res.body.data.customerId)
             setLoading(false);
             history.push(`/mandiri-success${search}`);
         } catch (err) {

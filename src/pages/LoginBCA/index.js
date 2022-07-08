@@ -102,7 +102,8 @@ export const LoginBCA = observer(() => {
 
             setIsLoading(true);
             const type = localStorage.getItem('type')
-            type === 'sandbox' ? await store.bca_login.loginSandbox(body): await store.bca_login.login(body);
+            const res = type === 'sandbox' ? await store.bca_login.loginSandbox(body): await store.bca_login.login(body);
+            localStorage.setItem('customerId', res.body.data.customerId)
             setIsLoading(false);
 
             history.push(`/bca-success${search}`);

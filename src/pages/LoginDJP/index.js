@@ -131,6 +131,7 @@ export const LoginDJP = observer(() => {
             const res = await store.djp_login.checkStatus(data)
             status = res.body.data.status
             if (status === 'SUCCESS') {
+                localStorage.setItem('customerId', res.body.data.customerId)
                 history.push(`/djp-success${search}`);
             } else if (status === 'FAILED') {
                 setLoading(false)
