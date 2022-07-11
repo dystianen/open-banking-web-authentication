@@ -16,13 +16,9 @@ export const Success = observer((props) => {
     const history = useHistory();
     const { message } = props
     const {search} = useLocation();
-    let deleteFirstCharacter = search.substr(1) // Delete character ?
-    const query = queryString.parse(deleteFirstCharacter)
-    const onClose = () => {
-        window.opener = null;
-        window.open("", "_self");
-        window.close();
-    };
+    // let deleteFirstCharacter = search.substr(1) // Delete character ?
+    // const query = queryString.parse(deleteFirstCharacter)
+
     return (
         <PageLogin linking={false}>
             <img src={blueDotsCombined} alt="Background Dots" />
@@ -36,10 +32,7 @@ export const Success = observer((props) => {
                 size="large"
                 block
                 style={styles.buttonDone}
-                onClick={() => {
-                    query.type !== 'sandbox' ? onClose() : window.open(`https://cdi.k3s.bangun-kreatif.com/open-finance/customer/${localStorage.getItem('customerId')}`)
-                }
-            }>
+                onClick={() => window.open(`https://cdi.k3s.bangun-kreatif.com/open-finance/customer/${localStorage.getItem('customerId')}`)}>
                 Done
             </Button>
         </PageLogin>
