@@ -6,13 +6,18 @@ variables:
   DOCKER_HOST: tcp://docker:2375
   DOCKER_TLS_CERTDIR: ""
   DOCKER_DRIVER: overlay2
-
+  STAGING_BASE_URL: https://cdi-backend.k3s.bangun-kreatif.com
+  CLONE_BASE_URL: https://api.cdi-clone.app.bangun-kreatif.com
+  STAGING_AUTH_SERVICE: /auth-service
+  STAGING_GOOGLE_ANALYTICS: G-9DPHCQ3ZYP
+  STAGING_SITEKEYCAPTCHA: 6LfNdRofAAAAANMG3hYfhnHvVJX_Ma2JhxC2afk6
 
 stages:
   - build-staging
   - deploy-staging
   - build-production
   - deploy-production
+  - build-clone
 
 build-staging:
   stage: build-staging
@@ -67,3 +72,16 @@ deploy-production:
     - kubectl config use-context default
     - sed -i "s/<VERSION>/${VERSION_PRODUCTION}/g" k8s/production/deployment.yaml
     - kubectl apply -f k8s/production/deployment.yaml
+
+build-clone:
+  stage: build-clone
+  image: appuio/gitlab-runner-oc:3.11.0
+  only:
+    - devops-clone
+  services:
+    - docker:dind
+  script:
+    - docker login $REGISTRY_URL -u $BKA_REGISTRY_USER -p $BKA_REGISTRY_PASS
+    - docker build -t $REGISTRY_IMAGE:$VERSION_PRODUCTION . --build-arg REACT_APP_API_URL=$CLONE_BASE_URL --build-arg REACT_APP_AUTH_SERVICE=$STAGING_AUTH_SERVICE --build-arg REACT_APP_GOOGLE_ANALYTICS=$STAGING_GOOGLE_ANALYTICS --build-arg REACT_APP_SITEKEYCAPTCHA=$STAGING_SITEKEYCAPTCHA
+    - docker push $REGISTRY_IMAGE:$VERSION_PRODUCTION
+    - docker rmi $REGISTRY_IMAGE:$VERSION_PRODUCTION
