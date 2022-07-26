@@ -90,12 +90,10 @@ export const ListBank = observer((props) => {
             <Panel header={(<Header/>)} key={it.id} showArrow={false} className={'collapse-custom'}>
                 <div>
                     {data.map((data, index) => (
-                        <div className={index ? 'border-color-bank' : 'none-border'} style={data.connected === false ? {cursor: 'pointer'} : {}} onClick={() => {
-                            if (data.connected === false) {
-                                history.push(data.link+search)
-                                localStorage.setItem('bankCode', data.code)
-                                localStorage.setItem('bankId', data.id)
-                            }
+                        <div className={index ? 'border-color-bank' : 'none-border'} style={{cursor: 'pointer'}} onClick={() => {
+                            history.push(data.link+search)
+                            localStorage.setItem('bankCode', data.code)
+                            localStorage.setItem('bankId', data.id)
                         }}>
                             <Typography.Paragraph
                                 style={{
