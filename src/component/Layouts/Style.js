@@ -6,6 +6,7 @@ export const styles = {
     backgroundColor: "#F6F6F6",
     borderRadius: Metrics.borderRadius,
     marginTop: "-10px",
+    width: 420
   },
   container: {
     display: "flex",
