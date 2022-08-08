@@ -98,7 +98,7 @@ export const LoginOVO = observer(() => {
 
             const data = {
                 userId: localStorage.getItem('userID'),
-                username: 0 + values.phone_number,
+                username: values.phone_number,
                 customerIdentifier: localStorage.getItem('customer_ref_id'),
                 customerName: localStorage.getItem('customer_name'),
                 bankCode: localStorage.getItem('bankCode'),
@@ -234,7 +234,7 @@ export const LoginOVO = observer(() => {
                             {min: 10, max: 14, message: "Please input Valid Phone Number!"},
                         ]}
                     >
-                        <Input type={'number'} size={'large'} addonBefore={selectBefore} prefix={'+62'}/>
+                        <Input type={'number'} size={'large'} addonBefore={selectBefore} className={'custom-input-number'}/>
                     </Form.Item>
 
                     <Form.Item shouldUpdate>

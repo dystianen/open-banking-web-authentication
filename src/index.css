@@ -33,6 +33,17 @@ code {
   padding-right: 15px;
 }
 
+.custom-input-number input::-webkit-outer-spin-button,
+.custom-input-number input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.custom-input-number {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
 .none-border {
   height: 50px;
   align-items: center;

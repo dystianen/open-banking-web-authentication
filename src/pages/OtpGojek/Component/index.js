@@ -133,7 +133,7 @@ export const OtpGojek = observer(() => {
                                         }}
                                     />
                                 </div>
-                                <p style={{fontSize: 18}}>Code is sent to {values.username}</p>
+                                <p style={{fontSize: 18, display: 'flex', textAlign: 'center'}}>Please enter the OTP sent on your registered phone number {values.username}</p>
                             </div>
                         </div>
                     </div>
