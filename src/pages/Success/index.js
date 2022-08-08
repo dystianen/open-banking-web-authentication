@@ -18,7 +18,11 @@ export const Success = observer((props) => {
     const {search} = useLocation();
     // let deleteFirstCharacter = search.substr(1) // Delete character ?
     // const query = queryString.parse(deleteFirstCharacter)
-
+    const onClose = () => {
+        window.opener = null;
+        window.open("", "_self");
+        window.close();
+    };
     return (
         <PageLogin linking={false}>
             <img src={blueDotsCombined} alt="Background Dots" />
@@ -32,7 +36,10 @@ export const Success = observer((props) => {
                 size="large"
                 block
                 style={styles.buttonDone}
-                onClick={() => window.open(`${appConfig.urlBilling}/open-finance/customer/${localStorage.getItem('customerId')}`)}>
+                onClick={() => {
+                    window.open(`${appConfig.urlBilling}/open-finance/customer/${localStorage.getItem('customerId')}`)
+                    onClose()
+                }}>
                 Done
             </Button>
         </PageLogin>
