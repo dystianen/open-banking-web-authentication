@@ -6,6 +6,7 @@ import {useHistory, useLocation, useParams} from "react-router-dom";
 import verified from "../../assets/images/verified.svg";
 import lock from "../../assets/images/lock.svg";
 import eyeSlash from "../../assets/images/eye-slash.svg";
+import connect from "../../assets/images/connect.svg";
 import pdf from "../../assets/Test.pdf";
 import {PageLogin} from "../../component/Layouts/PageLogin";
 import * as queryString from "querystring";
@@ -126,8 +127,7 @@ export const TermCondition = observer(() => {
                                         textAlign: "center",
                                     }}
                                 >
-                                    Connect Your Financial Account <br/>
-                                    to Your App Easy as 1-2-3
+                                    Easy and Secure access to your financial account
                                 </Typography.Paragraph>
                             </div>
                         </div>
@@ -151,17 +151,21 @@ export const TermCondition = observer(() => {
                                     alignItems: "stretch",
                                 }}
                             >
-                                <Steps direction="vertical" current={2}>
+                                <Steps direction="vertical" current={3}>
                                     <Step
-                                        title="Protect the privacy of your personal financial data."
+                                        title="We take seriously the protection of your privacy and confidentiality"
                                         icon={renderIconSteps(verified)}
                                     />
                                     <Step
-                                        title="Secure your information with end-to-end encrypt"
+                                        title="Secured your information with end-to-end encrypted"
                                         icon={renderIconSteps(eyeSlash)}
                                     />
                                     <Step
-                                        title="Easy to connect and easy to unconnect"
+                                        title="Easily connect and disconnect your account"
+                                        icon={renderIconSteps(connect)}
+                                    />
+                                    <Step
+                                        title="We do not store your credentials and NOT authorized to make any transactions"
                                         icon={renderIconSteps(lock)}
                                     />
                                 </Steps>

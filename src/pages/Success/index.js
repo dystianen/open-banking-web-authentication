@@ -32,7 +32,7 @@ export const Success = observer((props) => {
                 size="large"
                 block
                 style={styles.buttonDone}
-                onClick={() => window.open(`https://cdi.k3s.bangun-kreatif.com/open-finance/customer/${localStorage.getItem('customerId')}`)}>
+                onClick={() => window.open(`${appConfig.urlBilling}/open-finance/customer/${localStorage.getItem('customerId')}`)}>
                 Done
             </Button>
         </PageLogin>
