@@ -217,7 +217,7 @@ export const LoginDJP = observer(() => {
                         style={{color: "#4B4C48"}}
                         label={
                             <label style={{color: "#161D24", fontSize: "12pt"}}>
-                                NPWP
+                                Tax Identification Number
                             </label>
                         }
                         rules={[
@@ -229,6 +229,7 @@ export const LoginDJP = observer(() => {
                             type={'number'}
                             style={styles.input}
                             placeholder={"819450057427000"}
+                            className={'custom-input-number'}
                         />
                     </Form.Item>
                     <Form.Item
