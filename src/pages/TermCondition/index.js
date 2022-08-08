@@ -47,7 +47,7 @@ export const TermCondition = observer(() => {
             console.log(e);
         }
     };
-    console.log(profile, 'profiles')
+
     const onClickPdf = () => {
         window.open(pdf);
     };
@@ -68,6 +68,18 @@ export const TermCondition = observer(() => {
             </div>
         </div>
     );
+
+    const haveHttp = (filepath) => {
+        const fileName = filepath?.split("/");
+        const sliceData = fileName?.slice(0, 1)
+        const dataSlice = ["https:"].includes(sliceData?.[0])
+
+        if (dataSlice) {
+            return filepath;
+        } else {
+            return `${appConfig.apiUrl}/file/${filepath}`;
+        }
+    };
 
     return (
         <PageLogin goback={false} onClose={true}>
@@ -100,7 +112,7 @@ export const TermCondition = observer(() => {
                                     ?
                                     <Avatar
                                         size={100}
-                                        src={appConfig.apiUrl + '/file/' + profile?.photo_profile}
+                                        src={haveHttp(profile?.photo_profile)}
                                     />
                                     :
                                     <Typography.Paragraph style={{fontSize: 30, fontWeight: 700, color: "#04204D",}}>
@@ -190,36 +202,14 @@ export const TermCondition = observer(() => {
                                     alignItems: "stretch",
                                 }}
                             >
-                                <Typography.Paragraph
-                                    style={{
-                                        fontSize: 12,
-                                        fontWeight: 400,
-                                        color: "#161D24",
-                                        textAlign: "center",
-                                    }}
-                                >
+                                <Typography.Paragraph style={{fontSize: 12, fontWeight: 400, color: "#161D24", textAlign: "center",}}>
                                     By clicking "Next", you are agree to the <br/>{" "}
-                                    <span
-                                        style={{
-                                            fontSize: 12,
-                                            fontWeight: 500,
-                                            color: "#FE6601",
-                                        }}
-                                        onClick={onClickPdf}
-                                    >
-                    terms and condition
-                  </span>{" "}
-                                    &{" "}
-                                    <span
-                                        style={{
-                                            fontSize: 12,
-                                            fontWeight: 500,
-                                            color: "#FE6601",
-                                        }}
-                                        onClick={onClickPdf}
-                                    >
-                    privacy policy
-                  </span>
+                                    <span style={{fontSize: 12, fontWeight: 500, color: "#FE6601"}} onClick={onClickPdf}>
+                                        terms and condition
+                                    </span>{" "}&{" "}
+                                    <span style={{fontSize: 12, fontWeight: 500, color: "#FE6601"}} onClick={onClickPdf}>
+                                        privacy policy
+                                    </span>
                                 </Typography.Paragraph>
 
                                 <Button
