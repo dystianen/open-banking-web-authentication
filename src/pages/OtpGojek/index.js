@@ -9,7 +9,7 @@ import isoLogo from "../../assets/images/iso-2.png";
 import aftechLogo from "../../assets/images/aftech.png";
 import keminfo from "../../assets/images/keminfo.png";
 import {useHistory, useLocation} from "react-router-dom";
-
+import '../../index.css'
 import "react-spring-bottom-sheet/dist/style.css";
 import {PageLogin} from "../../component/Layouts/PageLogin";
 import {Metrics} from "../../styles/Metric";
@@ -98,7 +98,7 @@ export const LoginGojek = observer(() => {
 
             const data = {
                 userId: localStorage.getItem('userID'),
-                username: 0 + values.phone_number,
+                username: values.phone_number,
                 customerIdentifier: localStorage.getItem('customer_ref_id'),
                 customerName: localStorage.getItem('customer_name'),
                 bankCode: localStorage.getItem('bankCode'),
@@ -219,7 +219,7 @@ export const LoginGojek = observer(() => {
                             color: "#4B4C48",
                         }}
                     >
-                        Input your phone number <br/> registered with Gopay.
+                        Input your phone number <br/> registered with Gojek.
                     </Title>
                 </div>
                 <Form layout={"vertical"} form={form}>
@@ -228,7 +228,7 @@ export const LoginGojek = observer(() => {
                         style={{color: "#4B4C48"}}
                         label={
                             <label style={{color: "#161D24", fontSize: "12pt"}}>
-                                Phone number
+                                Enter your registered Gojek phone number
                             </label>
                         }
                         rules={[
@@ -236,7 +236,7 @@ export const LoginGojek = observer(() => {
                             {min: 10, max: 14, message: "Please input Valid Phone Number!"},
                         ]}
                     >
-                        <Input type={'number'} size={'large'} addonBefore={selectBefore} prefix={'+62'}/>
+                        <Input type={'number'} size={'large'} className={'custom-input-number'} addonBefore={selectBefore}/>
                     </Form.Item>
 
                     <Form.Item shouldUpdate>

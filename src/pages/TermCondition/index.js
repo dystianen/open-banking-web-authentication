@@ -6,6 +6,7 @@ import {useHistory, useLocation, useParams} from "react-router-dom";
 import verified from "../../assets/images/verified.svg";
 import lock from "../../assets/images/lock.svg";
 import eyeSlash from "../../assets/images/eye-slash.svg";
+import connect from "../../assets/images/connect.svg";
 import pdf from "../../assets/Test.pdf";
 import {PageLogin} from "../../component/Layouts/PageLogin";
 import * as queryString from "querystring";
@@ -46,7 +47,7 @@ export const TermCondition = observer(() => {
             console.log(e);
         }
     };
-    console.log(profile, 'profiles')
+
     const onClickPdf = () => {
         window.open(pdf);
     };
@@ -68,15 +69,25 @@ export const TermCondition = observer(() => {
         </div>
     );
 
+    const haveHttp = (filepath) => {
+        const fileName = filepath?.split("/");
+        const sliceData = fileName?.slice(0, 1)
+        const dataSlice = ["https:"].includes(sliceData?.[0])
+
+        if (dataSlice) {
+            return filepath;
+        } else {
+            return `${appConfig.apiUrl}/file/${filepath}`;
+        }
+    };
+
     return (
         <PageLogin goback={false} onClose={true}>
             <div
                 style={{
-                    justifyContent: "space-between",
                     display: "flex",
                     flexDirection: "column",
                     flex: 1,
-                    minHeight: "75vh",
                 }}
             >
                 <Row justify={"center"}>
@@ -101,7 +112,7 @@ export const TermCondition = observer(() => {
                                     ?
                                     <Avatar
                                         size={100}
-                                        src={appConfig.apiUrl + '/file/' + profile?.photo_profile}
+                                        src={haveHttp(profile?.photo_profile)}
                                     />
                                     :
                                     <Typography.Paragraph style={{fontSize: 30, fontWeight: 700, color: "#04204D",}}>
@@ -118,7 +129,6 @@ export const TermCondition = observer(() => {
                                     display: "flex",
                                     flexDirection: "column",
                                     alignItems: "stretch",
-                                    marginTop: 33,
                                 }}
                             >
                                 <Typography.Paragraph
@@ -129,8 +139,7 @@ export const TermCondition = observer(() => {
                                         textAlign: "center",
                                     }}
                                 >
-                                    Connect Your Financial Account <br/>
-                                    to Your App Easy as 1-2-3
+                                    Easy and Secure access to your financial account
                                 </Typography.Paragraph>
                             </div>
                         </div>
@@ -144,7 +153,7 @@ export const TermCondition = observer(() => {
                                 width: "100%",
                                 margin: "auto",
                                 paddingLeft: 5,
-                                paddingTop: 55,
+                                paddingTop: 15,
                             }}
                         >
                             <div
@@ -154,17 +163,21 @@ export const TermCondition = observer(() => {
                                     alignItems: "stretch",
                                 }}
                             >
-                                <Steps direction="vertical" current={2}>
+                                <Steps direction="vertical" current={3}>
                                     <Step
-                                        title="Protect the privacy of your personal financial data."
+                                        title="We take seriously the protection of your privacy and confidentiality"
                                         icon={renderIconSteps(verified)}
                                     />
                                     <Step
-                                        title="Secure your information with end-to-end encrypt"
+                                        title="Secured your information with end-to-end encrypted"
                                         icon={renderIconSteps(eyeSlash)}
                                     />
                                     <Step
-                                        title="Easy to connect and easy to unconnect"
+                                        title="Easily connect and disconnect your account"
+                                        icon={renderIconSteps(connect)}
+                                    />
+                                    <Step
+                                        title="We do not store your credentials and NOT authorized to make any transactions"
                                         icon={renderIconSteps(lock)}
                                     />
                                 </Steps>
@@ -180,7 +193,6 @@ export const TermCondition = observer(() => {
                                 flexDirection: "column",
                                 width: "100%",
                                 margin: "auto",
-                                paddingTop: 50,
                             }}
                         >
                             <div
@@ -190,36 +202,14 @@ export const TermCondition = observer(() => {
                                     alignItems: "stretch",
                                 }}
                             >
-                                <Typography.Paragraph
-                                    style={{
-                                        fontSize: 12,
-                                        fontWeight: 400,
-                                        color: "#161D24",
-                                        textAlign: "center",
-                                    }}
-                                >
+                                <Typography.Paragraph style={{fontSize: 12, fontWeight: 400, color: "#161D24", textAlign: "center",}}>
                                     By clicking "Next", you are agree to the <br/>{" "}
-                                    <span
-                                        style={{
-                                            fontSize: 12,
-                                            fontWeight: 500,
-                                            color: "#FE6601",
-                                        }}
-                                        onClick={onClickPdf}
-                                    >
-                    terms and condition
-                  </span>{" "}
-                                    &{" "}
-                                    <span
-                                        style={{
-                                            fontSize: 12,
-                                            fontWeight: 500,
-                                            color: "#FE6601",
-                                        }}
-                                        onClick={onClickPdf}
-                                    >
-                    privacy policy
-                  </span>
+                                    <span style={{fontSize: 12, fontWeight: 500, color: "#FE6601"}} onClick={onClickPdf}>
+                                        terms and condition
+                                    </span>{" "}&{" "}
+                                    <span style={{fontSize: 12, fontWeight: 500, color: "#FE6601"}} onClick={onClickPdf}>
+                                        privacy policy
+                                    </span>
                                 </Typography.Paragraph>
 
                                 <Button

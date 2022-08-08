@@ -41,6 +41,8 @@ export const BankList = observer(() => {
         return spark;
       case "Internet Banking":
         return eBank;
+      case "E-Banking":
+        return eBank;
       case "E-Wallet":
         return eWallet;
       case "E-Commerce":
@@ -102,28 +104,6 @@ export const BankList = observer(() => {
                   </div>
                 </div>
               </Col>
-                <Col span={24}>
-                    <div
-                        style={{
-                            display: "flex",
-                            flexDirection: "column",
-                            alignItems: "stretch",
-                        }}
-                    >
-                        <Typography.Paragraph
-                            style={{
-                                margin: 0,
-                                padding: 0,
-                                fontSize: 12,
-                                marginLeft: 5,
-                                color: "#121014",
-                                width: 290,
-                            }}
-                        >
-                            Choose on of institutions to connect your account to Trustlink.
-                        </Typography.Paragraph>
-                    </div>
-                </Col>
             </Row>
           </div>
           <ListBank data={data} />
