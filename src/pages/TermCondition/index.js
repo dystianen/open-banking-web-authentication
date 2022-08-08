@@ -72,11 +72,9 @@ export const TermCondition = observer(() => {
         <PageLogin goback={false} onClose={true}>
             <div
                 style={{
-                    justifyContent: "space-between",
                     display: "flex",
                     flexDirection: "column",
                     flex: 1,
-                    minHeight: "75vh",
                 }}
             >
                 <Row justify={"center"}>
@@ -118,7 +116,6 @@ export const TermCondition = observer(() => {
                                     display: "flex",
                                     flexDirection: "column",
                                     alignItems: "stretch",
-                                    marginTop: 33,
                                 }}
                             >
                                 <Typography.Paragraph
@@ -144,7 +141,7 @@ export const TermCondition = observer(() => {
                                 width: "100%",
                                 margin: "auto",
                                 paddingLeft: 5,
-                                paddingTop: 55,
+                                paddingTop: 15,
                             }}
                         >
                             <div
@@ -180,7 +177,6 @@ export const TermCondition = observer(() => {
                                 flexDirection: "column",
                                 width: "100%",
                                 margin: "auto",
-                                paddingTop: 50,
                             }}
                         >
                             <div

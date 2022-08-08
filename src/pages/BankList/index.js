@@ -41,6 +41,8 @@ export const BankList = observer(() => {
         return spark;
       case "Internet Banking":
         return eBank;
+      case "E-Banking":
+        return eBank;
       case "E-Wallet":
         return eWallet;
       case "E-Commerce":
