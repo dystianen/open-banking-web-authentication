@@ -124,21 +124,8 @@ export const TermCondition = observer(() => {
                                 }
                             </div>
 
-                            <div
-                                style={{
-                                    display: "flex",
-                                    flexDirection: "column",
-                                    alignItems: "stretch",
-                                }}
-                            >
-                                <Typography.Paragraph
-                                    style={{
-                                        fontSize: 16,
-                                        fontWeight: 500,
-                                        color: "#121014",
-                                        textAlign: "center",
-                                    }}
-                                >
+                            <div style={{display: "flex", flexDirection: "column", alignItems: "stretch", marginTop: 15}}>
+                                <Typography.Paragraph style={{fontSize: 16, fontWeight: 500, color: "#121014", textAlign: "center",}}>
                                     Easy and Secure access to your financial account
                                 </Typography.Paragraph>
                             </div>
