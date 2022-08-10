@@ -65,7 +65,7 @@ export const LoginTokopedia = observer(() => {
             time += 1;
             setLoading(true)
 
-            if (time !== 6) {
+            if (time !== 24) {
                 if (status === 'BUSY') {
                     isStatus();
                     setLoading(true)
