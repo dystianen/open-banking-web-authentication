@@ -229,7 +229,7 @@ export const LoginBPJS = observer(() => {
                     >
                         <Input
                             style={styles.input}
-                            placeholder={"819450057427000"}
+                            placeholder={"example@gmail.com"}
                         />
                     </Form.Item>
                     <Form.Item
