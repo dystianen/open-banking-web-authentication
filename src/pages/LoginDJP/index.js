@@ -208,7 +208,7 @@ export const LoginDJP = observer(() => {
                             color: "#4B4C48",
                         }}
                     >
-                        Insert your credentials to start.
+                        Insert your credentials
                     </Title>
                 </div>
                 <Form layout={"vertical"} form={form}>
