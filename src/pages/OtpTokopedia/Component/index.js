@@ -134,7 +134,7 @@ export const OtpTokopedia = observer(() => {
                                         }}
                                     />
                                 </div>
-                                <p style={{fontSize: 18}}>Code is sent to {values.username}</p>
+                                <p style={{fontSize: 18}}>Code is sent to your phone</p>
                             </div>
                         </div>
                     </div>
