@@ -105,7 +105,7 @@ export const LoginBCA = observer(() => {
             const type = localStorage.getItem('type')
             const service = localStorage.getItem('service')
             let res;
-            if (service === 'undefined') {
+            if (!service) {
                 res = type === 'sandbox' ? await store.bca_login.loginSandbox(body): await store.bca_login.login(body);
                 localStorage.setItem('customerId', res.body.data.customerId)
             } else {

@@ -74,7 +74,7 @@ export const LoginMandiri = observer(() => {
             const type = localStorage.getItem('type')
             const service = localStorage.getItem('service')
             let res;
-            if (service === 'undefined') {
+            if (!service) {
                 res = type === 'sandbox' ? await store.mandiri.postLoginSandbox(data) : await store.mandiri.postLogin(data);
                 localStorage.setItem('customerId', res.body.data.customerId)
             } else {

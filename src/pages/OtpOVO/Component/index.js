@@ -101,7 +101,7 @@ export const OtpOVO = observer(() => {
             const res = await store.ovo_login.checkStatus(data)
             status = res.body.data.status
             if (status === 'SUCCESS') {
-                if (service === 'undefined') {
+                if (service) {
                     data.accountNo = localStorage.getItem('accountNo');
                     await store.ovo_login.getProduct(service, data)
                 } else {

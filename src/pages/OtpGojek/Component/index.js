@@ -98,7 +98,7 @@ export const OtpGojek = observer(() => {
             const res = await store.gojek_login.checkStatus(data)
             status = res.body.data.status
             if (status === 'SUCCESS') {
-                if (service !== 'undefined') {
+                if (service) {
                     data.accountNo = localStorage.getItem('accountNo');
                     await store.gojek_login.getProduct(service, data)
                 } else {
