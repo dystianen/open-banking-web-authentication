@@ -23,4 +23,8 @@ export class MandiriLogin {
         return await http.post(`/middleware/authentication/mandiri`).send(data)
     }
 
+    async getProduct(type, data) {
+        const res = await http.post(`/middleware/account/${type}`).send(data);
+        return res;
+    }
 }

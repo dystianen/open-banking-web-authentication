@@ -38,6 +38,7 @@ export const OtpOVO = observer(() => {
                 clearInterval(interval)
                 setOTP('');
                 setLoading(false)
+                message.error('System is busy, Try again!')
             }
         }, 5000)
     }
@@ -96,10 +97,15 @@ export const OtpOVO = observer(() => {
                 secCode: localStorage.getItem('secCode'),
             };
 
-            const res = await store.gojek_login.checkStatus(data)
+            const service = localStorage.getItem('service');
+            const res = await store.ovo_login.checkStatus(data)
             status = res.body.data.status
             if (status === 'SUCCESS') {
-                localStorage.setItem('customerId', res.body.data.customerId)
+                if (service === 'undefined') {
+                    await store.ovo_login.getProduct(service, data)
+                } else {
+                    localStorage.setItem('customerId', res.body.data.customerId)
+                }
                 history.push(`/ovo-success${search}`);
             } else if (status === 'FAILED') {
                 setLoading(false)

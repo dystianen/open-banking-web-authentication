@@ -76,6 +76,7 @@ export const LoginTokopedia = observer(() => {
             } else {
                 clearInterval(interval)
                 setLoading(false)
+                message.error('System is busy, Try again!')
             }
         }, 5000)
     }

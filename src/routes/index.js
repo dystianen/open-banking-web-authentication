@@ -43,6 +43,13 @@ export const MainRoutes = (props) => {
         localStorage.setItem('userID', query.userId);
         localStorage.setItem('type', query.type);
         localStorage.setItem('partnerReferenceNo', query.partnerReferenceNo);
+        if (query.typeService) {
+            localStorage.setItem('service', query.typeService);
+            localStorage.setItem('accountNo', query.accountNo);
+            localStorage.setItem('bankCode', query.bankCode);
+            localStorage.setItem('bankId', query.bankId);
+            localStorage.setItem('customerId', query.customerId);
+        }
     }, [search])
 
     return (

@@ -72,12 +72,21 @@ export const LoginMandiri = observer(() => {
         try {
             setLoading(true);
             const type = localStorage.getItem('type')
-            const res = type === 'sandbox' ? await store.mandiri.postLoginSandbox(data) : await store.mandiri.postLogin(data);
-            localStorage.setItem('customerId', res.body.data.customerId)
+            const service = localStorage.getItem('service')
+            let res;
+            if (service === 'undefined') {
+                res = type === 'sandbox' ? await store.mandiri.postLoginSandbox(data) : await store.mandiri.postLogin(data);
+                localStorage.setItem('customerId', res.body.data.customerId)
+            } else {
+                data.accountNo = localStorage.getItem('accountNo');
+                await store.mandiri.getProduct(service, data);
+            }
+
             setLoading(false);
             history.push(`/mandiri-success${search}`);
         } catch (err) {
             setLoading(false);
+            console.log({err})
             console.log(err.response?.body?.data, "error post");
             message.error(err.response?.body?.data);
         }

@@ -22,7 +22,16 @@ export class OVOLogin {
         return await http.post(`/middleware/authentication/ovo`).send(data)
     }
 
+    async checkStatus(data) {
+        return await http.post(`/middleware/authentication/check-status`).send(data)
+    }
+
     async otp(data) {
         return await http.post(`/middleware/authentication/validate-otp`).send(data)
+    }
+
+    async getProduct(type, data) {
+        const res = await http.post(`/middleware/account/${type}`).send(data);
+        return res;
     }
 }

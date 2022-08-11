@@ -37,6 +37,7 @@ export const OtpGojek = observer(() => {
                 clearInterval(interval)
                 setOTP('');
                 setIsLoading(false)
+                message.error('System is busy, Try again!')
             }
         }, 5000)
     }
@@ -93,10 +94,15 @@ export const OtpGojek = observer(() => {
                 secCode: localStorage.getItem('secCode'),
             };
 
+            const service = localStorage.getItem('service');
             const res = await store.gojek_login.checkStatus(data)
             status = res.body.data.status
             if (status === 'SUCCESS') {
-                localStorage.setItem('customerId', res.body.data.customerId)
+                if (service !== 'undefined') {
+                    await store.gojek_login.getProduct(service, data)
+                } else {
+                    localStorage.setItem('customerId', res.body.data.customerId)
+                }
                 history.push(`/gojek-success${search}`);
             } else if (status === 'FAILED') {
                 setIsLoading(false)

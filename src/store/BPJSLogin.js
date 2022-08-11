@@ -25,4 +25,9 @@ export class BPJSLogin {
     async checkStatus(data) {
         return await http.post(`/middleware/authentication/check-status`).send(data)
     }
+
+    async getProduct(type, data) {
+        const res = await http.post(`/middleware/account/${type}`).send(data);
+        return res;
+    }
 }
