@@ -92,10 +92,17 @@ export const LoginBRI = observer(() => {
                 partnerReferenceNo: localStorage.getItem('partnerReferenceNo')
             };
 
-            console.log({body});
             const type = localStorage.getItem('type')
-            const res = type === 'sandbox' ? await store.bri_login.loginSandbox(body) : await store.bri_login.login(body);
-            localStorage.setItem('customerId', res.body.data.customerId)
+            const service = localStorage.getItem('service')
+            let res;
+            if (service === 'undefined') {
+                res = type === 'sandbox' ? await store.bri_login.loginSandbox(body) : await store.bri_login.login(body);
+                localStorage.setItem('customerId', res.body.data.customerId)
+            } else {
+                body.accountNo = localStorage.getItem('accountNo');
+                await store.bri_login.getProduct(service, body);
+            }
+
             setIsLoading(false);
             history.push(`/bri-success${search}`);
         } catch (err) {

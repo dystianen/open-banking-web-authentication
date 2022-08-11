@@ -103,10 +103,17 @@ export const LoginBCA = observer(() => {
 
             setIsLoading(true);
             const type = localStorage.getItem('type')
-            const res = type === 'sandbox' ? await store.bca_login.loginSandbox(body): await store.bca_login.login(body);
-            localStorage.setItem('customerId', res.body.data.customerId)
-            setIsLoading(false);
+            const service = localStorage.getItem('service')
+            let res;
+            if (service === 'undefined') {
+                res = type === 'sandbox' ? await store.bca_login.loginSandbox(body): await store.bca_login.login(body);
+                localStorage.setItem('customerId', res.body.data.customerId)
+            } else {
+                body.accountNo = localStorage.getItem('accountNo');
+                await store.bca_login.getProduct(service, body);
+            }
 
+            setIsLoading(false);
             history.push(`/bca-success${search}`);
         } catch (err) {
             setIsLoading(false);

@@ -21,8 +21,8 @@ export class BNILogin {
         return res;
     }
 
-    logout() {
-        this.context.setToken('');
-        localStorage.removeItem('access_token');
+    async getProduct(type, data) {
+        const res = await http.post(`/middleware/account/${type}`).send(data);
+        return res;
     }
 }

@@ -36,6 +36,7 @@ export const OtpTokopedia = observer(() => {
                 clearInterval(interval)
                 setOTP('');
                 setLoading(false)
+                message.error('System is busy, Try again!')
             }
         }, 5000)
     }
@@ -94,10 +95,15 @@ export const OtpTokopedia = observer(() => {
                 secCode: localStorage.getItem('secCode'),
             };
 
+            const service = localStorage.getItem('service');
             const res = await store.tokopedia_login.checkStatus(data)
             status = res.body.data.status
             if (status === 'SUCCESS') {
-                localStorage.setItem('customerId', res.body.data.customerId)
+                if (service === 'undefined') {
+                    await store.tokopedia_login.getProduct(service, data)
+                } else {
+                    localStorage.setItem('customerId', res.body.data.customerId)
+                }
                 history.push(`/tokopedia-success${search}`);
             } else if (status === 'FAILED') {
                 setLoading(false)

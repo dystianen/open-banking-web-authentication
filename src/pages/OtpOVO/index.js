@@ -73,6 +73,7 @@ export const LoginOVO = observer(() => {
             } else {
                 clearInterval(interval)
                 setLoading(false)
+                message.error('System is busy, Try again!')
             }
         }, 5000)
     }

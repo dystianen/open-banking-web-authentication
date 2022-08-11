@@ -76,6 +76,7 @@ export const LoginDJP = observer(() => {
             } else {
                 clearInterval(interval)
                 setLoading(false)
+                message.error('System is busy, Try again!')
             }
         }, 5000)
     }
@@ -128,10 +129,15 @@ export const LoginDJP = observer(() => {
                 secCode: localStorage.getItem('secCode'),
             };
 
+            const service = localStorage.getItem('service');
             const res = await store.djp_login.checkStatus(data)
             status = res.body.data.status
             if (status === 'SUCCESS') {
-                localStorage.setItem('customerId', res.body.data.customerId)
+                if (service !== 'undefined') {
+                    await store.djp_login.getProduct(service, data)
+                } else {
+                    localStorage.setItem('customerId', res.body.data.customerId)
+                }
                 history.push(`/djp-success${search}`);
             } else if (status === 'FAILED') {
                 setLoading(false)

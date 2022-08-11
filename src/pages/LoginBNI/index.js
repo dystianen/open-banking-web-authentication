@@ -92,8 +92,16 @@ export const LoginBNI = observer(() => {
                 partnerReferenceNo: localStorage.getItem('partnerReferenceNo')
             };
             const type = localStorage.getItem('type')
-            const res = type === 'sandbox' ? await store.bni_login.loginSandbox(body) : await store.bni_login.login(body);
-            localStorage.setItem('customerId', res.body.data.customerId)
+            const service = localStorage.getItem('service')
+            let res;
+            if (service === 'undefined') {
+                res = type === 'sandbox' ? await store.bni_login.loginSandbox(body) : await store.bni_login.login(body);
+                localStorage.setItem('customerId', res.body.data.customerId)
+            } else {
+                body.accountNo = localStorage.getItem('accountNo');
+                await store.bni_login.getProduct(service, body);
+            }
+
             setIsLoading(false);
             history.push(`/bni-success${search}`);
         } catch (err) {
