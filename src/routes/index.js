@@ -49,6 +49,12 @@ export const MainRoutes = (props) => {
             localStorage.setItem('bankCode', query.bankCode);
             localStorage.setItem('bankId', query.bankId);
             localStorage.setItem('customerId', query.customerId);
+        } else {
+            localStorage.removeItem('service');
+            localStorage.removeItem('accountNo');
+            localStorage.removeItem('bankCode');
+            localStorage.removeItem('bankId');
+            localStorage.removeItem('customerId');
         }
     }, [search])
 
