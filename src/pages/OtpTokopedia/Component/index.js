@@ -95,16 +95,10 @@ export const OtpTokopedia = observer(() => {
                 secCode: localStorage.getItem('secCode'),
             };
 
-            const service = localStorage.getItem('service');
             const res = await store.tokopedia_login.checkStatus(data)
             status = res.body.data.status
             if (status === 'SUCCESS') {
-                if (service === 'undefined') {
-                    data.accountNo = localStorage.getItem('accountNo');
-                    await store.tokopedia_login.getProduct(service, data)
-                } else {
-                    localStorage.setItem('customerId', res.body.data.customerId)
-                }
+                localStorage.setItem('customerId', res.body.data.customerId)
                 history.push(`/tokopedia-success${search}`);
             } else if (status === 'FAILED') {
                 setLoading(false)
