@@ -100,6 +100,7 @@ export const OtpTokopedia = observer(() => {
             status = res.body.data.status
             if (status === 'SUCCESS') {
                 if (service === 'undefined') {
+                    data.accountNo = localStorage.getItem('accountNo');
                     await store.tokopedia_login.getProduct(service, data)
                 } else {
                     localStorage.setItem('customerId', res.body.data.customerId)
