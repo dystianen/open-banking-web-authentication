@@ -95,12 +95,12 @@ export const LoginBRI = observer(() => {
             const type = localStorage.getItem('type')
             const service = localStorage.getItem('service')
             let res;
-            if (!service) {
+            if (service) {
+                await store.bri_login.getProduct(service, body);
+                body.accountNo = localStorage.getItem('accountNo');
+            } else {
                 res = type === 'sandbox' ? await store.bri_login.loginSandbox(body) : await store.bri_login.login(body);
                 localStorage.setItem('customerId', res.body.data.customerId)
-            } else {
-                body.accountNo = localStorage.getItem('accountNo');
-                await store.bri_login.getProduct(service, body);
             }
 
             setIsLoading(false);

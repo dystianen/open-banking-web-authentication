@@ -74,12 +74,12 @@ export const LoginMandiri = observer(() => {
             const type = localStorage.getItem('type')
             const service = localStorage.getItem('service')
             let res;
-            if (!service) {
-                res = type === 'sandbox' ? await store.mandiri.postLoginSandbox(data) : await store.mandiri.postLogin(data);
-                localStorage.setItem('customerId', res.body.data.customerId)
-            } else {
+            if (service) {
                 data.accountNo = localStorage.getItem('accountNo');
                 await store.mandiri.getProduct(service, data);
+            } else {
+                res = type === 'sandbox' ? await store.mandiri.postLoginSandbox(data) : await store.mandiri.postLogin(data);
+                localStorage.setItem('customerId', res.body.data.customerId)
             }
 
             setLoading(false);

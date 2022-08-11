@@ -94,12 +94,12 @@ export const LoginBNI = observer(() => {
             const type = localStorage.getItem('type')
             const service = localStorage.getItem('service')
             let res;
-            if (!service) {
-                res = type === 'sandbox' ? await store.bni_login.loginSandbox(body) : await store.bni_login.login(body);
-                localStorage.setItem('customerId', res.body.data.customerId)
-            } else {
+            if (service) {
                 body.accountNo = localStorage.getItem('accountNo');
                 await store.bni_login.getProduct(service, body);
+            } else {
+                res = type === 'sandbox' ? await store.bni_login.loginSandbox(body) : await store.bni_login.login(body);
+                localStorage.setItem('customerId', res.body.data.customerId)
             }
 
             setIsLoading(false);
